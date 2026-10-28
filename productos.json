@@ -1,0 +1,998 @@
+{
+  "categorias": [
+    {
+      "id": "all",
+      "label": "Todos",
+      "title": "Todo el catálogo",
+      "sub": "Personajes listos para salir de la impresora y llegar a tus manos."
+    },
+    {
+      "id": "monstruitos",
+      "label": "Monstruitos",
+      "title": "La banda de monstruitos",
+      "sub": "Rudos por fuera, apapachables por dentro. Elige tu color o llévate a los tres."
+    },
+    {
+      "id": "llaveros",
+      "label": "Llaveros",
+      "title": "Llaveros",
+      "sub": "Para tus llaves, tu mochila o tu bolsa."
+    },
+    {
+      "id": "figuras",
+      "label": "Figuras",
+      "title": "Figuras",
+      "sub": "Para tu escritorio o tu repisa."
+    },
+    {
+      "id": "miniaturas",
+      "label": "Miniaturas",
+      "title": "Miniaturas",
+      "sub": "Chiquitas, articuladas y llenas de personalidad. Caben en la palma de tu mano."
+    },
+    {
+      "id": "penholders",
+      "label": "Portalápices ",
+      "title": "Portalápices ",
+      "sub": "Para tus plumas, plumones y colores: orden con estilo en tu escritorio."
+    }
+  ],
+  "productos": [
+    {
+      "id": "hipopotamito",
+      "name": "Hipopótamito",
+      "sub": "",
+      "cat": "llaveros",
+      "badge": "Llaveros",
+      "c": "#cfd6e6",
+      "imgs": [
+        "hipopotamito-1",
+        "hipopotamito-2"
+      ],
+      "desc": "Gordito, gris y con una sonrisita que te alegra el día 😊 Su cuerpo va por segmentos, así que se menea colgado de tus llaves, y por detrás tiene una colita chiquita que es lo más tierno 🍑 Pequeño pero con mucha presencia 💪",
+      "specs": [
+        "Llavero",
+        "Articulada"
+      ],
+      "price": "$35.00",
+      "was": "$45.00"
+    },
+    {
+      "id": "cocodrilito-llavero",
+      "name": "Cocodrilito Llavero",
+      "sub": "",
+      "cat": "llaveros",
+      "badge": "Llaveros",
+      "c": "var(--teal)",
+      "imgs": [
+        "producto-9",
+        "producto-8"
+      ],
+      "desc": "Verde, con bolitas grises en la espalda y unos ojitos que no muerden a nadie 😄 Su cuerpo va por segmentos, así que se menea colgado de tus llaves o tu mochila. El único cocodrilo que vas a querer llevar a todos lados 🔑",
+      "specs": [
+        "Llavero",
+        "Articulado"
+      ],
+      "price": "$35.00",
+      "was": "$45.00"
+    },
+    {
+      "id": "abejita",
+      "name": "Abejita",
+      "sub": "",
+      "cat": "llaveros",
+      "badge": "Llavero",
+      "c": "#f2c230",
+      "imgs": [
+        "abejita-1",
+        "abejita-2"
+      ],
+      "desc": "Gordita, rayadita y con alitas blancas listas para despegar 🍯 Abejita Zum no pica, solo te acompaña a todos lados colgada de tus llaves o tu mochila. ¡Tu día va a estar más dulce que la miel! 💛",
+      "specs": [
+        "Impreso en 3D",
+        "Con argolla"
+      ],
+      "price": "$35.00",
+      "was": "$45.00"
+    },
+    {
+      "id": "orbita",
+      "name": "Capitán Órbita",
+      "sub": "el Astronauta Llavero",
+      "cat": "llaveros",
+      "badge": "Llavero",
+      "c": "#cfd6e6",
+      "imgs": [
+        "orbita-1"
+      ],
+      "desc": "Listo para despegar contigo a todas partes 🌌 Casco espacial, mochila de propulsión y argolla metálica para llevar tus llaves a otra galaxia.",
+      "specs": [
+        "Impreso en 3D",
+        "Con argolla"
+      ],
+      "price": "$35.00",
+      "was": "$45.00"
+    },
+    {
+      "id": "stego",
+      "name": "Stego",
+      "sub": "Dino Flexi",
+      "cat": "llaveros",
+      "badge": "Llaveros",
+      "c": "#4cc36a",
+      "imgs": [
+        "stego-2",
+        "stego-1",
+        "stego-3"
+      ],
+      "desc": "Verde menta, con piquitos blancos en la espalda y una sonrisita que no se le quita 😊 Su cuerpo va por segmentos, así que se mueve y se menea en tus manos. Ideal para tu escritorio o para jugar mientras piensas 🌿",
+      "specs": [
+        "Articulada"
+      ],
+      "price": "$45.00",
+      "was": "$55.00"
+    },
+    {
+      "id": "unicornio",
+      "name": "Unicornio",
+      "sub": "🦄 Nubecita, la Unicornia Flexi",
+      "cat": "llaveros",
+      "badge": "Llaveros",
+      "c": "var(--lilac)",
+      "imgs": [
+        "unicornio-1",
+        "unicornio-2"
+      ],
+      "desc": "Blanca como nube, con cuernito amarillo y melena color mango 🥭 Es del mismo estilo que el dino verde: cuerpo por segmentos que se menea en tus manos. Un toque de magia para tu escritorio ✨",
+      "specs": [
+        "Articulada"
+      ],
+      "price": "$45.00",
+      "was": "$55.00"
+    },
+    {
+      "id": "cuellito",
+      "name": "Cuellito",
+      "sub": "el Dino Llavero",
+      "cat": "llaveros",
+      "badge": "Llavero",
+      "c": "#4cc36a",
+      "imgs": [
+        "cuellito-1",
+        "cuellito-2"
+      ],
+      "desc": "Cuello largo, sonrisa chiquita y un cuerpo flexible que se mueve con cada paso 💚 Vegetariano, tranquilo y el compañero perfecto para tus llaves.",
+      "specs": [
+        "Impreso en 3D",
+        "Flexible",
+        "Con argolla"
+      ],
+      "price": "$45.00"
+    },
+    {
+      "id": "tricerito",
+      "name": "Tricerito",
+      "sub": "el Dino Llavero",
+      "cat": "llaveros",
+      "badge": "Llavero",
+      "c": "#f39a3c",
+      "imgs": [
+        "tricerito-2",
+        "tricerito-1"
+      ],
+      "desc": "Tres cuernitos, ojos de botón y una sonrisa que derrite hasta a un meteorito ☄️ Su cuerpo flexible se mueve como si estuviera vivo.",
+      "specs": [
+        "Impreso en 3D",
+        "Flexible",
+        "Con argolla"
+      ],
+      "price": "$45.00"
+    },
+    {
+      "id": "calaverita-bunny",
+      "name": "Calaverita Bunny",
+      "sub": "💀 Huesitos Conejo",
+      "cat": "llaveros",
+      "badge": "Llaveros",
+      "c": "var(--teal)",
+      "imgs": [
+        "calaverita-bunny-1"
+      ],
+      "desc": "Es un esqueletito con sonrisa chimuela y unas orejitas moradas de conejo para verse más tierno 🐰💜 Da un poquito de miedo y un muchito de amor. Cuélgalo en tus llaves o en tu mochila, perfecto para Halloween y Día de Muertos 🕯️",
+      "specs": [
+        "Articulado"
+      ],
+      "price": "$40.00",
+      "was": "$55.00"
+    },
+    {
+      "id": "cajita-cupcake",
+      "name": "Cajita Cupcake",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "var(--teal)",
+      "imgs": [
+        "producto-10",
+        "producto-11",
+        "producto-12"
+      ],
+      "desc": "Parece postre, pero es caja sorpresa 😋 Quítale el betún con su cerecita y adentro caben tus audífonos, llaves, anillos o lo que quieras guardar. Linda en tu buró y cero calorías 🍒",
+      "specs": [
+        "Almacenamiento"
+      ],
+      "price": "$160.00"
+    },
+    {
+      "id": "sapo-gloton-portaplumas",
+      "name": "Sapo Glotón Portaplumas",
+      "sub": "",
+      "cat": "penholders",
+      "badge": "Figuras",
+      "c": "#4cc36a",
+      "imgs": [
+        "sapo-gloton-portaplumas-1",
+        "sapo-gloton-portaplumas-3",
+        "sapo-gloton-portaplumas-4"
+      ],
+      "desc": "Un sapo con la boca bien abierta que se traga todos tus plumones y colores 🖍️ Se abraza la panza como si ya hubiera comido de más, y su color va de azul a verde y amarillo. Orden en tu escritorio con mucha personalidad 😂",
+      "specs": [
+        "Penholder"
+      ],
+      "price": "$120.00"
+    },
+    {
+      "id": "organizador-3-en-1",
+      "name": "Organizador 3 en 1",
+      "sub": "Escritorio Zen",
+      "cat": "penholders",
+      "badge": "Figuras",
+      "c": "#cfd6e6",
+      "imgs": [
+        "organizador-3-en-1-1",
+        "organizador-3-en-1-2"
+      ],
+      "desc": "Un vaso para plumas y plumones más dos charolitas para llaves, USB, clips y llaveros 🔑 Diseño acanalado en tonos crema que se ve bonito en cualquier escritorio. Adiós al caos, hola orden con estilo ✨",
+      "specs": [
+        "Penholder"
+      ],
+      "price": "$180.00"
+    },
+    {
+      "id": "michi-fantasma",
+      "name": "Michi Fantasma",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "#cfd6e6",
+      "imgs": [
+        "producto-6",
+        "producto-4",
+        "producto-5",
+        "producto-7"
+      ],
+      "desc": "Un gatito que se puso su sábana para asustar… pero se le asoman las orejas, las patitas y la cola 🐾 Sus ojitos se asoman por los hoyitos y su colita se mueve por segmentos. El disfraz más tierno de Halloween para tu escritorio 🎃",
+      "specs": [
+        "Hallowen"
+      ],
+      "price": "$75.00"
+    },
+    {
+      "id": "casita-badbunny",
+      "name": "Casita BadBunny",
+      "sub": "Aquí Viven Tus Llaves",
+      "cat": "llaveros",
+      "badge": "Portallaves",
+      "c": "var(--lilac)",
+      "imgs": [
+        "producto-1",
+        "producto-2",
+        "producto-3"
+      ],
+      "desc": "Una casita rosa de pueblo, con techo amarillo, arcos, ventanitas y su puerta de madera 💗 Tiene 5 ganchitos para que tus llaves por fin tengan dónde vivir y nunca más digas “¿alguien vio mis llaves?” 🔑 Perfecta para la entrada de tu casa y para regalar en una inauguración.",
+      "specs": [
+        "Llaves",
+        "BadBunny"
+      ],
+      "price": "$180.00"
+    },
+    {
+      "id": "ondas-atardecer",
+      "name": "Ondas Atardecer",
+      "sub": "",
+      "cat": "penholders",
+      "badge": "Figuras",
+      "c": "var(--red)",
+      "imgs": [
+        "ondas-atardecer-1"
+      ],
+      "desc": "Un cubo de ondas que cambia de rosa a naranja según cómo le pegue la luz 🌅 Pura vibra retro para tu escritorio, repisa o buró. De esas piezas que todos preguntan “¿y eso dónde lo compraste?” 😎",
+      "specs": [
+        "Penholder"
+      ],
+      "price": "$100.00"
+    },
+    {
+      "id": "ptero",
+      "name": "Ptero",
+      "sub": "🦖 Ptero, el Dino Volador",
+      "cat": "miniaturas",
+      "badge": "Miniatura",
+      "c": "var(--teal)",
+      "imgs": [
+        "ptero-3",
+        "ptero-1",
+        "ptero-2"
+      ],
+      "desc": "Azul cielo, con su cresta en la cabeza, ojitos redondos y una sonrisita que conquista 🩵 Su cuerpo por segmentos se mueve como si fuera a despegar en cualquier momento. El más aventurero de la familia jurásica ☁️\n\n📏 3.51cm.",
+      "specs": [
+        "Minis",
+        "Articulada"
+      ],
+      "price": "$20.00"
+    },
+    {
+      "id": "ballenita",
+      "name": "Ballenita",
+      "sub": "",
+      "cat": "miniaturas",
+      "badge": "Miniaturas",
+      "c": "var(--teal)",
+      "imgs": [
+        "ballenita-1",
+        "ballenita-2",
+        "ballenita-3"
+      ],
+      "desc": "¡La ballena más tierna del océano cabe en tu mano! 💙 Azul cielo con pancita blanca, ojitos brillantes y aletitas listas para nadar por tu escritorio. Su cuerpo en segmentos le da un movimiento muy divertido 🌊\n\n📏 3.5 cm",
+      "specs": [
+        "Miniatura",
+        "Articulada"
+      ],
+      "price": "$15.00"
+    },
+    {
+      "id": "buhito",
+      "name": "Búhito",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "var(--caramel)",
+      "imgs": [
+        "buhito-1",
+        "buhito-2",
+        "buhito-3"
+      ],
+      "desc": "Ojos gigantes, orejitas puntiagudas y un collar de bolitas que le da su toque elegante ✨ Búhito Cacao se queda despierto toda la noche cuidando tu escritorio, tu librero o tu mesita de noche. Sabio, tierno y color chocolate 🍫",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$55.00"
+    },
+    {
+      "id": "ajolotito",
+      "name": "Ajolotito",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "#f08cae",
+      "imgs": [
+        "ajolotito-1",
+        "ajolotito-2"
+      ],
+      "desc": "Rosita, con branquias moradas de peinado fabuloso y una carita que siempre está sonriendo 😊 Es articulado: mueve la cola, las patitas y el cuerpo como si nadara en tu mano 🌊 Un pedacito de Xochimilco para tu escritorio.",
+      "specs": [
+        "Impreso en 3D",
+        "Articulado"
+      ],
+      "price": "$80.00"
+    },
+    {
+      "id": "muuchi",
+      "name": "Vaquita",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "var(--caramel)",
+      "imgs": [
+        "muuchi-1",
+        "muuchi-2",
+        "muuchi-3",
+        "muuchi-4"
+      ],
+      "desc": "Ojitos enormes, cachetes rosados y manchitas color caramelo 🍮 Se mueve, camina y se echa a descansar cuando quiera. Imposible no decirle “muuuy bonita” 💕",
+      "specs": [
+        "Articulada"
+      ],
+      "price": "$35.00"
+    },
+    {
+      "id": "gengar",
+      "name": "Gengar",
+      "sub": "Pokemon fantasma",
+      "cat": "figuras",
+      "badge": "Pokemon",
+      "c": "var(--lilac)",
+      "imgs": [
+        "gengar-1",
+        "gengar-2"
+      ],
+      "desc": "Morado, regordete y con la sonrisa más traviesa del catálogo\nPor delante es pura ternura y por detrás trae\nsu espalda llena de picos. Ideal para fans de los fantasmas juguetones y de las travesuras a medianoche",
+      "specs": [
+        "Figura"
+      ],
+      "price": "$45.00"
+    },
+    {
+      "id": "platanin",
+      "name": "Platanin",
+      "sub": "🍌 El Plátano Feliz",
+      "cat": "miniaturas",
+      "badge": "Miniatura",
+      "c": "var(--teal)",
+      "imgs": [
+        "platanin-1"
+      ],
+      "desc": "Un platanito sonriente con su cabito café y bracitos listos para un abrazo 🤗 Está hecho por segmentos apilados, así que puedes girarlo y ponerlo en mil poses. Una dosis de buen humor para tu escritorio 😄\n\n📏 3.51cm.",
+      "specs": [
+        "Articulada"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "pokeball-snorlax",
+      "name": "Pokeball Snorlax",
+      "sub": "😴 Gordito Dormilón",
+      "cat": "figuras",
+      "badge": "Pokémon",
+      "c": "var(--lilac)",
+      "imgs": [
+        "pokeball-snorlax-1",
+        "pokeball-snorlax-2",
+        "pokeball-snorlax-3"
+      ],
+      "desc": "Una pokéball azul con panzota color galleta, orejitas, colmillitos y patotas peludas 🐾 El campeón mundial de la siesta convertido en pokéball de colección. Perfecta para los fans que comparten su filosofía: comer, dormir y repetir 💤",
+      "specs": [
+        "Pokémon"
+      ],
+      "price": "$55.00"
+    },
+    {
+      "id": "capi-zen",
+      "name": "Capi Zen",
+      "sub": "🍊 La Capibara con Mandarina",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "var(--caramel)",
+      "imgs": [
+        "capi-zen-1",
+        "capi-zen-2",
+        "capi-zen-3"
+      ],
+      "desc": "Cara de “nada me estresa” y una mandarinita en la cabeza, como debe ser 😌 La reina de la calma llega a tu escritorio para recordarte que todo se resuelve con paciencia y snacks. Su cuerpo va en dos piezas, así que se acomoda en distintas poses 🧡",
+      "specs": [
+        "Articulado"
+      ],
+      "price": "$55.00"
+    },
+    {
+      "id": "coquito",
+      "name": "Coquito",
+      "sub": "🐒 El Monito Ojitos",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "var(--caramel)",
+      "imgs": [
+        "coquito-1"
+      ],
+      "desc": "Copetito parado, colita enroscada y unos ojotes que te convencen de llevártelo 🥺 Su textura parece madera tallada, pero es todo impreso. Ponlo en tu escritorio y deja que te eche porras con esa mirada 🍌",
+      "specs": [
+        "Articulada",
+        "Animalitos"
+      ],
+      "price": "$35.00"
+    },
+    {
+      "id": "mini-brocoli",
+      "name": "Mini Brocoli",
+      "sub": "",
+      "cat": "miniaturas",
+      "badge": "Miniaturas",
+      "c": "#4cc36a",
+      "imgs": [
+        "mini-brocoli-1",
+        "mini-brocoli-2",
+        "mini-brocoli-3"
+      ],
+      "desc": "¡El brócoli más feliz del huerto! 🥦 Con su copa esponjosa, su carita sonriente y sus bracitos, demuestra que las verduras también pueden ser adorables 😄 Su cuerpo en segmentos se ve de lo más divertido.\n\n📏 3.5 cm",
+      "specs": [
+        "Articulada",
+        "Miniatura"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "pinzas",
+      "name": "Pinzas",
+      "sub": "🦞La Langostita",
+      "cat": "miniaturas",
+      "badge": "Miniatura",
+      "c": "var(--red)",
+      "imgs": [
+        "pinzas-1",
+        "pinzas-2",
+        "pinzas-3"
+      ],
+      "desc": "Roja como tomate, con ojotes de sorpresa y dos tenazas listas para saludar 👋 Su cola va por segmentos, así que se mueve y menea en tus manos. Prometemos que no pellizca 😆\n\n📏 3.51cm.",
+      "specs": [
+        "Miniatura",
+        "Articulada"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "zarigueya-dramatica",
+      "name": "Zarigüeya Dramática",
+      "sub": "Llavero",
+      "cat": "llaveros",
+      "badge": "Llaveros",
+      "c": "#f7a8c4",
+      "imgs": [
+        "zarigueya-cadenita-1",
+        "zarigueya-cadenita-2",
+        "zarigueya-cadenita-3",
+        "zarigueya-rizadita-1",
+        "zarigueya-rizadita-2",
+        "zarigueya-rizadita-3"
+      ],
+      "desc": "Se hace la muerta con ojitos de X, la boca abierta y las patitas rosas al aire 🐾 ¡La reina del drama colgando de tus llaves! 😂\n\n📏 5 cm",
+      "specs": [
+        "Impreso en 3D",
+        "Articulada"
+      ],
+      "price": "$55.00",
+      "variantes": [
+        {
+          "id": "cadenita",
+          "nombre": "🔗 Cola Cadenita",
+          "nota": "Cola recta de eslabones que se mueven",
+          "imgs": [
+            "zarigueya-cadenita-1",
+            "zarigueya-cadenita-2",
+            "zarigueya-cadenita-3"
+          ]
+        },
+        {
+          "id": "rizadita",
+          "nombre": "🌀 Cola Rizadita",
+          "nota": "Cola enroscada en espiral",
+          "imgs": [
+            "zarigueya-rizadita-1",
+            "zarigueya-rizadita-2",
+            "zarigueya-rizadita-3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zanahorio",
+      "name": "Zanahorio",
+      "sub": "🥕 El Copetón",
+      "cat": "miniaturas",
+      "badge": "Miniatura",
+      "c": "#f39a3c",
+      "imgs": [
+        "zanahorio-1"
+      ],
+      "desc": "Una zanahoria con copete verde que parece recién salida de la peluquería 💇 Sonrisita, bracitos abiertos y segmentos apilados para girarlo como quieras. La única verdura que nadie va a dejar en el plato 😄\n\n📏 3.51cm.",
+      "specs": [
+        "Miniatura",
+        "Articulada"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "mini-bumblebee",
+      "name": "Mini Bumblebee",
+      "sub": "",
+      "cat": "miniaturas",
+      "badge": "Miniaturas",
+      "c": "#f39a3c",
+      "imgs": [
+        "mini-bumblebee-1",
+        "mini-bumblebee-2",
+        "mini-bumblebee-3"
+      ],
+      "desc": "¡El robot más valiente y amarillo llegó en versión mini! 🤖 Amarillo brillante con detalles gris metálico, ojitos blancos y armadura llena de detalles. Listo para cuidar tu escritorio ⚡\n\n📏 3.5 cm",
+      "specs": [
+        "Articulada",
+        "Miniatura"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "mini-stromtrooper",
+      "name": "Mini StromTrooper",
+      "sub": "",
+      "cat": "miniaturas",
+      "badge": "Miniaturas",
+      "c": "#cfd6e6",
+      "imgs": [
+        "mini-stromtrooper-1",
+        "mini-stromtrooper-2",
+        "mini-stromtrooper-3"
+      ],
+      "desc": "¡El soldado más elegante de la galaxia llegó en tamaño bolsillo! 🌌 Blanco impecable, cinturón y detalles en negro, listo para cuidar tu escritorio sin fallar ni un disparo 😜\n\n📏 3.5 cm",
+      "specs": [
+        "Articulado",
+        "Miniatura"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "mini-darth-maul",
+      "name": "Mini Darth Maul",
+      "sub": "",
+      "cat": "miniaturas",
+      "badge": "Miniatura",
+      "c": "var(--red)",
+      "imgs": [
+        "mini-darth-maul-2",
+        "mini-darth-maul-3",
+        "mini-darth-maul-1"
+      ],
+      "desc": "¡El villano más rudo de la galaxia, ahora en versión miniatura! 🌌 Con su cara roja y negra, sus cuernitos blancos y su túnica negra, se ve bravo pero bien coleccionable 🔥 Perfecto para tu escritorio o tu repisa.\n\n📏 3.51cm.",
+      "specs": [
+        "Miniatura",
+        "Articulada"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "pokeball-charmander",
+      "name": "Pokéball - Charmander",
+      "sub": "Charmander dormilon",
+      "cat": "figuras",
+      "badge": "Pokeball",
+      "c": "#f39a3c",
+      "imgs": [
+        "pokeball-charmander-1",
+        "pokeball-charmander-2",
+        "pokeball-charmander-3"
+      ],
+      "desc": "Abre la pokéball y sorpresa: adentro está un charmander tomando su siestita, con su colita de fuego encendida 😴 Viene con su base para lucirlo en tu escritorio o repisa. El regalo perfecto para los que crecieron coleccionando monstruitos de bolsillo ✨",
+      "specs": [
+        "Pokémon",
+        "Coleccionable"
+      ],
+      "price": "$220.00"
+    },
+    {
+      "id": "turbo",
+      "name": "Turbo",
+      "sub": "el Monstruito Turquesa",
+      "cat": "monstruitos",
+      "badge": "Monstruitos",
+      "c": "var(--teal)",
+      "imgs": [
+        "turbo-5",
+        "turbo-6",
+        "turbo-7",
+        "turbo-8",
+        "turbo-9",
+        "turbo-10",
+        "turbo-11",
+        "turbo-12",
+        "turbo-15",
+        "turbo-13",
+        "turbo-16",
+        "turbo-14",
+        "turbo-17"
+      ],
+      "desc": "Cuernos, colmillo, arete dorado y collar de picos: Turbo se las da de rudo, pero se derrite con un abrazo 🤘 Ideal para tu escritorio o para regalar a alguien con actitud.",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$135.00",
+      "variantes": [
+        {
+          "id": "ojitos",
+          "nombre": "Ojitos",
+          "nota": "",
+          "imgs": [
+            "turbo-5",
+            "turbo-6",
+            "turbo-7",
+            "turbo-8",
+            "turbo-17"
+          ]
+        },
+        {
+          "id": "grunon",
+          "nombre": "Gruñon",
+          "nota": "",
+          "imgs": [
+            "turbo-9",
+            "turbo-10",
+            "turbo-11",
+            "turbo-12",
+            "turbo-17"
+          ]
+        },
+        {
+          "id": "feroz",
+          "nombre": "Feroz",
+          "nota": "",
+          "imgs": [
+            "turbo-15",
+            "turbo-13",
+            "turbo-16",
+            "turbo-14",
+            "turbo-17"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limon",
+      "name": "Limón Feroz",
+      "sub": "el Monstruito Verde",
+      "cat": "monstruitos",
+      "badge": "Monstruitos",
+      "c": "var(--lime)",
+      "imgs": [
+        "limon-5",
+        "limon-6",
+        "limon-7",
+        "limon-8",
+        "limon-9",
+        "limon-10",
+        "limon-11",
+        "limon-12",
+        "limon-1",
+        "limon-2",
+        "limon-4",
+        "limon-3",
+        "limon-13"
+      ],
+      "desc": "El más fresco de la banda 🍋 Collar de hojitas, arete dorado y una mirada que dice “no me provoques”… aunque solo quiere sentarse a tu lado. Brilla en cualquier repisa.",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$135.00",
+      "variantes": [
+        {
+          "id": "ojitos",
+          "nombre": "Ojitos",
+          "nota": "",
+          "imgs": [
+            "limon-5",
+            "limon-6",
+            "limon-7",
+            "limon-13"
+          ]
+        },
+        {
+          "id": "grunon",
+          "nombre": "Gruñon",
+          "nota": "",
+          "imgs": [
+            "limon-9",
+            "limon-10",
+            "limon-11",
+            "limon-12",
+            "limon-13"
+          ]
+        },
+        {
+          "id": "feroz",
+          "nombre": "Feroz",
+          "nota": "",
+          "imgs": [
+            "limon-1",
+            "limon-2",
+            "limon-4",
+            "limon-3",
+            "limon-13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lavanda",
+      "name": "Lavanda Punk",
+      "sub": "la Monstruita Lila",
+      "cat": "monstruitos",
+      "badge": "Monstruitos",
+      "c": "var(--lilac)",
+      "imgs": [
+        "lavanda-1",
+        "lavanda-2",
+        "lavanda-3",
+        "lavanda-4",
+        "banda"
+      ],
+      "desc": "Dulce por fuera y rebelde por dentro 💥 Lavanda trae collar de picos, arete y un colmillo coqueto. Perfecta para quien es tierno pero no se deja.",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$135.00"
+    },
+    {
+      "id": "spiderman",
+      "name": "Spiderman",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "var(--red)",
+      "imgs": [
+        "spiderman-1"
+      ],
+      "desc": "Cuelga de cabeza desde su telaraña y te mira con esos ojotes blancos como diciendo “todo bajo control” 😎 Rojo, azul y listo para salvar tu escritorio, tu repisa o tu cuarto. El vecino más amigable que vas a tener 🕸️",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$250.00"
+    },
+    {
+      "id": "cuernos",
+      "name": "DarthMaul",
+      "sub": "Villano de bolsillo",
+      "cat": "figuras",
+      "badge": "Starwars",
+      "c": "var(--red)",
+      "imgs": [
+        "cuernos-3",
+        "cuernos-1",
+        "cuernos-2"
+      ],
+      "desc": "Tatuajes de guerrero, cuernos afilados y un sable rojo de doble filo ⚔️ Viene a imponer respeto en tu repisa… aunque sea mini 🤏",
+      "specs": [
+        "Figura",
+        "Articulada"
+      ],
+      "price": "$160.00"
+    },
+    {
+      "id": "oscurito",
+      "name": "DarthVader",
+      "sub": "Villano de bolsillo",
+      "cat": "figuras",
+      "badge": "Starwars",
+      "c": "var(--red)",
+      "imgs": [
+        "oscurito-1",
+        "oscurito-2",
+        "oscurito-3"
+      ],
+      "desc": "Viene a conquistar tu escritorio con su sable rojo, su capa y su panel de botones de colores ⚔️ Da miedo… pero cabe en tu mano. Aquí tenemos galletas 🍪",
+      "specs": [
+        "Figura",
+        "Articulada"
+      ],
+      "price": "$160.00"
+    },
+    {
+      "id": "mini-kylo-ren",
+      "name": "Mini Kylo Ren",
+      "sub": "",
+      "cat": "miniaturas",
+      "badge": "Miniaturas",
+      "c": "#cfd6e6",
+      "imgs": [
+        "mini-kylo-ren-1",
+        "mini-kylo-ren-2",
+        "mini-kylo-ren-3"
+      ],
+      "desc": "¡El villano más misterioso de la galaxia, ahora en tamaño mini! 🌌 Viene con su capucha negra, su máscara con detalles plateados y su cinturón, listo para dominar tu repisa 😎\n\n📏 3.5 cm",
+      "specs": [
+        "Articulada",
+        "Miniatura"
+      ],
+      "price": "$25.00"
+    },
+    {
+      "id": "paquita",
+      "name": "Paquita",
+      "sub": "🦜 Paquita, la Guacamaya",
+      "cat": "figuras",
+      "badge": "Figuras",
+      "c": "var(--red)",
+      "imgs": [
+        "paquita-3",
+        "paquita-2",
+        "paquita-1"
+      ],
+      "desc": "¡Llegó la más colorida y parlanchina de la selva! 🌈 Toda roja, con carita blanca, piquito negro y alas de arcoíris en amarillo, verde y azul. Imposible verla y no sonreír 😄\n\n📏 5 cm",
+      "specs": [
+        "Articulada"
+      ],
+      "price": "$55.00"
+    },
+    {
+      "id": "dona-huesos",
+      "name": "Doña Huesos",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Flores",
+      "c": "#f39a3c",
+      "imgs": [
+        "dona-huesos-1",
+        "dona-huesos-2",
+        "dona-huesos-3"
+      ],
+      "desc": "¡La flor más tétrica y tierna del jardín! 🌼💀 Su centro es una calaverita de ojotes negros, cada pétalo trae su propia carita asustada y su tallo es una columna de huesitos. Viene plantada en una macetita de calabaza naranja 🎃",
+      "specs": [
+        "Hallowen"
+      ],
+      "price": "$100.00"
+    },
+    {
+      "id": "tejedora",
+      "name": "Tejedora",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Flores",
+      "c": "var(--lilac)",
+      "imgs": [
+        "tejedora-1",
+        "tejedora-2",
+        "tejedora-3"
+      ],
+      "desc": "Sus pétalos morados forman una telaraña blanca y en el centro vive una arañita negra de ojotes y colmillitos 🕸️ Va plantada en una macetita de calavera blanca 💀 ¡Tierna y espeluznante a la vez!",
+      "specs": [
+        "Hallowen"
+      ],
+      "price": "$100.00"
+    },
+    {
+      "id": "calabacita",
+      "name": "Calabacita",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Flores",
+      "c": "#f39a3c",
+      "imgs": [
+        "calabacita-1",
+        "calabacita-2",
+        "calabacita-3"
+      ],
+      "desc": "Una flor naranja con pétalos de gajos de calabaza, ojotes negros y una sonrisita chimuela 😄 Va en una macetita morada rajada, como si estuviera a punto de escaparse 💜",
+      "specs": [
+        "Hallowen"
+      ],
+      "price": "$100.00"
+    }
+  ],
+  "banners": [
+    {
+      "id": "halloween",
+      "tipo": "foto",
+      "img": "banner-halloween",
+      "titulo": "Flores de Halloween 🎃",
+      "texto": "Doña Huesos, Tejedora y Calabacita: tiernas y espeluznantes a la vez.",
+      "boton": "Ver flores",
+      "enlace": "#/buscar/flores",
+      "color": "#2B1B4D"
+    },
+    {
+      "id": "monstruitos",
+      "tipo": "foto",
+      "img": "banner-2",
+      "titulo": "La banda de monstruitos",
+      "texto": "Rudos por fuera, apapachables por dentro.",
+      "boton": "Conócelos",
+      "enlace": "#/monstruitos",
+      "color": "#C6F432"
+    },
+    {
+      "id": "llaveros",
+      "tipo": "foto",
+      "img": "zarigueya-rizadita-1",
+      "titulo": "Llaveros con mucha actitud",
+      "texto": "Para tus llaves, tu mochila o tu bolsa.",
+      "boton": "Ver llaveros",
+      "enlace": "#/llaveros",
+      "color": "#4B3880"
+    }
+  ]
+}
