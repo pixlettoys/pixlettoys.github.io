@@ -18,35 +18,24 @@
 <meta property="og:description" content="Coleccionables geek impresos en 3D, capa por capa. Arma tu pedido y envíalo por WhatsApp.">
 <meta property="og:url" content="https://pixlettoys.github.io/">
 <meta property="og:image" content="https://pixlettoys.github.io/img/banda.jpg">
-<meta name="theme-color" content="#F4F0FF">
-<style>body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}</style>
+<meta name="theme-color" content="#2B1B4D">
+<style>body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{background:#2B1B4D;color:#F4F0FF}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;600;800&display=swap">
 <style>
 /* Layout: vitrina de juguetería. Hero con la banda, filtros tipo etiqueta, rejilla de fichas con galería y botón de WhatsApp. Fondo con líneas de capa como guiño a la impresión 3D. */
 :root{
-  --bg:#F4F0FF; --surface:#ffffff; --ink:#2B1B4D; --muted:#6b5f8c; --line:#e2dbf4;
-  --lime:#C6F432; --teal:#4B3880; --lilac:#b9a6f2; --caramel:#c98a4b; --red:#e2412f;
-  --wa:#1f9d55; --wa-ink:#ffffff; --chip:#ebe4fb; --chip-on:#2B1B4D; --chip-on-ink:#F4F0FF;
-  --layer:rgba(43,27,77,.035);
-  --focus:#4B3880; --photo:#eeeef0; --scrim:rgba(20,16,36,.55); --shadow:rgba(43,27,77,.35);
-  --glass:rgba(255,255,255,.9); --glass-ink:#2B1B4D; --sticker-ink:#ffffff; --badge-ink:#2B1B4D;
+  --bg:#2B1B4D; --surface:#37255F; --ink:#F4F0FF; --muted:#BDB2E0; --line:#4A3778;
+  --lime:#C6F432; --teal:#B9A6F2; --lilac:#B9A6F2; --caramel:#c98a4b; --red:#C6F432;
+  --wa:#C6F432; --wa-ink:#2B1B4D; --chip:#3B2966; --chip-on:#C6F432; --chip-on-ink:#2B1B4D;
+  --layer:rgba(244,240,255,.03);
+  --focus:#C6F432; --photo:#F1EEF8; --scrim:rgba(14,8,28,.72); --shadow:rgba(8,4,20,.6);
+  --glass:rgba(43,27,77,.86); --glass-ink:#F4F0FF; --sticker-ink:#2B1B4D; --badge-ink:#2B1B4D;
+  color-scheme:dark;
   --display:"Bagel Fat One","Arial Black",system-ui,sans-serif;
   --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --spring:cubic-bezier(.34,1.56,.64,1); --out:cubic-bezier(.2,.85,.25,1);
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#1a1030; --surface:#2B1B4D; --ink:#F4F0FF; --muted:#b3a8d6; --line:#3f2e66;
-  --chip:#382762; --chip-on:#C6F432; --chip-on-ink:#1a1030; --wa:#25b865; --wa-ink:#08130c;
-  --layer:rgba(255,255,255,.03);
-  --focus:#C6F432; --photo:#2a2638; --scrim:rgba(5,4,12,.72); --shadow:rgba(0,0,0,.6);
-  --glass:rgba(33,30,48,.88); --glass-ink:#F4F0FF; color-scheme:dark }}
-:root[data-theme="dark"]{
-  --bg:#1a1030; --surface:#2B1B4D; --ink:#F4F0FF; --muted:#b3a8d6; --line:#3f2e66;
-  --chip:#382762; --chip-on:#C6F432; --chip-on-ink:#1a1030; --wa:#25b865; --wa-ink:#08130c;
-  --layer:rgba(255,255,255,.03);
-  --focus:#C6F432; --photo:#2a2638; --scrim:rgba(5,4,12,.72); --shadow:rgba(0,0,0,.6);
-  --glass:rgba(33,30,48,.88); --glass-ink:#F4F0FF; color-scheme:dark }
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -277,9 +266,7 @@ footer{padding-block:22px 92px;color:var(--muted);font-size:.9rem;text-align:cen
    Apariencia de tienda: barra fija translúcida, portada centrada, tarjetas limpias.
    Identidad Pixlet Toys: morado noche, lila claro y un acento lima; Bagel Fat One para títulos y Figtree para leer.
 ───────────────────────────────────────────────── */
-:root{--glass-bar:rgba(255,255,255,.78);--hair:rgba(43,27,77,.10);--ink-2:#45405a;--accent:var(--teal)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--glass-bar:rgba(21,19,31,.78);--hair:rgba(255,255,255,.10);--ink-2:#cfc9e4}}
-:root[data-theme="dark"]{--glass-bar:rgba(21,19,31,.78);--hair:rgba(255,255,255,.10);--ink-2:#cfc9e4}
+:root{--glass-bar:rgba(43,27,77,.84);--hair:rgba(244,240,255,.10);--ink-2:#DCD3F7;--accent:var(--lime)}
 body{background-image:none;-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
 .wrap{max-width:1040px}
 
@@ -291,9 +278,7 @@ body{background-image:none;-webkit-font-smoothing:antialiased;letter-spacing:-.0
 .top-logo .sym{width:34px;height:34px;flex:none}
 .wm{display:flex;flex-direction:column;align-items:center;line-height:.82}
 .wm-p{font-family:var(--display);font-size:1.5rem;letter-spacing:-.01em}
-.wm-t{font:800 .5rem/1 var(--body);letter-spacing:.62em;margin-right:-.62em;margin-top:3px}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .wm-t{color:var(--lime)}}
-:root[data-theme="dark"] .wm-t{color:var(--lime)}
+.wm-t{font:800 .5rem/1 var(--body);letter-spacing:.62em;margin-right:-.62em;margin-top:3px;color:var(--lime)}
 .top-links{display:flex;gap:22px;font-size:.82rem;font-weight:600}
 .top-links a{color:var(--ink-2);text-decoration:none;padding:12px 0}
 .top-links a:hover{color:var(--ink)}
@@ -456,6 +441,84 @@ footer a{color:var(--ink-2);text-decoration:none} footer a:hover{text-decoration
   padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--surface);font-weight:600;font-size:.92rem;box-shadow:0 10px 26px -10px var(--shadow);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media print{.cart-fab,.toast{display:none!important}}
 
+/* ─────────── Pixlet Toys: tema oscuro de la guía y detalles de marca ─────────── */
+body{background:var(--bg);color:var(--ink)}
+.card,.tile,.mini,.steps li,.cart-list,.search,.chip,.sort select,.no-res{box-shadow:none}
+.card,.tile,.mini{background:var(--surface);border:1px solid var(--line)}
+.photo,.mini-ph img,.tile img{background-color:var(--photo)}
+.search,.sort select,.chip{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.chip:hover{background:var(--chip);box-shadow:inset 0 0 0 1px var(--muted)}
+.btn-add{background:var(--ink);color:var(--bg)}
+.btn-add.is-in{background:var(--lime);color:#2B1B4D}
+.add-n{background:var(--lime);color:#2B1B4D;box-shadow:0 0 0 2px var(--surface)}
+.cart-fab{background:var(--lime);color:#2B1B4D}
+.cart-fab b{background:#2B1B4D;color:var(--lime)}
+.cart,.cart-head,.cart-foot{background:var(--bg)}
+.cart-list{background:var(--surface)}
+.cart-f input,.cart-f textarea{background:var(--surface);color:var(--ink)}
+.pd{background:var(--surface)}
+.pd-foot{background:var(--surface)}
+.pd-vars button{background:var(--chip);color:var(--ink)}
+.pd-vars button[aria-checked="true"]{background:var(--bg);box-shadow:inset 0 0 0 2.5px var(--lime)}
+.specs li{background:var(--chip);color:var(--ink)}
+.kicker{color:var(--muted)}
+.tile-all{background:var(--lime);color:#2B1B4D}
+.tile-all small{color:#2B1B4D}
+.strip-h a,.back:hover,.pd-ask{color:var(--lime)}
+.vpill{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.off{background:var(--lime);color:#2B1B4D}
+.vsw img{box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--line)}
+.toast{background:var(--ink);color:var(--bg)}
+.to-top{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.fab{box-shadow:0 12px 26px -10px var(--shadow),0 0 0 4px var(--bg)}
+.btn-light{background:var(--ink);color:#2B1B4D}
+.steps li{background:var(--surface);border:1px solid var(--line)}
+.steps li::before{background:var(--lime);color:#2B1B4D}
+footer{border-top-color:var(--line)}
+.top-links{align-items:center}
+.ig{display:inline-grid!important;place-items:center;width:34px;height:34px;padding:0!important;border-radius:10px;color:var(--ink-2)}
+.ig svg{width:20px;height:20px}
+.ig:hover{color:var(--lime)}
+
+/* Patrón de capas: las rayas redondeadas del símbolo */
+.h-title::before,.how h2::before{content:"";display:block;width:34px;height:20px;margin-bottom:10px;
+  background:linear-gradient(var(--lime),var(--lime)) 4px 0/26px 5px no-repeat,
+    linear-gradient(var(--ink),var(--ink)) 1px 7.5px/32px 5px no-repeat,
+    linear-gradient(var(--ink),var(--ink)) 3px 15px/28px 5px no-repeat;opacity:.95}
+.bn-foto::before{right:-6%;top:auto;bottom:-14%;width:58%;aspect-ratio:auto;height:120%;border-radius:0;opacity:.14;
+  background:repeating-linear-gradient(180deg,var(--fg-b) 0 14px,transparent 14px 26px);
+  -webkit-mask:radial-gradient(closest-side,#000 70%,transparent);mask:radial-gradient(closest-side,#000 70%,transparent)}
+.bn{background:var(--surface)}
+
+/* La figurita: estados vacíos y de carga */
+.fig{display:block;width:64px;height:64px;margin:0 auto 10px}
+.fig .capa-l{animation:capa 1.6s ease-in-out infinite}
+@keyframes capa{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.fig .capa-l{animation:none}}
+.cargando{grid-column:1/-1;text-align:center;color:var(--muted);font-weight:600;padding:30px 0}
+.no-res{background:var(--surface);border:1px solid var(--line)}
+.cart-empty>b{display:block;color:var(--ink);margin-bottom:4px}
+
+/* Sección capa por capa */
+.capas{padding-block:40px 8px}
+.capas-in{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:28px;align-items:center;padding:32px;border-radius:28px;
+  background:var(--surface);border:1px solid var(--line);position:relative;overflow:hidden}
+.capas-in::after{content:"";position:absolute;right:-40px;top:-30px;width:260px;height:180px;opacity:.06;pointer-events:none;
+  background:repeating-linear-gradient(180deg,var(--ink) 0 16px,transparent 16px 30px);border-radius:20px}
+.capas-fig{display:grid;place-items:center;aspect-ratio:1;max-width:220px;width:100%;justify-self:center;border-radius:50%;background:var(--bg)}
+.capas-fig .fig{width:68%;height:68%;margin:0}
+.kicker-sec{margin:0 0 8px;font-weight:600;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:var(--lime)}
+.capas h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,4.4vw,2.4rem);line-height:1.05}
+.capas-t>p{margin:12px 0 0;color:var(--muted);font-size:1.05rem;line-height:1.45;max-width:46ch}
+.capas-l{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.capas-l li{display:flex;flex-direction:column;padding-left:16px;border-left:3px solid var(--lime)}
+.capas-l span{color:var(--muted);font-size:.92rem}
+@media (max-width:700px){
+  .capas-in{grid-template-columns:1fr;padding:24px 20px;gap:18px}
+  .capas-fig{max-width:140px}
+}
+
+
 /* Portada: carrusel de banners */
 .hero{background:none;padding-block:16px 0;text-align:left}
 .bn{position:relative;border-radius:26px;overflow:hidden;background:var(--photo);box-shadow:0 2px 14px rgba(43,27,77,.06)}
@@ -614,7 +677,8 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
     <a class="top-logo" href="#/" aria-label="Pixlet Toys, inicio"><svg class="sym" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#2B1B4D"/><circle cx="50" cy="35" r="15" fill="#F4F0FF"/><circle cx="44.5" cy="35.5" r="2.6" fill="#2B1B4D"/><circle cx="55.5" cy="35.5" r="2.6" fill="#2B1B4D"/><rect x="37.0" y="55.5" width="26" height="6" rx="3" fill="#C6F432"/><rect x="33.0" y="64.0" width="34" height="6" rx="3" fill="#F4F0FF"/><rect x="31.0" y="72.5" width="38" height="6" rx="3" fill="#F4F0FF"/><rect x="31.0" y="81.0" width="38" height="6" rx="3" fill="#F4F0FF"/><rect x="34.0" y="89.5" width="32" height="6" rx="3" fill="#F4F0FF"/></svg><span class="wm"><span class="wm-p">pixlet</span><span class="wm-t">TOYS</span></span></a>
     <div class="top-links">
       <a href="#/todos">Catálogo</a>
-      <a class="js-wa" data-msg="¡Hola Pixlet Toys! 👋 Quiero información sobre sus figuras." href="#">Contacto</a>
+      <a class="js-wa" data-msg="¡Hola Pixlet Toys! 👋 Quiero información sobre sus piezas." href="#">Contacto</a>
+      <a class="ig" href="https://instagram.com/pixlet.toys" target="_blank" rel="noopener" aria-label="Instagram @pixlet.toys"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
     </div>
   </nav>
 </header>
@@ -635,10 +699,10 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   <div class="wrap">
     <label class="search home-search"><span class="sr-only">Buscar producto</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input type="search" id="qHome" placeholder="¿Qué buscas? Ajolote, llavero, Pokémon…" autocomplete="off" enterkeyhint="search">
+      <input type="search" id="qHome" placeholder="¿Qué buscas? Ajolote, llavero, flor…" autocomplete="off" enterkeyhint="search">
     </label>
-    <h2 class="h-title">Categorías</h2>
-    <div class="tiles" id="tiles"></div>
+    <h2 class="h-title">Elige tu tribu</h2>
+    <div class="tiles" id="tiles"><p class="cargando"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg>Imprimiendo el catálogo…</p></div>
     <div id="strips"></div>
   </div>
 </section>
@@ -654,7 +718,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
       <div class="tools-row">
         <label class="search"><span class="sr-only">Buscar producto</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input type="search" id="q" placeholder="Buscar figura, llavero, color…" autocomplete="off" enterkeyhint="search">
+          <input type="search" id="q" placeholder="Busca por nombre, color o tipo…" autocomplete="off" enterkeyhint="search">
         </label>
         <label class="sort"><span class="sr-only">Ordenar por</span>
           <select id="sort"><option value="rec">Destacados</option><option value="menor">$ Menor</option><option value="mayor">$ Mayor</option><option value="nuevos">Nuevos</option></select>
@@ -670,15 +734,33 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   </div>
 </main>
 
+<section class="capas" data-view="home" aria-labelledby="capasT">
+  <div class="wrap">
+    <div class="capas-in">
+      <div class="capas-fig"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg></div>
+      <div class="capas-t">
+        <p class="kicker-sec">Capa por capa</p>
+        <h2 id="capasT">Coleccionables geek impresos en 3D.</h2>
+        <p>Cada pieza se construye capa por capa. La marca también: pocas formas, un solo acento de color y mucho humor.</p>
+        <ul class="capas-l">
+          <li><b>Figuras, llaveros y miniaturas</b><span>Piezas chicas con mucha personalidad.</span></li>
+          <li><b>Impresas en 3D</b><span>Cada una se imprime cuando la pides.</span></li>
+          <li><b>Pedido por WhatsApp</b><span>Arma tu carrito y nos lo mandas en un toque.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="how" id="como" data-view="home">
   <div class="wrap">
-    <h2>¿Cómo pido el mío?</h2>
+    <h2>Pedir es fácil</h2>
     <ol class="steps">
-      <li><div><b>Arma tu pedido</b><span>Toca “Agregar” en los productos que te gusten. Puedes llevar varios.</span></div></li>
-      <li><div><b>Envíalo por WhatsApp</b><span>En “Ver pedido” toca “Hacer pedido por WhatsApp”: el mensaje ya va escrito con todo.</span></div></li>
-      <li><div><b>Coordinamos</b><span>Te confirmamos disponibilidad, color y entrega por el chat.</span></div></li>
+      <li><div><b>Agrega lo que te guste</b><span>Una pieza o toda la colección. No juzgamos.</span></div></li>
+      <li><div><b>Mándalo por WhatsApp</b><span>En “Ver pedido” toca “Pedir por WhatsApp”. El mensaje ya va escrito.</span></div></li>
+      <li><div><b>La imprimimos</b><span>Te confirmamos color, disponibilidad y entrega por el chat.</span></div></li>
     </ol>
-    <p id="phoneLine" hidden>Nuestro WhatsApp: <a class="phone js-wa" id="phone" data-msg="¡Hola Pixlet Toys! 👋" href="#"></a></p>
+    <p id="phoneLine" hidden>WhatsApp: <a class="phone js-wa" id="phone" data-msg="¡Hola Pixlet Toys! 👋" href="#"></a></p>
   </div>
 </section>
 
@@ -703,7 +785,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   </div>
   <div class="cart-body">
     <ul class="cart-list" id="cartList"></ul>
-    <div class="cart-empty" id="cartEmpty">Tu pedido está vacío.<ol><li>Toca <b>Agregar</b> en los productos que te gusten.</li><li>Vuelve aquí y toca <b>Hacer pedido por WhatsApp</b>.</li><li>Te confirmamos disponibilidad y entrega por el chat.</li></ol></div>
+    <div class="cart-empty" id="cartEmpty"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg><b>Tu pedido está más vacío que una impresora sin filamento.</b><ol><li>Toca <b>Agregar</b> en lo que te guste.</li><li>Vuelve aquí y toca <b>Pedir por WhatsApp</b>.</li><li>Te confirmamos color, disponibilidad y entrega.</li></ol></div>
     <div class="cart-total" id="cartTotal"></div>
     <label class="cart-f"><span>Tu nombre (opcional)</span><input id="cartName" maxlength="60" autocomplete="name"></label>
     <label class="cart-f"><span>Notas (opcional)</span><textarea id="cartNote" maxlength="300" rows="2" placeholder="Colores, fecha de entrega, si es regalo…"></textarea></label>
@@ -745,6 +827,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
 
 <script>
 // Número de WhatsApp con código de país, solo dígitos (ej. México: 5215512345678). Vacío = WhatsApp deja elegir el chat.
+const SIMBOLO = '<svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg>';
 const WHATSAPP = "525636680455";
 // Precio visible en cada ficha. Vacío = "Precio por WhatsApp".
 let PRODUCTS = [];   // productos de productos.json
@@ -791,7 +874,7 @@ fetch("productos.json", {cache: "no-cache"})
     CATS = (d.categorias || []).filter(c => c && (okId(c.id) || c.id === "all") && txt(c.label)).map(c => ({ id: c.id, label: txt(c.label), title: txt(c.title), sub: txt(c.sub) }));
     if (!CATS.length || CATS[0].id !== "all") CATS.unshift({id:"all", label:"Todos", title:"Todo el catálogo", sub:""});
     CATS = CATS.filter(c => c.id !== "ofertas");
-    if (PRODUCTS.some(p => descuento(p))) CATS.splice(1, 0, {id:"ofertas", label:"🔥 Ofertas", title:"Ofertas", sub:"Piezas con precio rebajado, por tiempo limitado."});
+    if (PRODUCTS.some(p => descuento(p))) CATS.splice(1, 0, {id:"ofertas", label:"Ofertas", title:"Ofertas", sub:"Mismas piezas, menos precio."});
     iniciar();
   })
   .catch(() => { document.getElementById("grid").innerHTML = '<p class="sec-sub">No se pudo cargar el catálogo. Revisa tu conexión y vuelve a intentar.</p>'; });
@@ -968,7 +1051,7 @@ function setCat(id, animate){
   nr.hidden = vis > 0;
   if (!vis) {
     const tot = cards.filter(el => coincide(el, q)).length;
-    nr.innerHTML = (q ? `No encontramos <b>“${h(qInput.value.trim())}”</b>${c.id !== "all" ? ` en ${h(c.label)}` : ""}.` : "Aún no hay productos aquí.") +
+    nr.innerHTML = SIMBOLO + (q ? `Nada por aquí con <b>“${h(qInput.value.trim())}”</b>${c.id !== "all" ? ` en ${h(c.label)}` : ""}. Prueba con otra palabra.` : "Esta sección todavía se está imprimiendo.") +
       `<span class="nr-acts">${q && tot && c.id !== "all" ? `<button type="button" class="btn btn-ink" data-nr="all">Ver ${tot} en todo el catálogo</button>` : ""}` +
       `${q ? `<button type="button" class="btn btn-soft" data-nr="clear">Borrar búsqueda</button>` : ""}</span>`;
   }
@@ -1118,7 +1201,7 @@ function pintarPedido(){
   const total = ids.reduce((s, id) => s + numPrecio(partir(id).p) * pedido[id], 0), sinPrecio = ids.filter(id => !numPrecio(partir(id).p)).length;
   document.getElementById("cartTotal").innerHTML = ids.length ? `<span>${n} pieza${n !== 1 ? "s" : ""}</span><b>${dinero(total)}</b>${sinPrecio ? `<small>+ ${sinPrecio} producto${sinPrecio !== 1 ? "s" : ""} con precio por confirmar</small>` : ""}` : "";
   const send = document.getElementById("cartSend");
-  send.innerHTML = WA_ICON + "Hacer pedido por WhatsApp";
+  send.innerHTML = WA_ICON + "Pedir por WhatsApp";
   send.toggleAttribute("aria-disabled", !ids.length); send.classList.toggle("is-off", !ids.length);
   send.href = ids.length ? waLink(mensajePedido()) : "#";
   document.getElementById("cartClear").hidden = !ids.length;
@@ -1133,7 +1216,7 @@ function mensajePedido(){
     `Total: ${dinero(total)}${sinPrecio ? " + productos por cotizar" : ""} (${piezas()} pieza${piezas() !== 1 ? "s" : ""})`];
   if (nombre) m.push(`Nombre: ${nombre}`);
   if (nota) m.push(`Notas: ${nota}`);
-  m.push("", "¿Me confirman disponibilidad y entrega? 🙌");
+  m.push("", "¿Me confirman disponibilidad y entrega?");
   return m.join("\n");
 }
 function cambiar(id, d){
@@ -1146,9 +1229,9 @@ function aviso(t){ const el = document.getElementById("toast"); el.textContent =
 grid.addEventListener("click", e => { const b = e.target.closest("[data-add]"); if (!b) return; e.preventDefault();
   if (byId[b.dataset.add].variantes.length) { openProduct(b.dataset.add, {push:true, trigger:b}); return; }
   cambiar(b.dataset.add, 1);
-  aviso(`${byId[b.dataset.add].name} agregado · ${piezas()} en tu pedido`);
+  aviso(`${byId[b.dataset.add].name} va a tu pedido · ${piezas()} en total`);
   if (canAnimate()) document.getElementById("cartFab").animate([{transform:"scale(1)"},{transform:"scale(1.12)"},{transform:"scale(1)"}], {duration:320}); });
-document.getElementById("pdAdd").addEventListener("click", e => { const id = e.currentTarget.dataset.add; cambiar(id, 1); aviso(`${partir(id).nombre} agregado · ${piezas()} en tu pedido`); });
+document.getElementById("pdAdd").addEventListener("click", e => { const id = e.currentTarget.dataset.add; cambiar(id, 1); aviso(`${partir(id).nombre} va a tu pedido · ${piezas()} en total`); });
 const cart = document.getElementById("cart");
 document.getElementById("cartFab").addEventListener("click", () => { pintarPedido(); if (typeof cart.showModal === "function") { cart.showModal(); root.classList.add("modal-open"); } });
 document.getElementById("cartX").addEventListener("click", () => cart.close());
@@ -1157,7 +1240,7 @@ cart.addEventListener("click", e => { if (e.target === cart) cart.close(); });
 document.getElementById("cartList").addEventListener("click", e => { const b = e.target.closest("[data-q]"); if (b) cambiar(b.dataset.id, Number(b.dataset.q)); });
 ["cartName", "cartNote"].forEach(id => document.getElementById(id).addEventListener("input", () => { const s = document.getElementById("cartSend"); if (Object.keys(pedido).length) s.href = waLink(mensajePedido()); }));
 document.getElementById("cartSend").addEventListener("click", e => { if (!Object.keys(pedido).length) e.preventDefault(); });
-document.getElementById("cartClear").addEventListener("click", () => { if (!confirm("¿Vaciar tu pedido?")) return; pedido = {}; guardarPedido(); pintarPedido(); });
+document.getElementById("cartClear").addEventListener("click", () => { if (!confirm("¿Vaciar tu pedido? Las piezas se quedan aquí, esperándote.")) return; pedido = {}; guardarPedido(); pintarPedido(); });
 addEventListener("storage", e => { if (e.key === PEDIDO) { pedido = leerPedido(e.newValue); pintarPedido(); } });
 
 /* ---------- botón flotante ---------- */
@@ -1242,7 +1325,7 @@ function fill(p){
   price.innerHTML = priceHTML(p);
   price.className = "price" + (p.price ? "" : " ask");
   const wa = document.getElementById("pdWa");
-  wa.href = waLink(waMsg(p)); wa.textContent = "¿Dudas? Pregunta por WhatsApp";
+  wa.href = waLink(waMsg(p)); wa.textContent = "¿Dudas? Escríbenos por WhatsApp";
   pintarAgregar(document.getElementById("pdAdd"), curVar ? p.id + "::" + curVar.id : p.id, true);
 }
 
@@ -1361,7 +1444,7 @@ function mini(p){
 }
 const tira = (t, ps, ver) => ps.length ? `<section class="strip"><div class="strip-h"><h2 class="h-title">${t}</h2>${ver ? `<a href="${ver}">Ver todo</a>` : ""}</div><div class="strip-row">${ps.map(mini).join("")}</div></section>` : "";
 const strips = document.getElementById("strips");
-strips.innerHTML = tira("🔥 Ofertas", PRODUCTS.filter(p => descuento(p)), "#/ofertas") + tira("Lo más nuevo", PRODUCTS.slice(-8).reverse(), "") + tira("Con variantes para elegir", PRODUCTS.filter(p => p.variantes.length), "");
+strips.innerHTML = tira("Ofertas", PRODUCTS.filter(p => descuento(p)), "#/ofertas") + tira("Recién salidos de la impresora", PRODUCTS.slice(-8).reverse(), "") + tira("Elige tu versión", PRODUCTS.filter(p => p.variantes.length), "");
 strips.addEventListener("click", e => { const a = e.target.closest(".mini"); if (a && byId[a.dataset.id]) openFromLink(e, byId[a.dataset.id], a); });
 const qHome = document.getElementById("qHome");
 qHome.addEventListener("input", () => {

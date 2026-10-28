@@ -4,37 +4,37 @@
       "id": "all",
       "label": "Todos",
       "title": "Todo el catálogo",
-      "sub": "Personajes listos para salir de la impresora y llegar a tus manos."
+      "sub": "Coleccionables geek, capa por capa."
     },
     {
       "id": "monstruitos",
       "label": "Monstruitos",
       "title": "La banda de monstruitos",
-      "sub": "Rudos por fuera, apapachables por dentro. Elige tu color o llévate a los tres."
+      "sub": "Rudos por fuera. Apapachables por dentro."
     },
     {
       "id": "llaveros",
       "label": "Llaveros",
       "title": "Llaveros",
-      "sub": "Para tus llaves, tu mochila o tu bolsa."
+      "sub": "Para tus llaves. O para presumir."
     },
     {
       "id": "figuras",
       "label": "Figuras",
       "title": "Figuras",
-      "sub": "Para tu escritorio o tu repisa."
+      "sub": "Para tu escritorio, tu repisa o tu colección."
     },
     {
       "id": "miniaturas",
       "label": "Miniaturas",
       "title": "Miniaturas",
-      "sub": "Chiquitas, articuladas y llenas de personalidad. Caben en la palma de tu mano."
+      "sub": "Caben en la palma. La personalidad, no."
     },
     {
       "id": "penholders",
-      "label": "Portalápices ",
+      "label": "Portalápices",
       "title": "Portalápices ",
-      "sub": "Para tus plumas, plumones y colores: orden con estilo en tu escritorio."
+      "sub": "Orden con estilo para plumas y colores."
     }
   ],
   "productos": [
@@ -968,18 +968,18 @@
       "id": "halloween",
       "tipo": "foto",
       "img": "banner-halloween",
-      "titulo": "Flores de Halloween 🎃",
-      "texto": "Doña Huesos, Tejedora y Calabacita: tiernas y espeluznantes a la vez.",
+      "titulo": "Flores de Halloween",
+      "texto": "Dan un poquito de miedo y un muchito de amor.",
       "boton": "Ver flores",
       "enlace": "#/buscar/flores",
-      "color": "#2B1B4D"
+      "color": "#4B3880"
     },
     {
       "id": "monstruitos",
       "tipo": "foto",
       "img": "banner-2",
       "titulo": "La banda de monstruitos",
-      "texto": "Rudos por fuera, apapachables por dentro.",
+      "texto": "Rudos por fuera. Apapachables por dentro.",
       "boton": "Conócelos",
       "enlace": "#/monstruitos",
       "color": "#C6F432"
@@ -988,11 +988,11 @@
       "id": "llaveros",
       "tipo": "foto",
       "img": "zarigueya-rizadita-1",
-      "titulo": "Llaveros con mucha actitud",
-      "texto": "Para tus llaves, tu mochila o tu bolsa.",
+      "titulo": "Llaveros con actitud",
+      "texto": "Para tus llaves. O para presumir.",
       "boton": "Ver llaveros",
       "enlace": "#/llaveros",
-      "color": "#4B3880"
+      "color": "#F4F0FF"
     }
   ]
 }
