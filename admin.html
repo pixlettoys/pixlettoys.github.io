@@ -104,6 +104,7 @@ select.in{appearance:none;-webkit-appearance:none;background-image:url("data:ima
 .tabbar svg{width:24px;height:24px}
 .tabbar a[aria-current="page"]{color:var(--ink)}
 .tabbar a[aria-current="page"] svg{color:var(--teal)}
+.rnum{font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;font-size:.85em}
 .tabbar .bdg{position:absolute;top:4px;left:calc(50% + 6px);min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--red);color:#fff;
   font-size:.72rem;line-height:20px;text-align:center}
 
@@ -344,14 +345,44 @@ body.en-editor{padding-bottom:calc(84px + var(--safe-b))}
 
   <!-- Categorías -->
   <main class="wrap" id="v-cats" data-vista="cats" hidden>
-    <h1>Categorías</h1>
-    <p class="lead">Son los filtros del catálogo. Usa las flechas para cambiar su orden.</p>
+    <h1>Series</h1>
+    <p class="lead">Las series de la colección: salen en el inicio como “Serie 01, 02…” y como filtros del catálogo. Usa las flechas para cambiar su orden.</p>
     <form class="cat-add" id="f-cat" novalidate>
-      <input class="in" id="cat-new" maxlength="24" placeholder="Nueva categoría (ej: Imanes)" aria-label="Nombre de la nueva categoría" style="background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)">
+      <input class="in" id="cat-new" maxlength="24" placeholder="Nueva serie (ej: Criaturas)" aria-label="Nombre de la nueva serie" style="background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)">
       <button class="btn btn-ink" type="submit">Agregar</button>
     </form>
     <div class="card" id="cats"></div>
     <p class="foot-note">Los cambios se guardan en el repositorio <b>pixlettoys.github.io</b>.<br><br><button class="btn btn-soft" type="button" id="salir">Cerrar sesión en este dispositivo</button></p>
+  </main>
+
+  <!-- Página: proceso, preguntas y próximo lanzamiento -->
+  <main class="wrap" id="v-pag" data-vista="pag" hidden>
+    <h1>Página</h1>
+    <p class="lead">Lo que se ve fuera de los productos: el próximo lanzamiento, la página de Proceso y las Preguntas frecuentes.</p>
+    <section class="sec" aria-labelledby="h-lz">
+      <h3 class="sec-h" id="h-lz">Próximo lanzamiento</h3>
+      <label class="check" style="margin:0"><input type="checkbox" id="lz-on"> Mostrarlo en el inicio</label>
+      <label class="f" for="lz-n">Nombre</label><input class="in" id="lz-n" maxlength="40" placeholder="Ej: Pieza misteriosa">
+      <label class="f" for="lz-t">Texto</label><input class="in" id="lz-t" maxlength="90" placeholder="Ej: Algo con cuernos viene en camino.">
+      <label class="f" for="lz-f">Fecha de salida</label><input class="in" id="lz-f" type="date">
+      <span class="f">Foto <small>(sale borrosa con un “?” hasta el día de salida)</small></span>
+      <div class="up-row"><label class="btn btn-soft up-btn">Subir foto<input type="file" accept="image/*" id="lz-up"></label>
+        <select class="in" id="lz-ph" style="flex:1;min-width:160px" aria-label="Usar foto de un producto"></select></div>
+      <div id="lz-prev" style="margin-top:10px"></div>
+      <label class="f" for="lz-p">Cuando salga, llevar a la pieza <small>(opcional)</small></label><select class="in" id="lz-p"></select>
+      <p class="hint">Si eliges la pieza, el día de salida el aviso cambia a “Ya llegó” con un botón para verla. Si no, se oculta solo al pasar la fecha.</p>
+    </section>
+    <section class="sec" aria-labelledby="h-proc">
+      <h3 class="sec-h" id="h-proc">Proceso <small>pasos de “Así nace una pieza”</small></h3>
+      <div id="proc"></div>
+      <button class="btn btn-soft" type="button" id="proc-add" style="width:100%;margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar paso</button>
+    </section>
+    <section class="sec" aria-labelledby="h-faq">
+      <h3 class="sec-h" id="h-faq">Preguntas frecuentes</h3>
+      <p class="hint" style="margin:0 0 10px">Respuestas reales y cortas. Ej.: tiempos de entrega, envíos, formas de pago, cuidados.</p>
+      <div id="faqs"></div>
+      <button class="btn btn-soft" type="button" id="faq-add" style="width:100%;margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar pregunta</button>
+    </section>
   </main>
 
   <!-- Portada: banners del carrusel -->
@@ -405,13 +436,30 @@ body.en-editor{padding-bottom:calc(84px + var(--safe-b))}
 
       <section class="sec" aria-label="Categoría y etiqueta">
         <div class="grid2">
-          <div><label class="f" for="e-cat">Categoría</label><select class="in" id="e-cat"></select></div>
+          <div><label class="f" for="e-cat">Serie</label><select class="in" id="e-cat"></select></div>
           <div><label class="f" for="e-badge">Etiqueta</label><input class="in" id="e-badge" maxlength="24" list="dl-badges" autocomplete="off"></div>
         </div>
         <datalist id="dl-badges"></datalist>
         <p class="hint">La etiqueta sale arriba del nombre. Elige una de la lista para que todas se escriban igual.</p>
         <span class="f" id="e-color-l">Color de la etiqueta</span>
         <div class="colors" id="e-colors" role="radiogroup" aria-labelledby="e-color-l"></div>
+      </section>
+
+      <section class="sec" aria-labelledby="h-col">
+        <h3 class="sec-h" id="h-col">Pieza de colección</h3>
+        <div class="grid2">
+          <div><label class="f" for="e-num">Número <small>(#001…)</small></label><input class="in" id="e-num" type="text" inputmode="numeric" maxlength="4" autocomplete="off"></div>
+          <div><label class="f" for="e-rz">Rareza</label><select class="in" id="e-rz"><option value="">Común (sin etiqueta)</option><option value="limitada">Edición limitada</option><option value="ultimas">Últimas piezas</option><option value="agotado">Agotado</option></select></div>
+        </div>
+        <p class="hint">Usa datos reales: “Agotado” desactiva el botón de compra; “Últimas piezas” solo si de verdad quedan pocas.</p>
+        <span class="f">Ficha técnica <small>(opcional · solo se muestra lo que llenes)</small></span>
+        <div class="grid2">
+          <div><label class="f" for="e-fa" style="margin-top:0">Altura</label><input class="in" id="e-fa" maxlength="20" placeholder="Ej: 5 cm"></div>
+          <div><label class="f" for="e-fh" style="margin-top:0">Impresión</label><input class="in" id="e-fh" maxlength="20" placeholder="Ej: 2 h 40 min"></div>
+          <div><label class="f" for="e-fc">Capas</label><input class="in" id="e-fc" maxlength="20" placeholder="Ej: 412"></div>
+          <div><label class="f" for="e-ff">Filamento</label><input class="in" id="e-ff" maxlength="30" placeholder="Ej: PLA mate"></div>
+        </div>
+        <p class="err" id="err-num" role="alert"></p>
       </section>
 
       <section class="sec" aria-labelledby="h-vars">
@@ -451,7 +499,8 @@ body.en-editor{padding-bottom:calc(84px + var(--safe-b))}
   <nav class="tabbar" id="tabbar" aria-label="Secciones">
     <a href="#/productos" data-tab="lista"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Productos</a>
     <a href="#/portada" data-tab="bn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2.5"/><path d="m2.5 14 5-4.5 4 3.5 3-2.5 7 5"/><path d="M9 21h6"/></svg>Portada</a>
-    <a href="#/categorias" data-tab="cats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Categorías</a>
+    <a href="#/pagina" data-tab="pag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>Página</a>
+    <a href="#/categorias" data-tab="cats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Series</a>
     <a href="#/publicar" data-tab="pub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Publicar<b class="bdg" id="tab-n" hidden></b></a>
   </nav>
 </div>
@@ -522,7 +571,7 @@ let sucio = false;
 const clon = o => JSON.parse(JSON.stringify(o));
 const J = o => JSON.stringify(o);
 const porId = (lista, id) => lista.find(p => p.id === id);
-const fotosDe = d => [...d.productos.flatMap(p => p.imgs), ...(d.banners || []).map(b => b.img).filter(Boolean)];
+const fotosDe = d => [...d.productos.flatMap(p => p.imgs), ...(d.banners || []).map(b => b.img), ...((d.pagina || {}).proceso || []).map(x => x.img), ((d.pagina || {}).lanzamiento || {}).img].filter(Boolean);
 const usadas = () => new Set(fotosDe(datos));
 const usadasNuevas = () => [...nuevas.keys()].filter(n => usadas().has(n));
 const fotoUrl = n => nuevas.has(n) ? nuevas.get(n).url : `img/${encodeURIComponent(n)}.jpg`;
@@ -541,7 +590,8 @@ function ocupado(t) { $("busy-t").textContent = t || ""; $("busy").hidden = !t; 
 
 /* ---------- cambios sin publicar ---------- */
 const CAMPOS = [["name", "Nombre"], ["price", "Precio"], ["was", "Precio antes"], ["imgs", "Fotos"], ["variantes", "Variantes"], ["cat", "Categoría"],
-  ["badge", "Etiqueta"], ["c", "Color"], ["sub", "Subtítulo"], ["desc", "Descripción"], ["specs", "Características"]];
+  ["badge", "Etiqueta"], ["c", "Color"], ["sub", "Subtítulo"], ["desc", "Descripción"], ["specs", "Características"],
+  ["num", "Número"], ["rareza", "Rareza"], ["ficha", "Ficha técnica"]];
 function detalle(a, b) {
   const out = [];
   CAMPOS.forEach(([k, t]) => {
@@ -566,6 +616,7 @@ function cambios() {
   base.productos.forEach((p, i) => { if (!porId(datos.productos, p.id)) lista.push({ tipo: "quitado", p, i }); });
   if (J(datos.categorias) !== J(base.categorias)) lista.push({ tipo: "cats" });
   if (J(datos.banners || []) !== J(base.banners || [])) lista.push({ tipo: "banners" });
+  if (J(datos.pagina || {}) !== J(base.pagina || {})) lista.push({ tipo: "pagina" });
   const comunes = ids => ids.filter(id => porId(base.productos, id) && porId(datos.productos, id));
   if (comunes(datos.productos.map(p => p.id)).join() !== comunes(base.productos.map(p => p.id)).join()) lista.push({ tipo: "orden" });
   return lista;
@@ -605,6 +656,7 @@ addEventListener("pagehide", guardarBorrador);
 function combinar(viejo, mio, remoto) {
   const out = { ...remoto, productos: [], categorias: J(mio.categorias) !== J(viejo.categorias) ? clon(mio.categorias) : clon(remoto.categorias) };
   if (J(mio.banners || []) !== J(viejo.banners || [])) out.banners = clon(mio.banners || []);
+  if (J(mio.pagina || {}) !== J(viejo.pagina || {})) out.pagina = clon(mio.pagina || {});
   remoto.productos.forEach(r => {
     const v = porId(viejo.productos, r.id), m = porId(mio.productos, r.id);
     if (v && !m) return;                                   // lo quité yo
@@ -651,7 +703,7 @@ async function cargar() {
 let vista = null;
 const posVista = {};
 try { history.scrollRestoration = "manual"; } catch (e) {}
-const VISTAS = { lista: "v-list", bn: "v-bn", cats: "v-cats", pub: "v-pub", ed: "v-ed" };
+const VISTAS = { lista: "v-list", bn: "v-bn", pag: "v-pag", cats: "v-cats", pub: "v-pub", ed: "v-ed" };
 function ir(hash) { if (location.hash === hash) return ruta(); history.pushState({ mp: 1 }, "", hash); ruta(); }
 function volver() { if (history.state && history.state.mp) history.back(); else { history.replaceState(null, "", "#/productos"); ruta(); } }
 function mostrar(v) {
@@ -673,8 +725,9 @@ function ruta() {
   const m = /^#\/producto\/(.+)$/.exec(h);
   if (m) { let id = ""; try { id = decodeURIComponent(m[1]); } catch (e) {} if (vista === "ed" && h === edHash) return; if (abrirEditor(id)) { mostrar("ed"); document.title = "Editar · Admin Pixlet"; } return; }
   edHash = "";
-  if (h === "#/portada") { pintarBanners(); mostrar("bn"); document.title = "Portada · Admin Pixlet"; }
-  else if (h === "#/categorias") { pintarCats(); mostrar("cats"); document.title = "Categorías · Admin Pixlet"; }
+  if (h === "#/pagina") { pintarPagina(); mostrar("pag"); document.title = "Página · Admin Pixlet"; }
+  else if (h === "#/portada") { pintarBanners(); mostrar("bn"); document.title = "Portada · Admin Pixlet"; }
+  else if (h === "#/categorias") { pintarCats(); mostrar("cats"); document.title = "Series · Admin Pixlet"; }
   else if (h === "#/publicar") { pubMsg = pubMsg && pubMsg.tipo === "ok" && cambios().length ? null : pubMsg; pintarPublicar(); mostrar("pub"); document.title = "Publicar · Admin Pixlet"; }
   else { pintarLista(); mostrar("lista"); document.title = "Productos · Admin Pixlet"; }
   guardarBorrador();
@@ -704,7 +757,7 @@ function pintarLista() {
     return `<div class="row">
       <a class="row-main" href="#/producto/${encodeURIComponent(p.id)}">
         <img class="thumb" src="${esc(fotoUrl(p.imgs[0]))}" alt="" loading="lazy">
-        <span class="row-t"><b>${esc(p.name)}${st === "nuevo" ? '<span class="tag tag-new">NUEVO</span>' : st === "editado" ? '<span class="tag tag-ed">EDITADO</span>' : ""}</b><span>${esc(catLabel(p.cat))} · ${esc(corto(p.price) || "Sin precio")}${p.was ? ` <s>${esc(corto(p.was))}</s>` : ""}${(p.variantes || []).length ? ` · ${p.variantes.length} variantes` : ""}</span></span>
+        <span class="row-t"><b><span class="rnum">#${String(p.num || 0).padStart(3, "0")}</span> ${esc(p.name)}${st === "nuevo" ? '<span class="tag tag-new">NUEVO</span>' : st === "editado" ? '<span class="tag tag-ed">EDITADO</span>' : ""}</b><span>${esc(catLabel(p.cat))} · ${esc(corto(p.price) || "Sin precio")}${p.was ? ` <s>${esc(corto(p.was))}</s>` : ""}${(p.variantes || []).length ? ` · ${p.variantes.length} variantes` : ""}</span></span>
       </a>
       ${ordenable ? `<div class="row-acts">
         <button class="icon-btn" type="button" data-a="up" data-i="${i}" aria-label="Subir ${esc(p.name)}" ${k ? "" : "disabled"}>${ICO.up}</button>
@@ -730,9 +783,12 @@ $("lista").addEventListener("click", e => {
 /* ---------- editor ---------- */
 let edId = null, edHash = "", edSnap = "", edFotos = [], edColor = COLORES[0][0], edVars = [], edSpecs = [], badgeAuto = false;
 const precioDe = id => $(id).value;
+const FICHA = [["alto", "e-fa"], ["horas", "e-fh"], ["capas", "e-fc"], ["filamento", "e-ff"]];
+const sigNum = () => datos.productos.reduce((m, p) => Math.max(m, Number(p.num) || 0), 0) + 1;
 function estadoEd() {
   return { id: edId, name: $("e-name").value, price: precioDe("e-price"), was: precioDe("e-was"), cat: $("e-cat").value, badge: $("e-badge").value,
-    c: edColor, imgs: [...edFotos], vars: clon(edVars), sub: $("e-sub").value, desc: $("e-desc").value, specs: [...edSpecs], hash: edHash };
+    c: edColor, imgs: [...edFotos], vars: clon(edVars), sub: $("e-sub").value, desc: $("e-desc").value, specs: [...edSpecs],
+    num: $("e-num").value, rz: $("e-rz").value, ficha: FICHA.map(([k, id]) => $(id).value), hash: edHash };
 }
 const edSucio = () => !!edHash && J({ ...estadoEd(), hash: "" }) !== edSnap;
 function abrirEditor(idRuta, restaurar) {
@@ -757,6 +813,8 @@ function abrirEditor(idRuta, restaurar) {
   edVars = (p.variantes || []).map(v => ({ id: v.id, nombre: v.nombre || "", nota: v.nota || "", imgs: [...(v.imgs || [])] }));
   edFotos = [...(p.imgs || [])];
   $("e-desc").value = p.desc || ""; edSpecs = [...(p.specs || [])];
+  $("e-num").value = prev ? (p.num || "") : sigNum(); $("e-rz").value = p.rareza || "";
+  FICHA.forEach(([k, id]) => { $(id).value = (p.ficha && p.ficha[k]) || ""; }); $("err-num").textContent = "";
   $("e-price").value = aNumero(p.price); $("e-was").value = aNumero(p.was);
   ["err-name", "err-fotos", "err-price", "err-vars"].forEach(k => $(k).textContent = "");
   ["e-name", "e-price", "e-was"].forEach(k => $(k).removeAttribute("aria-invalid"));
@@ -766,6 +824,7 @@ function abrirEditor(idRuta, restaurar) {
     $("e-name").value = restaurar.name; $("e-price").value = restaurar.price; $("e-was").value = restaurar.was; $("e-cat").value = restaurar.cat;
     $("e-badge").value = restaurar.badge; edColor = restaurar.c; edFotos = restaurar.imgs.filter(n => nuevas.has(n) || imgsRepo.has(n) || (prev && prev.imgs.includes(n)));
     edVars = restaurar.vars; $("e-sub").value = restaurar.sub; $("e-desc").value = restaurar.desc; edSpecs = restaurar.specs;
+    if (restaurar.num !== undefined) { $("e-num").value = restaurar.num; $("e-rz").value = restaurar.rz; FICHA.forEach(([k, id], i) => { $(id).value = (restaurar.ficha || [])[i] || ""; }); }
   }
   pintarColores(); pintarFotos(); pintarSpecs(); pintarPrev();
   return true;
@@ -945,6 +1004,10 @@ $("f-ed").addEventListener("submit", e => {
     if (sinFoto >= 0) return errorEn("err-vars", `Marca al menos una foto para "${edVars[sinFoto].nombre.trim()}".`);
   }
   const prev = edId ? porId(datos.productos, edId) : null;
+  const num = parseInt($("e-num").value, 10);
+  if (!(num > 0 && num < 10000)) return errorEn("err-num", "El número de pieza debe ser un número, ej: 12.", "e-num");
+  const repetido = datos.productos.find(x => x !== prev && Number(x.num) === num);
+  if (repetido && !confirm(`El número #${String(num).padStart(3, "0")} ya lo tiene "${repetido.name}". ¿Usarlo de todos modos?`)) return;
   let id = prev ? prev.id : slug(name);
   if (!prev) { const ids = new Set(datos.productos.map(p => p.id)); let k = 2, b = id; while (ids.has(id)) id = `${b}-${k++}`; }
   // Fotos nuevas subidas antes de poner nombre: se renombran con el del producto
@@ -956,6 +1019,10 @@ $("f-ed").addEventListener("submit", e => {
     c: edColor, imgs: [...edFotos], desc: $("e-desc").value.trim(), specs: edSpecs.slice(0, 6), price: aPrecio(price)
   };
   if (was !== "") p.was = aPrecio(was);
+  p.num = num;
+  if ($("e-rz").value) p.rareza = $("e-rz").value;
+  const ficha = Object.fromEntries(FICHA.map(([k, id]) => [k, $(id).value.trim()]).filter(([, v]) => v));
+  if (Object.keys(ficha).length) p.ficha = ficha;
   if (edVars.length) {
     const ids = new Set();
     p.variantes = edVars.map(v => {
@@ -1085,6 +1152,71 @@ $("bns").addEventListener("click", e => {
   if (e.target.closest("[data-bdel]")) { if (!confirm("¿Eliminar este banner?")) return; l.splice(i, 1); bnAbierto = -1; limpiarNuevas(); pintarBanners(); marcar(); }
 });
 
+/* ---------- página: lanzamiento, proceso y preguntas ---------- */
+function pag() {
+  if (!datos.pagina) datos.pagina = {};
+  const g = datos.pagina;
+  g.proceso = g.proceso || []; g.faq = g.faq || [];
+  g.lanzamiento = Object.assign({ activo: false, nombre: "", texto: "", fecha: "", img: "", producto: "" }, g.lanzamiento || {});
+  return g;
+}
+const vistaFoto = n => n ? `<img src="${esc(fotoUrl(n))}" alt="" style="width:110px;height:110px;object-fit:cover;border-radius:14px;display:block">` : "";
+function pintarPagina() {
+  const g = datos.pagina ? pag() : { proceso: [], faq: [], lanzamiento: { activo: false, nombre: "", texto: "", fecha: "", img: "", producto: "" } }, L = g.lanzamiento;
+  $("lz-on").checked = !!L.activo; $("lz-n").value = L.nombre; $("lz-t").value = L.texto; $("lz-f").value = L.fecha;
+  const opsFoto = '<option value="">o usa la foto de un producto…</option>' + datos.productos.map(p => `<option value="${esc(p.imgs[0])}">${esc(p.name)}</option>`).join("");
+  $("lz-ph").innerHTML = opsFoto; $("lz-prev").innerHTML = vistaFoto(L.img);
+  $("lz-p").innerHTML = '<option value="">— Ninguna todavía —</option>' + datos.productos.map(p => `<option value="${esc(p.id)}"${p.id === L.producto ? " selected" : ""}>${esc(p.name)}</option>`).join("");
+  $("proc").innerHTML = g.proceso.map((x, i) => `<div class="var" data-pi="${i}" style="margin-bottom:10px">
+      <div class="var-h"><span>Paso ${i + 1}</span><span style="display:flex;gap:4px">
+        <button class="icon-btn" type="button" data-pm="-1" aria-label="Subir paso ${i + 1}" ${i ? "" : "disabled"}>${ICO.up}</button>
+        <button class="icon-btn" type="button" data-pm="1" aria-label="Bajar paso ${i + 1}" ${i < g.proceso.length - 1 ? "" : "disabled"}>${ICO.down}</button></span></div>
+      <input class="in" data-pk="titulo" maxlength="30" value="${esc(x.titulo)}" placeholder="Título, ej: Impresión" aria-label="Título del paso ${i + 1}">
+      <textarea class="in" data-pk="texto" maxlength="200" placeholder="Qué pasa en este paso" aria-label="Texto del paso ${i + 1}" style="min-height:76px">${esc(x.texto)}</textarea>
+      <div class="up-row" style="margin-top:8px">${vistaFoto(x.img)}<label class="btn btn-soft up-btn">${x.img ? "Cambiar foto" : "Agregar foto"}<input type="file" accept="image/*" data-pup="${i}"></label>${x.img ? `<button class="btn btn-plain" type="button" data-pnofoto>Quitar foto</button>` : ""}
+        <button class="btn btn-danger" type="button" data-pdel style="margin-left:auto">Eliminar</button></div>
+    </div>`).join("") || '<p class="hint">Sin pasos: la página de Proceso dirá que pronto habrá información.</p>';
+  $("faqs").innerHTML = g.faq.map((x, i) => `<div class="var" data-fi="${i}" style="margin-bottom:10px">
+      <div class="var-h"><span>Pregunta ${i + 1}</span><span style="display:flex;gap:4px">
+        <button class="icon-btn" type="button" data-fm="-1" aria-label="Subir pregunta ${i + 1}" ${i ? "" : "disabled"}>${ICO.up}</button>
+        <button class="icon-btn" type="button" data-fm="1" aria-label="Bajar pregunta ${i + 1}" ${i < g.faq.length - 1 ? "" : "disabled"}>${ICO.down}</button></span></div>
+      <input class="in" data-fk="p" maxlength="90" value="${esc(x.p)}" placeholder="Pregunta, ej: ¿Hacen envíos?" aria-label="Pregunta ${i + 1}">
+      <textarea class="in" data-fk="r" maxlength="400" placeholder="Respuesta" aria-label="Respuesta ${i + 1}" style="min-height:76px">${esc(x.r)}</textarea>
+      <button class="btn btn-danger" type="button" data-fdel style="padding:0;margin-top:6px">Eliminar</button>
+    </div>`).join("");
+}
+[["lz-on", "activo", e => e.checked], ["lz-n", "nombre", e => e.value], ["lz-t", "texto", e => e.value], ["lz-f", "fecha", e => e.value], ["lz-p", "producto", e => e.value]]
+  .forEach(([id, k, v]) => $(id).addEventListener(id === "lz-on" || id === "lz-p" || id === "lz-f" ? "change" : "input", e => { pag().lanzamiento[k] = v(e.target); marcar(); }));
+$("lz-ph").addEventListener("change", e => { if (!e.target.value) return; pag().lanzamiento.img = e.target.value; limpiarNuevas(); $("lz-prev").innerHTML = vistaFoto(e.target.value); marcar(); });
+async function subirFoto(file) {
+  ocupado("Preparando foto…");
+  try { const blob = await cuadrada(file), n = nombreLibre("pagina"); nuevas.set(n, { blob, url: URL.createObjectURL(blob) }); return n; }
+  catch (err) { toast("No se pudo leer la foto. Prueba con JPG o PNG."); return ""; }
+  finally { ocupado(""); }
+}
+$("lz-up").addEventListener("change", async e => { const f = e.target.files[0]; if (!f) return; const n = await subirFoto(f); if (!n) return; pag().lanzamiento.img = n; limpiarNuevas(); $("lz-prev").innerHTML = vistaFoto(n); marcar(); guardarBorrador(); });
+$("proc").addEventListener("input", e => { const el = e.target.closest("[data-pk]"); if (!el) return; pag().proceso[Number(el.closest("[data-pi]").dataset.pi)][el.dataset.pk] = el.value; marcar(); });
+$("faqs").addEventListener("input", e => { const el = e.target.closest("[data-fk]"); if (!el) return; pag().faq[Number(el.closest("[data-fi]").dataset.fi)][el.dataset.fk] = el.value; marcar(); });
+$("proc").addEventListener("change", async e => { const el = e.target.closest("[data-pup]"); if (!el || !el.files[0]) return; const n = await subirFoto(el.files[0]); if (!n) return; pag().proceso[Number(el.dataset.pup)].img = n; limpiarNuevas(); pintarPagina(); marcar(); guardarBorrador(); });
+function moverEn(lista, i, d) { const j = i + d; if (j < 0 || j >= lista.length) return; [lista[i], lista[j]] = [lista[j], lista[i]]; }
+$("proc").addEventListener("click", e => {
+  const c = e.target.closest("[data-pi]"); if (!c) return; const g = pag(), i = Number(c.dataset.pi), m = e.target.closest("[data-pm]");
+  if (m) moverEn(g.proceso, i, Number(m.dataset.pm));
+  else if (e.target.closest("[data-pnofoto]")) { g.proceso[i].img = ""; limpiarNuevas(); }
+  else if (e.target.closest("[data-pdel]")) { if (!confirm("¿Eliminar este paso?")) return; g.proceso.splice(i, 1); limpiarNuevas(); }
+  else return;
+  pintarPagina(); marcar();
+});
+$("faqs").addEventListener("click", e => {
+  const c = e.target.closest("[data-fi]"); if (!c) return; const g = pag(), i = Number(c.dataset.fi), m = e.target.closest("[data-fm]");
+  if (m) moverEn(g.faq, i, Number(m.dataset.fm));
+  else if (e.target.closest("[data-fdel]")) { if (!confirm("¿Eliminar esta pregunta?")) return; g.faq.splice(i, 1); }
+  else return;
+  pintarPagina(); marcar();
+});
+$("proc-add").addEventListener("click", () => { pag().proceso.push({ titulo: "", texto: "", img: "" }); pintarPagina(); marcar(); const t = $("proc").querySelectorAll('[data-pk="titulo"]'); t[t.length - 1].focus(); });
+$("faq-add").addEventListener("click", () => { pag().faq.push({ p: "", r: "" }); pintarPagina(); marcar(); const t = $("faqs").querySelectorAll('[data-fk="p"]'); t[t.length - 1].focus(); });
+
 /* ---------- categorías ---------- */
 function pintarCats() {
   const uso = id => datos.productos.filter(p => p.cat === id).length;
@@ -1142,7 +1274,7 @@ function pintarPublicar() {
         <img src="${esc(fotoUrl(c.p.imgs[0]))}" alt="">
         <div class="chg-t"><span class="k k-${c.tipo}">${K[c.tipo]}</span><b>${esc(c.p.name)}</b>${c.campos ? `<ul>${c.campos.map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}</div>
         <div class="chg-acts">${c.tipo !== "quitado" ? `<a class="btn btn-soft" href="#/producto/${encodeURIComponent(c.p.id)}">Ver</a>` : ""}<button class="btn btn-soft" type="button" data-undo="${i}">Deshacer</button></div>
-      </div>` : `<div class="chg"><div class="chg-t"><span class="k k-otro">Cambio</span><b>${c.tipo === "cats" ? "Categorías" : c.tipo === "banners" ? "Banners de la portada" : "Orden de los productos"}</b></div><button class="btn btn-soft" type="button" data-undo="${i}">Deshacer</button></div>`).join("")}</div>
+      </div>` : `<div class="chg"><div class="chg-t"><span class="k k-otro">Cambio</span><b>${c.tipo === "cats" ? "Categorías" : c.tipo === "pagina" ? "Página: lanzamiento, proceso y preguntas" : c.tipo === "banners" ? "Banners de la portada" : "Orden de los productos"}</b></div><button class="btn btn-soft" type="button" data-undo="${i}">Deshacer</button></div>`).join("")}</div>
     <div class="pub-sum"><span>${cs.length} cambio${cs.length !== 1 ? "s" : ""}</span>${sub ? `<span>${sub} foto${sub !== 1 ? "s" : ""} por subir</span>` : ""}${borra ? `<span>${borra} foto${borra !== 1 ? "s" : ""} que ya no se usan se borrarán</span>` : ""}</div>
     <button class="btn btn-wa btn-big" type="button" data-pub="publicar">Publicar ahora</button>
     <p class="hint" style="text-align:center">El catálogo se actualiza en 1 o 2 minutos.</p>
@@ -1157,6 +1289,7 @@ $("pub-body").addEventListener("click", e => {
     else if (c.tipo === "editado") ps[ps.indexOf(c.p)] = clon(porId(base.productos, c.p.id));
     else if (c.tipo === "quitado") ps.splice(Math.min(c.i, ps.length), 0, clon(c.p));
     else if (c.tipo === "cats") datos.categorias = clon(base.categorias);
+    else if (c.tipo === "pagina") { if (base.pagina) datos.pagina = clon(base.pagina); else delete datos.pagina; }
     else if (c.tipo === "banners") { if (base.banners) datos.banners = clon(base.banners); else delete datos.banners; }
     else if (c.tipo === "orden") { const pos = new Map(base.productos.map((p, i) => [p.id, i])); ps.sort((a, b) => (pos.has(a.id) ? pos.get(a.id) : 1e6) - (pos.has(b.id) ? pos.get(b.id) : 1e6)); }
     limpiarNuevas(); marcar(); pintarPublicar(); toast("Cambio deshecho."); return;
@@ -1172,6 +1305,10 @@ $("pub-body").addEventListener("click", e => {
 function blobB64(blob) { return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(",")[1]); r.onerror = rej; r.readAsDataURL(blob); }); }
 async function publicar(intento = 1) {
   const sinFoto = datos.productos.find(p => !p.imgs.length); if (sinFoto) { pubMsg = { tipo: "error", texto: `"${sinFoto.name}" no tiene fotos.` }; return pintarPublicar(); }
+  const g = datos.pagina || {};
+  if ((g.proceso || []).some(x => !x.titulo.trim())) { pubMsg = { tipo: "error", texto: "Un paso del Proceso no tiene título (pestaña Página)." }; return pintarPublicar(); }
+  if ((g.faq || []).some(x => !x.p.trim() || !x.r.trim())) { pubMsg = { tipo: "error", texto: "Una pregunta frecuente está incompleta (pestaña Página)." }; return pintarPublicar(); }
+  if (g.lanzamiento && g.lanzamiento.activo && !g.lanzamiento.nombre.trim()) { pubMsg = { tipo: "error", texto: "El próximo lanzamiento está activado pero no tiene nombre (pestaña Página)." }; return pintarPublicar(); }
   const bnSin = (datos.banners || []).findIndex(b => !b.img); if (bnSin >= 0) { pubMsg = { tipo: "error", texto: `El banner ${bnSin + 1} de la portada no tiene imagen.` }; return pintarPublicar(); }
   pubMsg = null; ocupado("Revisando el catálogo…");
   let combinado = false;

@@ -55,7 +55,8 @@
         "Articulada"
       ],
       "price": "$35.00",
-      "was": "$45.00"
+      "was": "$45.00",
+      "num": 1
     },
     {
       "id": "cocodrilito-llavero",
@@ -74,7 +75,8 @@
         "Articulado"
       ],
       "price": "$35.00",
-      "was": "$45.00"
+      "was": "$45.00",
+      "num": 2
     },
     {
       "id": "abejita",
@@ -93,7 +95,8 @@
         "Con argolla"
       ],
       "price": "$35.00",
-      "was": "$45.00"
+      "was": "$45.00",
+      "num": 3
     },
     {
       "id": "orbita",
@@ -111,7 +114,8 @@
         "Con argolla"
       ],
       "price": "$35.00",
-      "was": "$45.00"
+      "was": "$45.00",
+      "num": 4
     },
     {
       "id": "stego",
@@ -130,7 +134,8 @@
         "Articulada"
       ],
       "price": "$45.00",
-      "was": "$55.00"
+      "was": "$55.00",
+      "num": 5
     },
     {
       "id": "unicornio",
@@ -148,7 +153,8 @@
         "Articulada"
       ],
       "price": "$45.00",
-      "was": "$55.00"
+      "was": "$55.00",
+      "num": 6
     },
     {
       "id": "cuellito",
@@ -167,7 +173,8 @@
         "Flexible",
         "Con argolla"
       ],
-      "price": "$45.00"
+      "price": "$45.00",
+      "num": 7
     },
     {
       "id": "tricerito",
@@ -186,7 +193,8 @@
         "Flexible",
         "Con argolla"
       ],
-      "price": "$45.00"
+      "price": "$45.00",
+      "num": 8
     },
     {
       "id": "calaverita-bunny",
@@ -203,7 +211,8 @@
         "Articulado"
       ],
       "price": "$40.00",
-      "was": "$55.00"
+      "was": "$55.00",
+      "num": 9
     },
     {
       "id": "cajita-cupcake",
@@ -221,7 +230,8 @@
       "specs": [
         "Almacenamiento"
       ],
-      "price": "$160.00"
+      "price": "$160.00",
+      "num": 10
     },
     {
       "id": "sapo-gloton-portaplumas",
@@ -239,7 +249,8 @@
       "specs": [
         "Penholder"
       ],
-      "price": "$120.00"
+      "price": "$120.00",
+      "num": 11
     },
     {
       "id": "organizador-3-en-1",
@@ -256,7 +267,8 @@
       "specs": [
         "Penholder"
       ],
-      "price": "$180.00"
+      "price": "$180.00",
+      "num": 12
     },
     {
       "id": "michi-fantasma",
@@ -275,7 +287,8 @@
       "specs": [
         "Hallowen"
       ],
-      "price": "$75.00"
+      "price": "$75.00",
+      "num": 13
     },
     {
       "id": "casita-badbunny",
@@ -294,7 +307,8 @@
         "Llaves",
         "BadBunny"
       ],
-      "price": "$180.00"
+      "price": "$180.00",
+      "num": 14
     },
     {
       "id": "ondas-atardecer",
@@ -310,7 +324,8 @@
       "specs": [
         "Penholder"
       ],
-      "price": "$100.00"
+      "price": "$100.00",
+      "num": 15
     },
     {
       "id": "ptero",
@@ -329,7 +344,8 @@
         "Minis",
         "Articulada"
       ],
-      "price": "$20.00"
+      "price": "$20.00",
+      "num": 16
     },
     {
       "id": "ballenita",
@@ -348,7 +364,8 @@
         "Miniatura",
         "Articulada"
       ],
-      "price": "$15.00"
+      "price": "$15.00",
+      "num": 17
     },
     {
       "id": "buhito",
@@ -366,7 +383,8 @@
       "specs": [
         "Impreso en 3D"
       ],
-      "price": "$55.00"
+      "price": "$55.00",
+      "num": 18
     },
     {
       "id": "ajolotito",
@@ -384,7 +402,8 @@
         "Impreso en 3D",
         "Articulado"
       ],
-      "price": "$80.00"
+      "price": "$80.00",
+      "num": 19
     },
     {
       "id": "muuchi",
@@ -403,7 +422,8 @@
       "specs": [
         "Articulada"
       ],
-      "price": "$35.00"
+      "price": "$35.00",
+      "num": 20
     },
     {
       "id": "gengar",
@@ -420,7 +440,8 @@
       "specs": [
         "Figura"
       ],
-      "price": "$45.00"
+      "price": "$45.00",
+      "num": 21
     },
     {
       "id": "platanin",
@@ -436,7 +457,8 @@
       "specs": [
         "Articulada"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 22
     },
     {
       "id": "pokeball-snorlax",
@@ -454,7 +476,8 @@
       "specs": [
         "Pokémon"
       ],
-      "price": "$55.00"
+      "price": "$55.00",
+      "num": 23
     },
     {
       "id": "capi-zen",
@@ -472,7 +495,8 @@
       "specs": [
         "Articulado"
       ],
-      "price": "$55.00"
+      "price": "$55.00",
+      "num": 24
     },
     {
       "id": "coquito",
@@ -489,7 +513,8 @@
         "Articulada",
         "Animalitos"
       ],
-      "price": "$35.00"
+      "price": "$35.00",
+      "num": 25
     },
     {
       "id": "mini-brocoli",
@@ -508,7 +533,8 @@
         "Articulada",
         "Miniatura"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 26
     },
     {
       "id": "pinzas",
@@ -527,7 +553,8 @@
         "Miniatura",
         "Articulada"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 27
     },
     {
       "id": "zarigueya-dramatica",
@@ -571,7 +598,8 @@
             "zarigueya-rizadita-3"
           ]
         }
-      ]
+      ],
+      "num": 28
     },
     {
       "id": "zanahorio",
@@ -588,7 +616,8 @@
         "Miniatura",
         "Articulada"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 29
     },
     {
       "id": "mini-bumblebee",
@@ -607,7 +636,8 @@
         "Articulada",
         "Miniatura"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 30
     },
     {
       "id": "mini-stromtrooper",
@@ -626,7 +656,8 @@
         "Articulado",
         "Miniatura"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 31
     },
     {
       "id": "mini-darth-maul",
@@ -645,7 +676,8 @@
         "Miniatura",
         "Articulada"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 32
     },
     {
       "id": "pokeball-charmander",
@@ -664,7 +696,8 @@
         "Pokémon",
         "Coleccionable"
       ],
-      "price": "$220.00"
+      "price": "$220.00",
+      "num": 33
     },
     {
       "id": "turbo",
@@ -730,7 +763,8 @@
             "turbo-17"
           ]
         }
-      ]
+      ],
+      "num": 34
     },
     {
       "id": "limon",
@@ -795,7 +829,8 @@
             "limon-13"
           ]
         }
-      ]
+      ],
+      "num": 35
     },
     {
       "id": "lavanda",
@@ -815,7 +850,8 @@
       "specs": [
         "Impreso en 3D"
       ],
-      "price": "$135.00"
+      "price": "$135.00",
+      "num": 36
     },
     {
       "id": "spiderman",
@@ -831,7 +867,8 @@
       "specs": [
         "Impreso en 3D"
       ],
-      "price": "$250.00"
+      "price": "$250.00",
+      "num": 37
     },
     {
       "id": "cuernos",
@@ -850,7 +887,8 @@
         "Figura",
         "Articulada"
       ],
-      "price": "$160.00"
+      "price": "$160.00",
+      "num": 38
     },
     {
       "id": "oscurito",
@@ -869,7 +907,8 @@
         "Figura",
         "Articulada"
       ],
-      "price": "$160.00"
+      "price": "$160.00",
+      "num": 39
     },
     {
       "id": "mini-kylo-ren",
@@ -888,7 +927,8 @@
         "Articulada",
         "Miniatura"
       ],
-      "price": "$25.00"
+      "price": "$25.00",
+      "num": 40
     },
     {
       "id": "paquita",
@@ -906,7 +946,8 @@
       "specs": [
         "Articulada"
       ],
-      "price": "$55.00"
+      "price": "$55.00",
+      "num": 41
     },
     {
       "id": "dona-huesos",
@@ -924,7 +965,8 @@
       "specs": [
         "Hallowen"
       ],
-      "price": "$100.00"
+      "price": "$100.00",
+      "num": 42
     },
     {
       "id": "tejedora",
@@ -942,7 +984,8 @@
       "specs": [
         "Hallowen"
       ],
-      "price": "$100.00"
+      "price": "$100.00",
+      "num": 43
     },
     {
       "id": "calabacita",
@@ -960,7 +1003,8 @@
       "specs": [
         "Hallowen"
       ],
-      "price": "$100.00"
+      "price": "$100.00",
+      "num": 44
     }
   ],
   "banners": [
@@ -994,5 +1038,51 @@
       "enlace": "#/llaveros",
       "color": "#F4F0FF"
     }
-  ]
+  ],
+  "pagina": {
+    "proceso": [
+      {
+        "titulo": "Diseño",
+        "texto": "Cada pieza empieza como un modelo 3D. Pocas formas, mucha personalidad.",
+        "img": ""
+      },
+      {
+        "titulo": "Impresión",
+        "texto": "La impresora la construye capa por capa. La capa lima del logo es la que se está imprimiendo ahora.",
+        "img": ""
+      },
+      {
+        "titulo": "Detalles",
+        "texto": "Se retiran soportes y se revisa que todo encaje y se mueva como debe.",
+        "img": ""
+      },
+      {
+        "titulo": "A tus manos",
+        "texto": "Se empaca y coordinamos la entrega contigo por WhatsApp.",
+        "img": ""
+      }
+    ],
+    "faq": [
+      {
+        "p": "¿Cómo hago un pedido?",
+        "r": "Agrega las piezas a tu botín y toca “Pedir por WhatsApp”. El mensaje ya va escrito con todo; también puedes mandarlo por DM de Instagram."
+      },
+      {
+        "p": "¿Qué significa “capa por capa”?",
+        "r": "Nuestras piezas se imprimen en 3D: la impresora va depositando una capa sobre otra hasta formar la figura."
+      },
+      {
+        "p": "¿Puedo elegir colores?",
+        "r": "Escríbelo en las notas de tu pedido y te confirmamos por el chat qué colores tenemos disponibles."
+      }
+    ],
+    "lanzamiento": {
+      "activo": false,
+      "nombre": "",
+      "texto": "",
+      "fecha": "",
+      "img": "",
+      "producto": ""
+    }
+  }
 }

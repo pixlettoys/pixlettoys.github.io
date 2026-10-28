@@ -9,9 +9,13 @@ Abre **https://pixlettoys.github.io/admin.html**, entra con tu llave de GitHub y
 agrega, edita, ordena o quita productos, fotos, banners de la portada y categorías. Al tocar
 **Publicar**, todo se guarda en un solo cambio en este repositorio y el catálogo se actualiza en 1 o 2 minutos.
 
-- Pantallas: **Productos**, el editor de cada producto, **Portada** (banners), **Categorías** y
+- Pantallas: **Productos**, el editor de cada producto, **Portada** (banners), **Página**, **Series** y
   **Publicar** (lista de cambios con *Deshacer* antes de subirlos).
-- Los productos, categorías y banners viven en `productos.json`; las fotos en `img/`.
+- Los productos, series, banners y la página (proceso, preguntas y próximo lanzamiento) viven en
+  `productos.json`; las fotos en `img/`.
+- Cada pieza tiene número de colección, rareza opcional (edición limitada, últimas piezas, agotado)
+  y ficha técnica opcional. Los clientes pueden marcar “La tengo” (mi colección) y “La quiero”
+  (lista de deseos); eso se guarda solo en su teléfono.
 - Los cambios sin publicar se guardan en el propio dispositivo y se recuperan si la app se cierra.
 - La llave es un *fine-grained token* de GitHub solo para este repositorio, con permiso
   **Contents: Read and write**. Se guarda únicamente en tu dispositivo.

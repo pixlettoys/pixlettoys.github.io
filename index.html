@@ -517,6 +517,138 @@ footer{border-top-color:var(--line)}
   .capas-in{grid-template-columns:1fr;padding:24px 20px;gap:18px}
   .capas-fig{max-width:140px}
 }
+/* ─────────── Pixlet: piezas de colección ─────────── */
+/* Portada que se imprime: la figurita se arma capa por capa al entrar */
+.hero{padding-top:18px}
+.ipx{display:flex;align-items:center;gap:18px;margin:6px 0 18px}
+.ipx-fig{flex:none;width:96px;height:96px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
+.fig-p{width:72%;height:72%;overflow:visible}
+.fig-p rect{animation:capaSube .45s var(--out) calc(.15s + var(--k) * .22s) backwards}
+.fig-p .fp-cabeza{animation:cabezaCae .6s cubic-bezier(.3,1.6,.5,1) 1.35s backwards}
+.fig-p .fp-ojos{animation:parpadeo 4.5s ease-in-out 2.4s infinite;transform-origin:50px 28.5px}
+.fig-p .fp-lima{animation:capaSube .45s var(--out) 1.03s backwards,capa 1.6s ease-in-out 2s infinite}
+@keyframes capaSube{from{opacity:0;transform:translateY(-14px) scaleX(.6)}to{opacity:1;transform:none}}
+@keyframes cabezaCae{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}
+@keyframes parpadeo{0%,92%,100%{transform:none}95%{transform:scaleY(.1)}}
+.fig-p rect{transform-box:fill-box;transform-origin:center}
+.ipx-t{min-width:0}
+.ipx-wm{margin:0;display:flex;flex-direction:column;align-items:flex-start;line-height:.85}
+.ipx-wm .p{font-family:var(--display);font-size:clamp(2.6rem,9vw,4.4rem);letter-spacing:-.01em}
+.ipx-wm .t{font:800 clamp(.7rem,1.8vw,.95rem)/1 var(--body);letter-spacing:.9em;color:var(--lime);margin:6px 0 0 4px}
+.ipx-tag{margin:10px 0 0;color:var(--muted);font-size:1rem;line-height:1.35}
+.ipx-btn{margin-top:12px;background:var(--lime);color:#2B1B4D;min-height:42px;font-weight:800}
+@media (max-width:520px){.ipx{gap:14px}.ipx-fig{width:84px;height:84px}.ipx-btn{display:none}.ipx-tag{font-size:.92rem}}
+@media (min-width:760px){.ipx{gap:28px;margin:10px 0 24px}.ipx-fig{width:150px;height:150px}}
+@media (prefers-reduced-motion:reduce){.fig-p *{animation:none!important}}
+
+/* Próximo lanzamiento */
+.lz{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;align-items:center;margin:16px 0 4px;padding:14px;border-radius:24px;
+  background:var(--surface);border:1px dashed var(--lime)}
+.lz-ph{position:relative;aspect-ratio:1;border-radius:16px;overflow:hidden;background:var(--photo)}
+.lz-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.lz-oculta img{filter:blur(14px) saturate(.3) brightness(.75);transform:scale(1.15)}
+.lz-ph span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:3rem;color:#F4F0FF;text-shadow:0 4px 18px rgba(0,0,0,.4)}
+.lz-t h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,4vw,2rem);line-height:1.05}
+.lz-t p{margin:6px 0 0;color:var(--muted)}
+.lz-t .kicker-sec{margin:0 0 4px;color:var(--lime)}
+.lz-cuando{font-weight:800;color:var(--ink)!important}
+.lz .btn{margin-top:10px;min-height:40px}
+@media (min-width:760px){.lz{grid-template-columns:160px minmax(0,1fr);padding:18px 22px}}
+
+/* Tarjetas tipo coleccionable */
+.carta{border-radius:18px;border:1.5px solid var(--line);padding:0 0 2px}
+.carta-top{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:8px 10px 7px;min-height:32px}
+.num,.pd-meta .num{font:800 .74rem/1 var(--body);letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+.rz{display:inline-block;padding:3px 8px;border-radius:6px;font:800 .62rem/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.rz-limitada{background:var(--lime);color:#2B1B4D}
+.rz-ultimas{background:transparent;color:var(--lime);box-shadow:inset 0 0 0 1.5px var(--lime)}
+.rz-agotado{background:var(--chip);color:var(--muted)}
+.carta .photo{margin:0 8px;border-radius:12px}
+.carta[data-agotado] .frames img{filter:grayscale(.85);opacity:.7}
+.carta .stk{top:8px;left:8px}
+.serie{margin:0;align-self:flex-start;padding:3px 8px;border-radius:6px;background:var(--lime);color:#2B1B4D;font:800 .62rem/1.25 var(--body);letter-spacing:.12em;text-transform:uppercase;
+  max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.carta .body{padding-top:12px}
+.deseo{position:absolute;z-index:3;right:8px;bottom:8px;width:36px;height:36px;border:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:rgba(43,27,77,.72);color:rgba(244,240,255,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:transform .2s var(--spring),color .2s}
+.deseo svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2}
+.deseo[aria-pressed="true"]{color:var(--lime)}
+.deseo[aria-pressed="true"] svg{fill:currentColor}
+.deseo:active{transform:scale(.85)}
+.tengo-b{position:absolute;z-index:2;left:8px;bottom:8px;display:inline-flex;align-items:center;gap:4px;padding:4px 9px 4px 6px;border-radius:999px;
+  background:var(--lime);color:#2B1B4D;font:800 .7rem/1 var(--body)}
+.tengo-b svg{width:13px;height:13px}
+.btn-add:disabled{background:var(--chip);color:var(--muted);cursor:default;transform:none}
+.photo .dots{bottom:4px}
+@media (max-width:700px){.carta-top{padding:7px 8px 6px;min-height:28px}.carta .photo{margin:0 6px}.deseo{width:32px;height:32px;right:6px;bottom:6px}.tengo-b{left:6px;bottom:6px;font-size:.62rem}
+  .serie{font-size:.56rem;letter-spacing:.08em}.carta .body{padding-top:10px}}
+
+/* Series en el inicio */
+.tile span{flex-wrap:wrap}
+.tile em{flex:1 1 100%;font-style:normal;font:800 .62rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:2px}
+.tile-all em{color:#2B1B4D}
+
+/* Ficha del producto */
+#pdBadge{display:none}
+.pd-meta{margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pd-marcas{display:flex;gap:8px;flex-wrap:wrap}
+.marca{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 14px;border:0;border-radius:999px;cursor:pointer;
+  background:var(--chip);color:var(--ink);font:700 .9rem var(--body)}
+.marca svg{width:17px;height:17px}
+#pdDeseo svg{fill:none;stroke:currentColor;stroke-width:2.2}
+.marca[aria-pressed="true"]{background:var(--lime);color:#2B1B4D}
+#pdDeseo[aria-pressed="true"] svg{fill:currentColor}
+.ficha{margin:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ficha div{padding:10px 12px;border-radius:14px;background:var(--bg);border:1px solid var(--line)}
+.ficha dt{font:800 .62rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ficha dd{margin:5px 0 0;font-weight:800}
+
+/* Carrito: pedir por Instagram */
+.btn-ig{min-height:48px;background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700}
+.btn-ig svg{width:19px;height:19px}
+.btn-ig:disabled{opacity:.45;pointer-events:none}
+.lista-acc{margin-top:12px}
+.lista-acc .btn svg{width:19px;height:19px}
+
+/* Tu colección en el inicio */
+.mia-sec{padding-top:34px}
+.mia{padding:22px;border-radius:24px;background:var(--surface);border:1px solid var(--line)}
+.mia h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,4vw,2rem);line-height:1.05}
+.mia-t p:last-child{margin:6px 0 0;color:var(--muted)}
+.mia-barra{margin:16px 0 14px;height:14px;border-radius:999px;background:var(--bg);overflow:hidden;
+  background-image:repeating-linear-gradient(90deg,transparent 0 22px,rgba(244,240,255,.06) 22px 24px)}
+.mia-barra span{display:block;height:100%;min-width:14px;border-radius:999px;background:var(--lime);transition:width .6s var(--out)}
+.mia-acts{display:flex;gap:8px;flex-wrap:wrap}
+.mia-acts .btn{min-height:40px;background:var(--chip);color:var(--ink)}
+.mia-acts b{margin-left:6px;color:var(--lime)}
+.capas-links{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}
+.capas-links .btn{min-height:40px;background:var(--chip);color:var(--ink)}
+
+/* Páginas: Proceso y Preguntas */
+.pagina{padding-block:18px 48px}
+.pag-t{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(2rem,6vw,3rem);line-height:1}
+.pag-sub{margin:8px 0 0;color:var(--muted);font-size:1.05rem}
+.pasos{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px;position:relative}
+.paso{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:center;padding:14px;border-radius:22px;background:var(--surface);border:1px solid var(--line)}
+.paso-ph{aspect-ratio:1;border-radius:16px;overflow:hidden;background:var(--bg);display:grid;place-items:center}
+.paso-ph img{width:100%;height:100%;object-fit:cover}
+.paso-n{font-family:var(--display);font-size:2.4rem;color:var(--lime)}
+.paso-k{font:800 .64rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.paso h3{margin:4px 0 0;font-size:1.2rem}
+.paso p{margin:4px 0 0;color:var(--muted)}
+@media (min-width:760px){.paso{grid-template-columns:150px minmax(0,1fr);padding:18px 22px}}
+.pag-fin{margin-top:22px}
+.faq{margin-top:22px;display:grid;gap:10px}
+.faq-it{border-radius:18px;background:var(--surface);border:1px solid var(--line);padding:0 18px}
+.faq-it summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:58px;font-weight:800}
+.faq-it summary::-webkit-details-marker{display:none}
+.faq-it summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:#2B1B4D;font-weight:800;transition:transform .2s}
+.faq-it[open] summary::after{transform:rotate(45deg)}
+.faq-it p{margin:0 0 16px;color:var(--muted);line-height:1.5}
+.faq-mas{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:22px;padding:18px;border-radius:20px;border:1px dashed var(--line)}
+.faq-mas p{margin:0;flex:1 1 100%;font-weight:700}
+.faq-mas .btn{min-height:42px}
+
 
 
 /* Portada: carrusel de banners */
@@ -555,7 +687,7 @@ footer{border-top-color:var(--line)}
 }
 
 /* ─────────── Navegación: Inicio y Catálogo son dos vistas con su propio enlace ─────────── */
-html[data-v="home"] [data-view="cat"],html[data-v="cat"] [data-view="home"]{display:none!important}
+html:not([data-v="home"]) [data-view="home"],html:not([data-v="cat"]) [data-view="cat"],html:not([data-v="proceso"]) [data-view="proceso"],html:not([data-v="faq"]) [data-view="faq"]{display:none!important}
 main{padding-block:20px 32px}
 .back{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--muted);font-weight:600;font-size:.92rem;text-decoration:none}
 .back:hover{color:var(--ink)}
@@ -670,7 +802,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
 </head>
 <body>
 
-<script>(function(){var d=document.documentElement,x=location.hash;d.dataset.v=/^#\/[a-z0-9-]+(\/.+)?$/.test(x)||x==="#catalogo"||(/^#[a-z0-9-]+$/i.test(x)&&x!=="#inicio"&&x!=="#como")?"cat":"home";})();document.documentElement.classList.add("js","intro");setTimeout(function(){document.documentElement.classList.remove("intro")},3200);</script>
+<script>(function(){var d=document.documentElement,x=location.hash;d.dataset.v=x==="#/proceso"?"proceso":x==="#/preguntas"?"faq":/^#\/[a-z0-9-]+(\/.+)?$/.test(x)||x==="#catalogo"||(/^#[a-z0-9-]+$/i.test(x)&&x!=="#inicio"&&x!=="#como")?"cat":"home";})();document.documentElement.classList.add("js","intro");setTimeout(function(){document.documentElement.classList.remove("intro")},3200);</script>
 
 <header class="top">
   <nav class="top-in wrap" aria-label="Principal">
@@ -686,6 +818,15 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
 <section class="hero" id="inicio" data-view="home" aria-label="Novedades">
   <h1 class="sr-only">Pixlet Toys · Coleccionables geek impresos en 3D, capa por capa</h1>
   <div class="wrap">
+    <div class="ipx">
+      <div class="ipx-fig"><svg class="fig-p" viewBox="0 0 100 100" aria-hidden="true"><g class="fp-cuerpo"><rect style="--k:4" x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:3" x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:2" x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:1" x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:0" class="fp-lima" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/></g><g class="fp-cabeza"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><g class="fp-ojos"><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/></g></g></svg></div>
+      <div class="ipx-t">
+        <p class="ipx-wm" aria-hidden="true"><span class="p">pixlet</span><span class="t">TOYS</span></p>
+        <p class="ipx-tag">Coleccionables geek impresos en 3D, capa por capa.</p>
+        <a class="btn ipx-btn" href="#/todos">Ver la colección</a>
+      </div>
+    </div>
+    <section class="lz" id="lz" hidden aria-label="Próximo lanzamiento"></section>
     <div class="bn" id="bn" aria-roledescription="carrusel">
       <div class="bn-track" id="bnTrack" tabindex="-1"></div>
       <button class="bn-nav prev" id="bnPrev" type="button" aria-label="Banner anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -701,7 +842,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input type="search" id="qHome" placeholder="¿Qué buscas? Ajolote, llavero, flor…" autocomplete="off" enterkeyhint="search">
     </label>
-    <h2 class="h-title">Elige tu tribu</h2>
+    <h2 class="h-title">Las series</h2>
     <div class="tiles" id="tiles"><p class="cargando"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg>Imprimiendo el catálogo…</p></div>
     <div id="strips"></div>
   </div>
@@ -712,6 +853,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
     <a class="back" href="#/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Inicio</a>
     <h2 class="sec-title" id="secTitle">Todo el catálogo</h2>
     <p class="sec-sub" id="secSub"></p>
+    <div class="lista-acc" id="listaAcc" hidden></div>
   </div>
   <div class="tools">
     <div class="wrap">
@@ -734,6 +876,8 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   </div>
 </main>
 
+<section class="mia-sec" data-view="home" aria-label="Tu colección"><div class="wrap"><div class="mia" id="mia"></div></div></section>
+
 <section class="capas" data-view="home" aria-labelledby="capasT">
   <div class="wrap">
     <div class="capas-in">
@@ -745,8 +889,9 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
         <ul class="capas-l">
           <li><b>Figuras, llaveros y miniaturas</b><span>Piezas chicas con mucha personalidad.</span></li>
           <li><b>Impresas en 3D</b><span>Cada una se imprime cuando la pides.</span></li>
-          <li><b>Pedido por WhatsApp</b><span>Arma tu carrito y nos lo mandas en un toque.</span></li>
+          <li><b>Pedido por WhatsApp o Instagram</b><span>Llenas tu botín y nos lo mandas en un toque.</span></li>
         </ul>
+        <p class="capas-links"><a class="btn btn-soft" href="#/proceso">Así nace una pieza →</a><a class="btn btn-soft" href="#/preguntas">Preguntas frecuentes</a></p>
       </div>
     </div>
   </div>
@@ -756,43 +901,65 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   <div class="wrap">
     <h2>Pedir es fácil</h2>
     <ol class="steps">
-      <li><div><b>Agrega lo que te guste</b><span>Una pieza o toda la colección. No juzgamos.</span></div></li>
-      <li><div><b>Mándalo por WhatsApp</b><span>En “Ver pedido” toca “Pedir por WhatsApp”. El mensaje ya va escrito.</span></div></li>
+      <li><div><b>Llena tu botín</b><span>Una pieza o toda la colección. No juzgamos.</span></div></li>
+      <li><div><b>Mándalo</b><span>En “Mi botín” toca “Pedir por WhatsApp” o mándalo por DM de Instagram. El mensaje ya va escrito.</span></div></li>
       <li><div><b>La imprimimos</b><span>Te confirmamos color, disponibilidad y entrega por el chat.</span></div></li>
     </ol>
     <p id="phoneLine" hidden>WhatsApp: <a class="phone js-wa" id="phone" data-msg="¡Hola Pixlet Toys! 👋" href="#"></a></p>
   </div>
 </section>
 
+<main class="pagina" id="proceso" data-view="proceso" aria-labelledby="procT">
+  <div class="wrap">
+    <a class="back" href="#/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Inicio</a>
+    <p class="kicker-sec">Proceso</p>
+    <h2 class="pag-t" id="procT">Así nace una pieza</h2>
+    <p class="pag-sub">De archivo a coleccionable, capa por capa.</p>
+    <ol class="pasos" id="pasos"></ol>
+    <p class="pag-fin"><a class="btn ipx-btn" href="#/todos">Ver la colección</a></p>
+  </div>
+</main>
+
+<main class="pagina" id="preguntas" data-view="faq" aria-labelledby="faqT">
+  <div class="wrap">
+    <a class="back" href="#/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Inicio</a>
+    <p class="kicker-sec">Preguntas</p>
+    <h2 class="pag-t" id="faqT">Preguntas frecuentes</h2>
+    <div class="faq" id="faqList"></div>
+    <div class="faq-mas"><p>¿Otra duda? Escríbenos.</p><a class="btn btn-ink js-wa" data-msg="¡Hola Pixlet Toys! 👋 Tengo una duda:" href="#">WhatsApp</a><a class="btn btn-soft" href="https://ig.me/m/pixlet.toys" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</main>
+
 <div class="toast" id="toast" role="status" hidden></div>
 
 <footer>
   <div class="wrap foot-in">
     <span>© 2026 <b class="foot-logo">pixlet toys</b> · Coleccionables geek impresos en 3D, capa por capa</span>
-    <nav class="foot-cats" id="footCats" aria-label="Categorías"></nav>
+    <nav class="foot-cats" id="footCats" aria-label="Series y páginas"></nav>
     <a href="https://instagram.com/pixlet.toys" target="_blank" rel="noopener">@pixlet.toys</a>
     <a class="js-wa" data-msg="¡Hola Pixlet Toys! 👋" href="#">WhatsApp</a>
   </div>
 </footer>
 
-<button type="button" class="cart-fab" id="cartFab" hidden aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12h-11z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M12 11.5v5M9.5 14h5"/></svg><span>Ver pedido</span><small id="cartSum"></small><b id="cartN">0</b></button>
+<button type="button" class="cart-fab" id="cartFab" hidden aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12h-11z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M12 11.5v5M9.5 14h5"/></svg><span>Mi botín</span><small id="cartSum"></small><b id="cartN">0</b></button>
 <button type="button" class="to-top" id="toTop" hidden>↑ Arriba</button>
 
 <dialog class="cart" id="cart" aria-labelledby="cartT">
   <div class="cart-head">
-    <h2 id="cartT">Tu pedido</h2>
+    <h2 id="cartT">Tu botín</h2>
     <button class="cart-x" id="cartX" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <div class="cart-body">
     <ul class="cart-list" id="cartList"></ul>
-    <div class="cart-empty" id="cartEmpty"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg><b>Tu pedido está más vacío que una impresora sin filamento.</b><ol><li>Toca <b>Agregar</b> en lo que te guste.</li><li>Vuelve aquí y toca <b>Pedir por WhatsApp</b>.</li><li>Te confirmamos color, disponibilidad y entrega.</li></ol></div>
+    <div class="cart-empty" id="cartEmpty"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg><b>Tu botín está más vacío que una impresora sin filamento.</b><ol><li>Toca <b>Al botín</b> en lo que te guste.</li><li>Vuelve aquí y toca <b>Pedir por WhatsApp</b>.</li><li>Te confirmamos color, disponibilidad y entrega.</li></ol></div>
     <div class="cart-total" id="cartTotal"></div>
     <label class="cart-f"><span>Tu nombre (opcional)</span><input id="cartName" maxlength="60" autocomplete="name"></label>
     <label class="cart-f"><span>Notas (opcional)</span><textarea id="cartNote" maxlength="300" rows="2" placeholder="Colores, fecha de entrega, si es regalo…"></textarea></label>
   </div>
   <div class="cart-foot">
     <a class="btn btn-wa" id="cartSend" target="_blank" rel="noopener" href="#"></a>
-    <button type="button" class="cart-clear" id="cartClear">Vaciar pedido</button>
+    <button type="button" class="btn btn-ig" id="cartIg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Pedir por DM de Instagram</button>
+    <button type="button" class="cart-clear" id="cartClear">Vaciar botín</button>
   </div>
 </dialog>
 
@@ -815,9 +982,12 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
     </div>
     <div class="pd-info">
       <span class="badge" id="pdBadge"></span>
+      <p class="pd-meta"><span class="num" id="pdNum"></span><span id="pdRz"></span></p>
       <h2 class="pd-name" id="pdName"></h2>
+      <div class="pd-marcas"><button type="button" class="marca" id="pdDeseo" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.1 0 3.5 1.1 4.4 2.4.9-1.3 2.3-2.4 4.4-2.4 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><span>La quiero</span></button><button type="button" class="marca" id="pdTengo" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>La tengo</span></button></div>
       <div class="pd-vars" id="pdVars" hidden><b id="pdVarsT">Elige tu variante</b><div class="vs" role="radiogroup" aria-labelledby="pdVarsT"></div></div>
       <p class="pd-desc" id="pdDesc"></p>
+      <dl class="ficha" id="pdFicha" hidden></dl>
       <ul class="specs" id="pdSpecs"></ul>
       <a class="pd-ask" id="pdWa" target="_blank" rel="noopener" href="#"></a>
       <div class="pd-foot"><span class="price" id="pdPrice"></span><button type="button" class="btn btn-add" id="pdAdd"></button></div>
@@ -842,6 +1012,7 @@ const descuento = p => { const a = aNum(p.price), b = aNum(p.was); return a && b
 const PLACEHOLDERS = {"banda": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvAcU7Jrn/ABGZ4dTsvs88iq3EgH8Iz1Hv7D0qXz7r/hJvsfnr5Jbd905246Z6VlWqOny2V7kRmm2n0NosaKwtBlnm1a8inmZo48+WCuN3PWitmrFnRFUbGVBqH7Hb+f52z5/XJooqHFS3QEwVFJIUA/SiiiqGf//Z", "turbo": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDt55Wgt3l2Fwi5wOtc1b+IV3GRncGRiVQ47HHH4iuwkiV42VuFIIJBxgV5hqFuP7RlFnYJLEkjEy7sK4HquParhY5cRe61O8TVIW0yK8l/drIgcE8DHrRUd7Y2974Y8mFl8kxZLDqBjnFFeViXJVGnJpeSudUZLlTZqzxmaF4j0cYPNYB8OBWPl3DRoTkqOlFFemm0ROnGe6L7xCy037NANqHIYqOgxRRRXjY/+ImzSKSVj//Z", "limon": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDrrPVYrjS0vJAVRs4OOuKZFqKeWXaZGT7wbPGKLK1gu/CyQwKmHj+cD+E45A9K4w28O0251dCjDaXyM427Nu36d/xry8aqntFaTSXZfeKE1yps7ifUkSwN1tbyxxkc8nv9KKHsYYvDZtbhgIliwPmxwBxzRXpUOZ01zblPfQWK3/s6waK2GCx5IHT3rmWsbM6hnDbCNxfZxnpj60UV5uOupp+TJUVZKx1DRfbtOEE4yvQEjGRRRRXo0m1BK4z/2Q==", "lavanda": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDsTqSGwe6AJijGWK85/wDrVmDWkjTMtyM79oyMHk4wa0NK0+C28OLaSSA23lYDZH3cdcj1rgokg/tFY5ra4EfmBizvlVG7qe7c8jNRheZ0lzb+aHpc9Ghka4hWXaVVhkLRVqCJI4ESM7kCjBJzkUVYjPt0+0aZ9mf5ogoCkjGRWd/wjamRiZcocYXpgelFFZ4duNONhm9axGC3WIHIX3ooorQR/9k=", "muuchi-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD06q5vrUXHkGdPN/u55p15C89pLDHK0TupAdeq1wswn+3mBxD/AK7PlN18rbgjP97POamTa2LhFSPQKKr2FsbOxhtzI8hjXBZzkmiqIZYrKfw/YyE7/NIaXzSN/VqKKTSe402tjVAwMUUUUxH/2Q==", "muuchi-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvFjNO8s0XiTPZzJasqzMpCFjgA+tYNvql1YyNZzMkzxuFOTyCeVTOeSR3pOVi0rm4YzRUsMqTxB1DDsQwwQfSiqJDeCOaZsi3FvLTJ74FFFAx+8AUUUUCP//Z", "muuchi-3": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0ERU7yqWaQxxM6xtIVGdq9TXN6lrt8M28MDxyk5BCnPsORgfWk5WKUWzojFRT4mLQoX+8VGfrRTEJuoJFFFABuooopgf/2Q==", "muuchi-4": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDuxCaXyucZGasDArmIpfL8UtbJNOR5mGeRyeo3bQMY6d6HKxSVzfMJoqzxRTEMyDVI6ZaHUBe+XiYdSDwTjGSPXFFFFgLuQKKKKBH/2Q==", "orbita-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDuxGfSgKCxUMNw6jPNWWwilsE47DvXLjSGPjYas0svHBjDcdMf5FO4HQGM+lFWcUUDGHDKQehqIQRrKHXII96KKQE2aKKKYH//2Q==", "oscurito-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0EA1w48Z3J8W/YNkX2L7R5Gcc9cZz9a7q8Z4bKeaJN8kcbMq+pAyBXhpmmF6bgOv2gHcV8tQoPpj68YoA9wwaKLB3udPtp5Y9kksSuy+hIyRRQBNMDJC8YONylc+ma88T4f3i6st5/aMeBJuxsOcZz+dFFA7u1j0fd60UUUCP/9k=", "oscurito-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0EVk3XiXT7TWU0qVn89ioyF4BPStsoFUliAB1J7V5B4wuFi8XTXln1R1YEnIfAHIz2Pt6UwPWzRRasbizhnZCjSxq5U9iRnFFADpoY59vmqGCnIB5Gfp0Nc1rPgy01fVm1Ce8uFdgFKptAAA4A4/xoooC7OpXhQM9BRRRQB//2Q==", "oscurito-3": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvkWqa61p39sHSfP8A9MA+5tOOmcZ9cVogYHrXlmjS3N38QkuruB45pJ9wiGQQP/rDr9DTA9VAop4yKKAIGiVvUH2NZFr4asbbVm1FGmMxkMoy+QGPX86KKBptbG9miiigk//Z", "tricerito-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvxGaXyjReLK1pItvII5cfKx7GuS0/X7y0Oy4/0hnb5mYHPp26dqxqVlTaTRvSoSqpuPQ6wxGipIJPOgSQoULKDtPUUVsndXMWraDsgimqqLkqqjPXAoooAduFFFFMD//Z", "tricerito-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDtxE3oaXy39DViSeOJgrByT02qTWK+tyjxAtnsIjLBdpU56damc1C1zSFNzvboaJjb0NFXeKKsgZuo4znAzRRQAbqKKKAP/9k=", "cuellito-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0MRmkfZGuZHVATjLHHNFzdwWqs0rY2ruIwelcFrPiWHXbRbRrQJiQSI4fO3B28++CaTdjOrVVNanfbMgEEEHoRRTreGK3tooIRiONQqjOeKKZohxwwIIBB7GqMmk6bJIsjWNuWU5B2AUUUA0nuXhgDAooooGf/9k=", "cuellito-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvhGad5Zp00e+3kRXZCykBlOCOOorltD8V2scMNlfPO0y/K8z/ADZbP8uaV7ESqRg0pHTGM0U8TwswUSqWPQZopmgu4U1UjU5CID7AUUUCHlhRRRQM/9k=", "cuernos-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDv1OKo3Ouada3P2ae6VZs7dmCTk4wMD6ir8pigTfNIsaf3mOBXl1jejV/iDDdNF5UTzgKeSDjoc++BTbKil1PUWNFSeVRQSPJJGOPxrlLbwrPbeJX1WDUPLjMhkEKR/Lz1GOnSiigd7HWbjRRRQI//2Q==", "cuernos-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0JSB0qkNc086k2nfaALpW2+WQRz/k1elCwxl2DkDsilj+QryvxHqMlj46+2w2zZR0ZUlQqW4Azj+VBSS3Z6mxoqRUDIrEEZGcHqKKZIu7I4OK52+8LWt5riapLc3BlV1cgsCPl5AHHAoooA6Pd6miiigD/9k=", "cuernos-3": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvV4qH+0LT7d9i+0R/acZ8rPOKuFERSzsFUckk4Ary9NW3+PRdCzGDcCMLlskZ27vy59KZSS6npZNFTmIUUEik5GKyP7Ch/tH7cbibzvtP2jPy9du3b06YoooA2M+9FFFAH//Z", "limon-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvhSCRSxXPIqfygRiuLKyLrf8AZ/26UZmzt2HH3s4z6e/4YrkxVWpTtyfr+gXS3Ou+lFT+WAMUV1gKeQRkis3+yl+0+b5x6YxsH+c0UVnUpQqfErgaQ4GM5ooorQD/2Q==", "limon-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvQaTzkyRu6ZqcRVxlrLONfezmviZWcKsYQ4T1575rmxFWdPl5Vf8Ar+twuluddnIzRUvlcdaK6QHHJGAax10ZhqKXfnAun8WDk/Wiis6lKNT4kBs5NFFFaAf/2Q==", "limon-3": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvQcUu8btuRnGcZqTysjFcpeXV4mvxWsV1DkNsaJjgtnGMVz16sqduVXuF0tzpyaKk8oAYHQUV0ASZPY1jtpDtqL3fnDex+9g5X6UUVnOnGduboBrgkDk0UUVoB//Z", "limon-4": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvBmlzT/K4rBFw/wDaX2UTp527aQXGc9a5MViZUeW0b3GkjbJNFP8AKPrRXWIkJOOMZrD/ALEk/tD7b50fn7t27bRRWVSjGpbm/NgboJxyRmiiitQP/9k=", "lavanda-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvFzSCRCxQMNynBHpUvlZUiuHa4vo9YOnfa4xI0oG0v8+C2cfXH+NVFXGdsc0U8RYUD0FFIB7E7Tt4OODXM/2Bcf2h55kXOd3mfx5zmiimpNbAdOpO0BuTjk+tFFFIR//Z", "lavanda-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvt2ASe1MNzEJVjL8t044qx5OQQe9cBffao/EqWi3qmdW2mJiRvLD5eelXFJ7jO7zkcUU9YQq4HAoqUBLuNc/Ho0y65/aBkXO/ceOW/wAKKKabQI6AMe9FFFSI/9k=", "lavanda-3": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDulNJ9pTfsDZOcfSphFXHWsdwfE0unb7gSmRpGbbhAvXj29KpK4zrWaipTEKKQDi5AyP0rJCAaybzy5txGD+79sUUUJ2A1lclcnj6iiiigD//Z", "lavanda-4": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvwKbvj37N67vTNSkAqQR1rklmzrH9niYi4D7SATyevX6VpGKe4zqiKKeAAoAoqRAc4ODisQaK/wBo837Tzv3bsfN19aKKak1sBtjOBk5oooqQP//Z", "turbo-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0AUiyxs5RXUspwQDyDUvlZGK4KOW8XxQNN+1AsZuRkkkbs4zj04q4q9zGrUcGrI7omin+XRUmw88ggHFYI8OILgP9obYJN+MfNn/e60UU1JrYidOM/iRv54ooopFn/9k=", "turbo-2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvgcdeKaLiLzxB5q+YRnbnnFTmIMCD0NefzvqCeK2sluhJIXChCTnr16Y6flVxjcyq1JRtyrc700VIIwowOgoqDYdk9q5+20GSDWGvftGdz72BHJ/GiiqTaIlTjJpvodDk96KKKRZ//9k=", "turbo-3": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvRUS3cLSGNZAWBIP1HWrIirz9IrhfFiafLcyhvNKqFUqg5znP09PWrSuY1ZyhayO7zkZ9aKlMVFSbEm49jWDP4eSbUVuTcuArlwg7E+/XrRRTTa2InTjPSSN7JxyaKKKRZ//Z", "turbo-4": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAYABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvBTPPh8zy/NXf0xmrXlggg964JUdvEZ01bgiXzChPPPfritIRUr3ZzYitOnblje525FFTiMKoA7UVB0gSSCAcZHWuZHhb/S/NN2xG/d0+b889aKKqMmtjOpRhUtzK9jp1yFAJzgdTRRRUmh//2Q=="};
 let CATS = [];   // categorías de productos.json
 let BANNERS = []; // banners de la portada (productos.json → banners)
+let PAGINA = { proceso: [], faq: [], lanzamiento: {} };   // Proceso, Preguntas y Próximo lanzamiento
 
 const waLink = msg => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
 const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
@@ -864,9 +1035,20 @@ fetch("productos.json", {cache: "no-cache"})
         specs: Array.isArray(p.specs) ? p.specs.filter(x => typeof x === "string") : [], price: txt(p.price), was: txt(p.was),
         variantes: (Array.isArray(p.variantes) ? p.variantes : []).filter(v => v && okId(v.id) && txt(v.nombre) && Array.isArray(v.imgs))
           .map(v => ({ id: v.id, nombre: txt(v.nombre), nota: txt(v.nota), imgs: v.imgs.filter(s => p.imgs.includes(s) && /^[a-zA-Z0-9_-]{1,80}$/.test(s)) }))
-          .filter(v => v.imgs.length) }))
+          .filter(v => v.imgs.length),
+        num: Number.isInteger(p.num) && p.num > 0 && p.num < 10000 ? p.num : 0,
+        rareza: ["limitada", "ultimas", "agotado"].includes(p.rareza) ? p.rareza : "",
+        ficha: Object.fromEntries(["alto", "horas", "capas", "filamento"].map(k => [k, p.ficha && typeof p.ficha[k] === "string" ? p.ficha[k].slice(0, 40) : ""])) }))
       .map(p => (p.variantes.length < 2 && (p.variantes = []), p))
-      .filter(p => p.imgs.length);
+      .filter(p => p.imgs.length)
+      .map((p, i) => (p.num = p.num || i + 1, p));
+    const pg = d.pagina && typeof d.pagina === "object" ? d.pagina : {}, okImg = v => typeof v === "string" && /^[a-zA-Z0-9_-]{1,80}$/.test(v) ? v : "";
+    const lz = pg.lanzamiento && typeof pg.lanzamiento === "object" ? pg.lanzamiento : {};
+    PAGINA = {
+      proceso: (Array.isArray(pg.proceso) ? pg.proceso : []).filter(x => x && txt(x.titulo)).map(x => ({ titulo: txt(x.titulo), texto: txt(x.texto), img: okImg(x.img) })),
+      faq: (Array.isArray(pg.faq) ? pg.faq : []).filter(x => x && txt(x.p) && txt(x.r)).map(x => ({ p: txt(x.p), r: txt(x.r) })),
+      lanzamiento: { activo: lz.activo === true, nombre: txt(lz.nombre), texto: txt(lz.texto), fecha: /^\d{4}-\d{2}-\d{2}$/.test(lz.fecha) ? lz.fecha : "", img: okImg(lz.img), producto: okId(lz.producto) ? lz.producto : "" }
+    };
     const okEnlace = v => typeof v === "string" && (v === "" || v === "wa" || /^#\/[a-z0-9-]*$/.test(v) || /^#\/buscar\/[A-Za-z0-9%._~-]{1,120}$/.test(v) || /^#[a-z0-9-]{1,60}$/.test(v));
     const okHex = v => typeof v === "string" && /^#[0-9a-fA-F]{6}$/.test(v);
     BANNERS = (Array.isArray(d.banners) ? d.banners : []).filter(b => b && (b.tipo === "foto" || b.tipo === "imagen") && typeof b.img === "string" && /^[a-zA-Z0-9_-]{1,80}$/.test(b.img))
@@ -874,7 +1056,10 @@ fetch("productos.json", {cache: "no-cache"})
     CATS = (d.categorias || []).filter(c => c && (okId(c.id) || c.id === "all") && txt(c.label)).map(c => ({ id: c.id, label: txt(c.label), title: txt(c.title), sub: txt(c.sub) }));
     if (!CATS.length || CATS[0].id !== "all") CATS.unshift({id:"all", label:"Todos", title:"Todo el catálogo", sub:""});
     CATS = CATS.filter(c => c.id !== "ofertas");
-    if (PRODUCTS.some(p => descuento(p))) CATS.splice(1, 0, {id:"ofertas", label:"Ofertas", title:"Ofertas", sub:"Mismas piezas, menos precio."});
+    CATS = CATS.filter(c => !["deseos", "coleccion"].includes(c.id));
+    if (PRODUCTS.some(p => descuento(p))) CATS.splice(1, 0, {id:"ofertas", label:"Precio de coleccionista", title:"Precio de coleccionista", sub:"Mismas piezas, menos precio."});
+    CATS.push({id:"deseos", label:"♥ Deseos", title:"Tu lista de deseos", sub:"Las piezas que te faltan. Compártela y que alguien entienda la indirecta."},
+              {id:"coleccion", label:"✓ Mi colección", title:"Mi colección", sub:"Las piezas Pixlet que ya tienes. Se guarda solo en este teléfono."});
     iniciar();
   })
   .catch(() => { document.getElementById("grid").innerHTML = '<p class="sec-sub">No se pudo cargar el catálogo. Revisa tu conexión y vuelve a intentar.</p>'; });
@@ -909,11 +1094,17 @@ function openFromLink(e, p, focusTarget){
 }
 const textoBusqueda = p => " " + norm([p.name, p.sub, p.badge, p.desc, ...p.specs, ...p.variantes.map(v => v.nombre + " " + v.nota), (CATS.find(c => c.id === p.cat) || {}).label].join(" ")).replace(/[^a-z0-9ñ]+/g, " ") + " ";
 const LAYERS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>';
+const HEART = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.1 0 3.5 1.1 4.4 2.4.9-1.3 2.3-2.4 4.4-2.4 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg>', CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+const numero = p => "#" + String(p.num).padStart(3, "0");
+const RAREZA = { limitada: "Edición limitada", ultimas: "Últimas piezas", agotado: "Agotado" };
+const rarezaHTML = p => p.rareza ? `<span class="rz rz-${p.rareza}">${RAREZA[p.rareza]}</span>` : "";
+const serieDe = p => (CATS.find(c => c.id === p.cat) || {}).label || "Pixlet";
 const etiquetas = p => { const off = descuento(p), nv = p.variantes.length;
   return off || nv ? `<span class="stk">${nv ? `<span class="vpill">${LAYERS}${nv} variantes</span>` : ""}${off ? `<span class="off">−${off}%</span>` : ""}</span>` : ""; };
 function card(p){
   const el = document.createElement("article");
-  el.className = "card"; el.dataset.cat = p.cat; el.id = "p-" + p.id;
+  el.className = "card carta"; el.dataset.cat = p.cat; el.id = "p-" + p.id; el.dataset.id = p.id;
+  if (p.rareza === "agotado") el.dataset.agotado = "1";
   el.dataset.q = textoBusqueda(p);
   el.dataset.i = PRODUCTS.indexOf(p); el.dataset.precio = aNum(p.price);
   const off = descuento(p), nv = p.variantes.length;
@@ -922,23 +1113,26 @@ function card(p){
   const fotos = nv ? p.variantes.map(v => v.imgs[0]) : p.imgs, n = fotos.length;
   const altC = j => nv ? `${fullName(p)}, ${p.variantes[j].nombre}` : altFor(p, j);
   el.innerHTML = `
+    <div class="carta-top"><span class="num">${numero(p)}</span>${rarezaHTML(p)}</div>
     <div class="photo">
       <div class="frames">${fotos.map((s,j) => `<img src="${h(imgSrc(s))}" alt="${h(altC(j))}" width="1000" height="1000" loading="lazy" decoding="async"${j ? ' aria-hidden="true"' : ' class="on"'}>`).join("")}</div>
       ${etiquetas(p)}
       <a class="photo-link" href="#${p.id}" tabindex="-1" aria-hidden="true"></a>
       <span class="badge" style="--c:${p.c}">${h(p.badge)}</span>
       <span class="zoom" aria-hidden="true">${ZOOM_ICON}</span>
+      <button type="button" class="deseo" data-deseo="${p.id}" aria-pressed="false" aria-label="Agregar ${h(p.name)} a tu lista de deseos">${HEART}</button>
+      <span class="tengo-b" hidden>${CHECK}La tienes</span>
       ${n > 1 ? `<div class="dots">${fotos.map((s,j) => `<button type="button" aria-label="${nv ? `Ver ${h(p.variantes[j].nombre)}` : `Ver foto ${j+1} de ${n} de ${h(p.name)}`}" aria-current="${j===0}"></button>`).join("")}</div>` : ""}
     </div>
     <div class="body">
-      <p class="kicker" style="--c:${p.c}">${h(p.badge)}</p>
+      <p class="serie">Serie ${h(serieDe(p))}</p>
       <h3 class="name"><a class="name-link" href="#${p.id}"><span class="nm">${h(p.name)}</span><small>${h(p.sub)}</small><span class="sr-only">: ver detalles y fotos</span></a></h3>
       <p class="desc">${h(p.desc)}</p>
       <ul class="specs">${p.specs.map(s=>`<li>${h(s)}</li>`).join("")}</ul>
       ${nv ? `<p class="vsw">${p.variantes.slice(0, 4).map(v => `<img src="${h(imgSrc(v.imgs[0]))}" alt="" width="1000" height="1000" loading="lazy">`).join("")}<span>${nv} variantes</span></p>` : ""}
       <div class="foot">
         <span class="price ${p.price ? "" : "ask"}">${priceHTML(p)}</span>
-        <button type="button" class="btn btn-add" data-add="${p.id}" aria-label="Agregar ${h(p.name)} al pedido">${BAG_ICON}<span class="wa-t">${p.variantes.length ? "Elegir variante" : "Agregar al pedido"}</span><b class="add-n" hidden></b></button>
+        <button type="button" class="btn btn-add" data-add="${p.id}" aria-label="Agregar ${h(p.name)} al botín"${p.rareza === "agotado" ? " disabled" : ""}>${BAG_ICON}<span class="wa-t">${p.rareza === "agotado" ? "Agotado" : p.variantes.length ? "Elegir versión" : "Al botín"}</span><b class="add-n" hidden></b></button>
       </div>
     </div>`;
   const photo = el.querySelector(".photo");
@@ -1011,7 +1205,8 @@ qInput.addEventListener("input", () => {
 const filters = document.getElementById("filters");
 let catActual = "all";
 const urlCat = id => id === "all" ? "todos" : id;
-const enCat = (el, id) => id === "all" || (id === "ofertas" ? el.dataset.oferta === "1" : el.dataset.cat === id);
+const VIRTUALES = new Set(["all", "ofertas", "deseos", "coleccion"]);
+const enCat = (el, id) => id === "all" || (id === "ofertas" ? el.dataset.oferta === "1" : id === "deseos" ? deseos.has(el.dataset.id) : id === "coleccion" ? tengo.has(el.dataset.id) : el.dataset.cat === id);
 // Si el usuario ya bajó por la rejilla, la regresa al inicio de los resultados (debajo de la barra fija).
 function alGrid(smooth){
   const tools = document.querySelector(".tools");
@@ -1045,13 +1240,16 @@ function setCat(id, animate){
   const changed = secTitle.textContent !== c.title;
   secTitle.textContent = c.title;
   secSub.textContent = c.sub;
+  pintarAccionesLista(c.id);
   const show = el => enCat(el, c.id) && coincide(el, q);
   const vis = cards.filter(show).length;
   const nr = document.getElementById("noRes");
   nr.hidden = vis > 0;
   if (!vis) {
     const tot = cards.filter(el => coincide(el, q)).length;
-    nr.innerHTML = SIMBOLO + (q ? `Nada por aquí con <b>“${h(qInput.value.trim())}”</b>${c.id !== "all" ? ` en ${h(c.label)}` : ""}. Prueba con otra palabra.` : "Esta sección todavía se está imprimiendo.") +
+    nr.innerHTML = SIMBOLO + (q ? `Nada por aquí con <b>“${h(qInput.value.trim())}”</b>${c.id !== "all" ? ` en ${h(c.label)}` : ""}. Prueba con otra palabra.`
+      : c.id === "deseos" ? "Tu lista está vacía. Toca el ♥ de cualquier pieza para guardarla aquí."
+      : c.id === "coleccion" ? "Todavía no marcas piezas. Abre una que ya tengas y toca “✓ La tengo”." : "Esta sección todavía se está imprimiendo.") +
       `<span class="nr-acts">${q && tot && c.id !== "all" ? `<button type="button" class="btn btn-ink" data-nr="all">Ver ${tot} en todo el catálogo</button>` : ""}` +
       `${q ? `<button type="button" class="btn btn-soft" data-nr="clear">Borrar búsqueda</button>` : ""}</span>`;
   }
@@ -1103,6 +1301,37 @@ document.getElementById("noRes").addEventListener("click", e => {
   if (b.dataset.nr === "clear") { qInput.value = ""; setCat(catActual, false); qInput.focus(); }
   else { setCat("all", true); try { history.replaceState(null, "", "#/todos"); } catch(e) {} }
 });
+
+/* ---------- mi colección y lista de deseos (solo en este teléfono) ---------- */
+const leerSet = k => { try { const a = JSON.parse(localStorage.getItem(k) || "[]"); return new Set(Array.isArray(a) ? a.filter(id => byId[id]) : []); } catch(e) { return new Set(); } };
+const guardarSet = (k, st) => { try { localStorage.setItem(k, JSON.stringify([...st])); } catch(e) {} };
+const deseos = leerSet("pt-deseos"), tengo = leerSet("pt-coleccion");
+function alternar(st, k, id){ st.has(id) ? st.delete(id) : st.add(id); guardarSet(k, st); pintarMarcas(); if (vista === "cat") setCat(catActual, false); }
+function pintarMarcas(){
+  grid.querySelectorAll("[data-deseo]").forEach(b => { const on = deseos.has(b.dataset.deseo); b.setAttribute("aria-pressed", on); b.setAttribute("aria-label", (on ? "Quitar " : "Agregar ") + byId[b.dataset.deseo].name + (on ? " de tu lista de deseos" : " a tu lista de deseos")); });
+  grid.querySelectorAll(".card").forEach(el => { el.querySelector(".tengo-b").hidden = !tengo.has(el.dataset.id); });
+  if (current) pintarMarcasFicha(current);
+  pintarProgreso();
+  filters.querySelectorAll('.chip[data-id="deseos"] .n, .chip[data-id="coleccion"] .n').forEach(n => { n.textContent = n.closest(".chip").dataset.id === "deseos" ? deseos.size : tengo.size; });
+}
+function pintarProgreso(){
+  const el = document.getElementById("mia"), n = tengo.size, t = PRODUCTS.length, pct = t ? Math.round(n / t * 100) : 0;
+  el.innerHTML = `<div class="mia-t"><p class="kicker-sec">Tu colección</p><h2>${n ? `Tienes ${n} de ${t} piezas` : "¿Ya tienes piezas Pixlet?"}</h2>
+    <p>${n ? (n === t ? "Colección completa. Respeto." : `Te faltan ${t - n}. Una capa a la vez.`) : "Abre una pieza que ya tengas y toca “✓ La tengo”. Aquí verás tu avance."}</p></div>
+    <div class="mia-barra" role="img" aria-label="${pct} % de la colección"><span style="width:${pct}%"></span></div>
+    <div class="mia-acts"><a class="btn btn-soft" href="#/coleccion">✓ Mi colección <b>${n}</b></a><a class="btn btn-soft" href="#/deseos">♥ Deseos <b>${deseos.size}</b></a></div>`;
+}
+function pintarAccionesLista(id){
+  const el = document.getElementById("listaAcc");
+  if (id === "deseos" && deseos.size) {
+    const txt = "Mi lista de deseos de Pixlet Toys:\n" + [...deseos].map(k => `• ${byId[k].name} — ${location.origin + location.pathname}#${k}`).join("\n");
+    el.innerHTML = `<a class="btn btn-ink" target="_blank" rel="noopener" href="${h("https://wa.me/?text=" + encodeURIComponent(txt))}">${WA_ICON}Compartir mi lista</a>`;
+    el.hidden = false;
+  } else { el.hidden = true; el.innerHTML = ""; }
+}
+grid.addEventListener("click", e => { const b = e.target.closest("[data-deseo]"); if (!b) return; e.preventDefault(); e.stopPropagation();
+  const id = b.dataset.deseo; alternar(deseos, "pt-deseos", id); aviso(deseos.has(id) ? `${byId[id].name} está en tus deseos ♥` : `${byId[id].name} salió de tus deseos`); }, true);
+addEventListener("storage", e => { if (e.key === "pt-deseos" || e.key === "pt-coleccion") location.reload(); });
 
 /* ---------- ordenar ---------- */
 document.getElementById("sort").addEventListener("change", e => {
@@ -1171,15 +1400,15 @@ function guardarPedido(){ try { localStorage.setItem(PEDIDO, JSON.stringify(pedi
 function pintarAgregar(btn, id, grande){
   const p = byId[id] || partir(id).p;
   const n = !grande && p.variantes.length ? p.variantes.reduce((s, v) => s + (pedido[id + "::" + v.id] || 0), 0) : pedido[id] || 0;
-  if (grande) { btn.innerHTML = BAG_ICON + (n ? `Agregar otro <small>(llevas ${n})</small>` : "Agregar al pedido"); btn.dataset.add = id; return; }
+  if (grande) { const ag = p.rareza === "agotado"; btn.disabled = ag; btn.innerHTML = ag ? "Agotado por ahora" : BAG_ICON + (n ? `Uno más al botín <small>(llevas ${n})</small>` : "Al botín"); btn.dataset.add = id; return; }
   const b = btn.querySelector(".add-n"); b.hidden = !n; b.textContent = n;
   btn.classList.toggle("is-in", n > 0);
-  btn.setAttribute("aria-label", p.variantes.length ? `Elegir variante de ${p.name}` + (n ? ` (llevas ${n})` : "") : n ? `Agregar otro ${p.name} (llevas ${n})` : `Agregar ${p.name} al pedido`);
+  btn.setAttribute("aria-label", p.rareza === "agotado" ? `${p.name}: agotado` : p.variantes.length ? `Elegir versión de ${p.name}` + (n ? ` (llevas ${n})` : "") : n ? `Agregar otro ${p.name} al botín (llevas ${n})` : `Agregar ${p.name} al botín`);
 }
 function pintarPedido(){
   const n = piezas();
   document.getElementById("cartN").textContent = n;
-  const cf = document.getElementById("cartFab"); cf.hidden = !n; cf.setAttribute("aria-label", `Ver pedido, ${n} pieza${n !== 1 ? "s" : ""}`);
+  const cf = document.getElementById("cartFab"); cf.hidden = !n; cf.setAttribute("aria-label", `Mi botín, ${n} pieza${n !== 1 ? "s" : ""}`);
   fab.classList.toggle("is-hidden", n > 0);
   root.classList.toggle("has-cart", n > 0);
   grid.querySelectorAll("[data-add]").forEach(b => pintarAgregar(b, b.dataset.add));
@@ -1204,6 +1433,7 @@ function pintarPedido(){
   send.innerHTML = WA_ICON + "Pedir por WhatsApp";
   send.toggleAttribute("aria-disabled", !ids.length); send.classList.toggle("is-off", !ids.length);
   send.href = ids.length ? waLink(mensajePedido()) : "#";
+  const ig = document.getElementById("cartIg"); ig.disabled = !ids.length;
   document.getElementById("cartClear").hidden = !ids.length;
 }
 function mensajePedido(){
@@ -1227,11 +1457,24 @@ function cambiar(id, d){
 let toastT = 0;
 function aviso(t){ const el = document.getElementById("toast"); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 2200); }
 grid.addEventListener("click", e => { const b = e.target.closest("[data-add]"); if (!b) return; e.preventDefault();
+  if (byId[b.dataset.add].rareza === "agotado") return;
   if (byId[b.dataset.add].variantes.length) { openProduct(b.dataset.add, {push:true, trigger:b}); return; }
   cambiar(b.dataset.add, 1);
-  aviso(`${byId[b.dataset.add].name} va a tu pedido · ${piezas()} en total`);
+  aviso(`${byId[b.dataset.add].name} va a tu botín · ${piezas()} en total`);
   if (canAnimate()) document.getElementById("cartFab").animate([{transform:"scale(1)"},{transform:"scale(1.12)"},{transform:"scale(1)"}], {duration:320}); });
-document.getElementById("pdAdd").addEventListener("click", e => { const id = e.currentTarget.dataset.add; cambiar(id, 1); aviso(`${partir(id).nombre} va a tu pedido · ${piezas()} en total`); });
+document.getElementById("pdAdd").addEventListener("click", e => { const id = e.currentTarget.dataset.add; cambiar(id, 1); aviso(`${partir(id).nombre} va a tu botín · ${piezas()} en total`); });
+// Pedir por DM: se copia el pedido y se abre el chat de Instagram
+function copiar(t){
+  if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t).then(() => true, () => copiarViejo(t));
+  return Promise.resolve(copiarViejo(t));
+}
+function copiarViejo(t){ const a = document.createElement("textarea"); a.value = t; a.setAttribute("readonly", ""); a.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(a); a.select(); let ok = false; try { ok = document.execCommand("copy"); } catch(e) {} a.remove(); return ok; }
+document.getElementById("cartIg").addEventListener("click", () => {
+  if (!Object.keys(pedido).length) return;
+  const msg = mensajePedido().replace("¡Hola Pixlet Toys! 👋", "¡Hola Pixlet Toys! 👋 (pedido desde el catálogo)");
+  copiar(msg).then(ok => aviso(ok ? "Pedido copiado. Pégalo en el chat de Instagram." : "Abre el chat y escríbenos tu pedido."));
+  window.open("https://ig.me/m/pixlet.toys", "_blank", "noopener");
+});
 const cart = document.getElementById("cart");
 document.getElementById("cartFab").addEventListener("click", () => { pintarPedido(); if (typeof cart.showModal === "function") { cart.showModal(); root.classList.add("modal-open"); } });
 document.getElementById("cartX").addEventListener("click", () => cart.close());
@@ -1240,7 +1483,7 @@ cart.addEventListener("click", e => { if (e.target === cart) cart.close(); });
 document.getElementById("cartList").addEventListener("click", e => { const b = e.target.closest("[data-q]"); if (b) cambiar(b.dataset.id, Number(b.dataset.q)); });
 ["cartName", "cartNote"].forEach(id => document.getElementById(id).addEventListener("input", () => { const s = document.getElementById("cartSend"); if (Object.keys(pedido).length) s.href = waLink(mensajePedido()); }));
 document.getElementById("cartSend").addEventListener("click", e => { if (!Object.keys(pedido).length) e.preventDefault(); });
-document.getElementById("cartClear").addEventListener("click", () => { if (!confirm("¿Vaciar tu pedido? Las piezas se quedan aquí, esperándote.")) return; pedido = {}; guardarPedido(); pintarPedido(); });
+document.getElementById("cartClear").addEventListener("click", () => { if (!confirm("¿Vaciar tu botín? Las piezas se quedan aquí, esperándote.")) return; pedido = {}; guardarPedido(); pintarPedido(); });
 addEventListener("storage", e => { if (e.key === PEDIDO) { pedido = leerPedido(e.newValue); pintarPedido(); } });
 
 /* ---------- botón flotante ---------- */
@@ -1313,7 +1556,7 @@ pdVars.addEventListener("keydown", e => {
 function fill(p){
   curVar = p.variantes[0] || null;
   pdVars.hidden = !p.variantes.length;
-  document.getElementById("pdVarsT").innerHTML = `Elige tu variante <small>· ${p.variantes.length} opciones</small>`;
+  document.getElementById("pdVarsT").innerHTML = `Elige tu versión <small>· ${p.variantes.length} opciones</small>`;
   pdVars.querySelector(".vs").innerHTML = p.variantes.map((v, j) => `<button type="button" role="radio" data-v="${v.id}" aria-checked="${j === 0}" tabindex="${j ? -1 : 0}"><img src="${h(imgSrc(v.imgs[0]))}" alt="" width="1000" height="1000"><span><b>${h(v.nombre)}</b>${v.nota ? `<small>${h(v.nota)}</small>` : ""}</span></button>`).join("");
   galeria(p, curVar ? curVar.imgs : p.imgs);
   const badge = document.getElementById("pdBadge");
@@ -1321,6 +1564,12 @@ function fill(p){
   document.getElementById("pdName").innerHTML = `${h(p.name)}<small>${h(p.sub)}</small>`;
   document.getElementById("pdDesc").textContent = p.desc;
   document.getElementById("pdSpecs").innerHTML = p.specs.map(s => `<li>${h(s)}</li>`).join("");
+  document.getElementById("pdNum").textContent = numero(p) + " · Serie " + serieDe(p);
+  document.getElementById("pdRz").innerHTML = rarezaHTML(p);
+  const FICHA = [["alto", "Altura"], ["horas", "Impresión"], ["capas", "Capas"], ["filamento", "Filamento"]].filter(([k]) => p.ficha[k]);
+  const fi = document.getElementById("pdFicha"); fi.hidden = !FICHA.length;
+  fi.innerHTML = FICHA.map(([k, t]) => `<div><dt>${t}</dt><dd>${h(p.ficha[k])}</dd></div>`).join("");
+  pintarMarcasFicha(p.id);
   const price = document.getElementById("pdPrice");
   price.innerHTML = priceHTML(p);
   price.className = "price" + (p.price ? "" : " ask");
@@ -1329,6 +1578,13 @@ function fill(p){
   pintarAgregar(document.getElementById("pdAdd"), curVar ? p.id + "::" + curVar.id : p.id, true);
 }
 
+function pintarMarcasFicha(id){
+  const d = document.getElementById("pdDeseo"), t = document.getElementById("pdTengo");
+  d.setAttribute("aria-pressed", deseos.has(id)); d.querySelector("span").textContent = deseos.has(id) ? "En tus deseos" : "La quiero";
+  t.setAttribute("aria-pressed", tengo.has(id)); t.querySelector("span").textContent = tengo.has(id) ? "Ya la tienes" : "La tengo";
+}
+document.getElementById("pdDeseo").addEventListener("click", () => { if (current) alternar(deseos, "pt-deseos", current); });
+document.getElementById("pdTengo").addEventListener("click", () => { if (!current) return; alternar(tengo, "pt-coleccion", current); if (tengo.has(current)) aviso(`${byId[current].name} entró a tu colección · ${tengo.size} de ${PRODUCTS.length}`); });
 function openProduct(id, {push = false, trigger = null} = {}){
   const p = byId[id];
   if (!p || typeof dlg.showModal !== "function") return false;
@@ -1410,16 +1666,20 @@ function ponerVista(v, catId){
   if (cambia && vista) posVista[vista] = scrollY;
   vista = v; root.dataset.v = v;
   if (v === "cat") { const otra = cambia || catId !== catActual; setCat(catId, false); if (otra) subir(0); }
-  else if (cambia) subir(posVista.home || 0);
+  else if (cambia) subir(v === "home" ? posVista.home || 0 : 0);
   revisarArriba();
 }
 let deBusqueda = false;
+const TITULO = document.title;
 function route(){
   let hs = ""; try { hs = decodeURIComponent(location.hash); } catch(e) {}
   const id = hashId();
   if (id) { if (!vista) ponerVista("cat", byId[id].cat); if (!dlg.open || current !== id || closing) openProduct(id); return; }
   if (dlg.open) { pushed = false; closeProduct(); }
   const m = /^#\/([a-z0-9-]*)$/.exec(hs), mb = /^#\/buscar\/(.{1,60})$/.exec(hs);
+  if (hs === "#/proceso") { ponerVista("proceso"); document.title = "Proceso · Pixlet Toys"; return; }
+  if (hs === "#/preguntas") { ponerVista("faq"); document.title = "Preguntas · Pixlet Toys"; return; }
+  document.title = TITULO;
   if (mb) { qInput.value = mb[1]; ponerVista("cat", "all"); deBusqueda = true; }   // enlace a una búsqueda (ej. desde un banner)
   else if (m) {
     // Entrar a otra sección (desde Inicio, el menú o saliendo de una búsqueda) empieza sin búsqueda;
@@ -1435,16 +1695,18 @@ addEventListener("hashchange", route);
 
 /* ---------- inicio: categorías, ofertas y lo nuevo ---------- */
 const portada = p => (p.variantes.length ? p.variantes[0].imgs : p.imgs)[0];
-document.getElementById("tiles").innerHTML = CATS.filter(c => c.id !== "all" && c.id !== "ofertas").map(c => {
+let serieN = 0;
+document.getElementById("tiles").innerHTML = CATS.filter(c => !VIRTUALES.has(c.id)).map(c => {
   const ps = PRODUCTS.filter(p => p.cat === c.id); if (!ps.length) return "";
-  return `<a class="tile" href="#/${c.id}"><img src="${h(imgSrc(portada(ps[0])))}" alt="" width="1000" height="1000" loading="lazy"><span>${h(c.label)}<small>${ps.length}</small></span></a>`;
-}).join("") + `<a class="tile tile-all" href="#/todos"><span>Ver todo<small>${PRODUCTS.length} productos</small></span></a>`;
+  serieN++;
+  return `<a class="tile" href="#/${c.id}"><img src="${h(imgSrc(portada(ps[0])))}" alt="" width="1000" height="1000" loading="lazy"><span><em>Serie ${String(serieN).padStart(2, "0")}</em>${h(c.label)}<small>${ps.length} pieza${ps.length !== 1 ? "s" : ""}</small></span></a>`;
+}).join("") + `<a class="tile tile-all" href="#/todos"><span>Toda la colección<small>${PRODUCTS.length} piezas</small></span></a>`;
 function mini(p){
   return `<a class="mini" href="#${p.id}" data-id="${p.id}"><span class="mini-ph"><img src="${h(imgSrc(portada(p)))}" alt="" width="1000" height="1000" loading="lazy">${etiquetas(p)}</span><b>${h(p.name)}</b><span class="price ${p.price ? "" : "ask"}">${priceHTML(p)}</span></a>`;
 }
 const tira = (t, ps, ver) => ps.length ? `<section class="strip"><div class="strip-h"><h2 class="h-title">${t}</h2>${ver ? `<a href="${ver}">Ver todo</a>` : ""}</div><div class="strip-row">${ps.map(mini).join("")}</div></section>` : "";
 const strips = document.getElementById("strips");
-strips.innerHTML = tira("Ofertas", PRODUCTS.filter(p => descuento(p)), "#/ofertas") + tira("Recién salidos de la impresora", PRODUCTS.slice(-8).reverse(), "") + tira("Elige tu versión", PRODUCTS.filter(p => p.variantes.length), "");
+strips.innerHTML = tira("Precio de coleccionista", PRODUCTS.filter(p => descuento(p)), "#/ofertas") + tira("Recién salidos de la impresora", PRODUCTS.slice(-8).reverse(), "") + tira("Elige tu versión", PRODUCTS.filter(p => p.variantes.length), "");
 strips.addEventListener("click", e => { const a = e.target.closest(".mini"); if (a && byId[a.dataset.id]) openFromLink(e, byId[a.dataset.id], a); });
 const qHome = document.getElementById("qHome");
 qHome.addEventListener("input", () => {
@@ -1452,7 +1714,7 @@ qHome.addEventListener("input", () => {
   try { history.pushState(null, "", "#/todos"); } catch(e) {}
   ponerVista("cat", "all"); qInput.focus();
 });
-document.getElementById("footCats").innerHTML = CATS.filter(c => c.id !== "all").map(c => `<a href="#/${c.id}">${h(c.label)}</a>`).join("");
+document.getElementById("footCats").innerHTML = CATS.filter(c => !VIRTUALES.has(c.id)).map(c => `<a href="#/${c.id}">${h(c.label)}</a>`).join("") + `<a href="#/proceso">Proceso</a><a href="#/preguntas">Preguntas</a>`;
 
 /* ---------- portada: carrusel de banners ---------- */
 (function carrusel(){
@@ -1488,6 +1750,30 @@ document.getElementById("footCats").innerHTML = CATS.filter(c => c.id !== "all")
   addEventListener("resize", () => ir(idx, false));
   programar();
 })();
+
+/* ---------- páginas: Proceso, Preguntas y Próximo lanzamiento ---------- */
+document.getElementById("pasos").innerHTML = PAGINA.proceso.map((x, i) => `<li class="paso">
+    <div class="paso-ph">${x.img ? `<img src="${h(imgSrc(x.img))}" alt="" width="1000" height="1000" loading="lazy">` : `<span class="paso-n">${String(i + 1).padStart(2, "0")}</span>`}</div>
+    <div class="paso-t"><span class="paso-k">Capa ${String(i + 1).padStart(2, "0")}</span><h3>${h(x.titulo)}</h3><p>${h(x.texto)}</p></div>
+  </li>`).join("");
+document.getElementById("faqList").innerHTML = PAGINA.faq.map(x => `<details class="faq-it"><summary>${h(x.p)}</summary><p>${h(x.r)}</p></details>`).join("") || '<p class="pag-sub">Pronto publicaremos las preguntas más comunes.</p>';
+(function lanzamiento(){
+  const L = PAGINA.lanzamiento, el = document.getElementById("lz");
+  if (!L.activo || !L.nombre) return;
+  const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+  const dias = L.fecha ? Math.round((new Date(L.fecha + "T00:00:00") - hoy) / 864e5) : null;
+  const prod = L.producto && byId[L.producto];
+  if (dias !== null && dias < 0 && !prod) return;            // ya pasó y no hay pieza a la cual llevar
+  const ya = dias !== null && dias <= 0 && prod;
+  const cuando = dias === null ? "Muy pronto" : dias > 1 ? `Llega en ${dias} días` : dias === 1 ? "Llega mañana" : "Llega hoy";
+  const foto = L.img || (prod ? portada(prod) : "");
+  el.innerHTML = `<div class="lz-ph${ya ? "" : " lz-oculta"}">${foto ? `<img src="${h(imgSrc(foto))}" alt="" width="1000" height="1000">` : ""}<span aria-hidden="true">${ya ? "" : "?"}</span></div>
+    <div class="lz-t"><p class="kicker-sec">${ya ? "Ya llegó" : "Próximo lanzamiento"}</p><h2>${h(L.nombre)}</h2>${L.texto ? `<p>${h(L.texto)}</p>` : ""}
+      <p class="lz-cuando">${ya ? "Disponible ahora" : cuando}${L.fecha && !ya ? ` · ${new Date(L.fecha + "T00:00:00").toLocaleDateString("es-MX", { day: "numeric", month: "long" })}` : ""}</p>
+      ${ya ? `<a class="btn ipx-btn" href="#${prod.id}">Verla</a>` : prod ? "" : `<a class="btn btn-soft" target="_blank" rel="noopener" href="${h(waLink(`¡Hola Pixlet Toys! 👋 Avísenme cuando salga ${L.nombre}.`))}">Avísame</a>`}</div>`;
+  el.hidden = false;
+})();
+pintarMarcas();
 
 /* ---------- botón "Arriba" ---------- */
 const toTop = document.getElementById("toTop");
