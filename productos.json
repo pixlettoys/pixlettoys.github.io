@@ -1077,11 +1077,11 @@
       }
     ],
     "lanzamiento": {
-      "activo": false,
-      "nombre": "",
+      "activo": true,
+      "nombre": "Psyduck Goku ",
       "texto": "",
-      "fecha": "",
-      "img": "",
+      "fecha": "2026-11-04",
+      "img": "pagina-1",
       "producto": ""
     }
   }
