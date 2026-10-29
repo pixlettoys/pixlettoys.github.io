@@ -648,6 +648,136 @@ footer{border-top-color:var(--line)}
 .faq-mas{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:22px;padding:18px;border-radius:20px;border:1px dashed var(--line)}
 .faq-mas p{margin:0;flex:1 1 100%;font-weight:700}
 .faq-mas .btn{min-height:42px}
+/* ═════════════ Pixlet: estructura de app de coleccionista ═════════════ */
+/* 1) Barra de pestañas abajo (celular) */
+.tabs-px{display:none}
+@media (max-width:760px){
+  .tabs-px{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(4,1fr);
+    padding:6px max(8px,env(safe-area-inset-left,0px)) max(8px,env(safe-area-inset-bottom,0px));
+    background:rgba(43,27,77,.92);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--hair)}
+  .tabs-px a,.tabs-px button{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;padding:6px 0 2px;border:0;background:none;
+    color:var(--muted);text-decoration:none;font:700 .7rem var(--body);cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:14px}
+  .tabs-px svg{width:24px;height:24px;transition:transform .25s var(--spring)}
+  .tabs-px .on{color:var(--ink)}
+  .tabs-px .on svg{color:var(--lime);transform:translateY(-1px)}
+  .tabs-px .on::before{content:"";position:absolute;top:-6px;left:50%;width:22px;height:3px;margin-left:-11px;border-radius:0 0 3px 3px;background:var(--lime)}
+  .tabs-px b{position:absolute;top:2px;left:calc(50% + 6px);min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--lime);color:#2B1B4D;font:800 .68rem/19px var(--body);text-align:center}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))!important}
+  .cart-fab,.fab{display:none!important}
+  .toast{bottom:calc(max(8px,env(safe-area-inset-bottom,0px)) + 76px)}
+  .to-top,html.has-cart .to-top{bottom:calc(max(8px,env(safe-area-inset-bottom,0px)) + 74px)}
+  .tl-nav{display:none!important}
+  .foot-in{padding-bottom:24px}
+}
+
+/* 2) Inicio: accesos a las series y estantes */
+.h-sub{margin:-8px 0 12px;color:var(--muted);font-size:.92rem}
+#tiles{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 4px;margin:0 -2px;scrollbar-width:none}
+#tiles::-webkit-scrollbar{display:none}
+#tiles .cargando{flex:1}
+.spill{flex:none;scroll-snap-align:start;display:flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:18px;background:var(--surface);border:1px solid var(--line);
+  color:var(--ink);text-decoration:none;font-weight:800;white-space:nowrap;transition:transform .2s var(--out),border-color .2s}
+.spill:active{transform:scale(.96)} .spill:hover{border-color:var(--lime)}
+.spill img{width:48px;height:48px;border-radius:12px;object-fit:cover;background:var(--photo)}
+.spill span{display:flex;flex-direction:column;line-height:1.15}
+.spill em{font-style:normal;font:800 .6rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:3px}
+.spill b{min-width:26px;height:26px;padding:0 7px;border-radius:999px;display:grid;place-items:center;background:var(--bg);color:var(--muted);font-size:.78rem}
+.spill-all{background:var(--lime);border-color:var(--lime);color:#2B1B4D;padding:6px 18px}
+.spill-all em{color:#2B1B4D;opacity:.7}
+.strip{margin-top:30px}
+.strip-h{align-items:flex-end}
+.strip-h .h-title{margin:0}
+.strip-h .h-title::before{display:none}
+.sn{display:block;font-style:normal;font:800 .64rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:6px}
+.strip-row{gap:10px;padding:10px 2px 6px}
+.caja{flex:0 0 clamp(146px,40vw,196px);border-radius:16px;border:1.5px solid var(--line);background:var(--surface);padding:0 0 10px;transition:transform .2s var(--out),border-color .2s}
+.caja:active{transform:scale(.97)} .caja:hover{border-color:var(--lime)}
+.caja-top{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:7px 9px 6px;min-height:28px}
+.caja .mini-ph{margin:0 7px;border-radius:11px;overflow:hidden;background:var(--photo)}
+.caja .mini-ph img{opacity:0;transition:opacity .4s}
+.caja .mini-ph img[src]{opacity:1}
+.caja b{padding:10px 10px 0}
+.caja .price{padding:2px 10px 0}
+.caja-mas{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;color:var(--muted);font-weight:700;padding:16px;border-style:dashed}
+.caja-mas span{font-family:var(--display);font-size:2rem;color:var(--lime)}
+
+/* 3) Banners tipo baraja: se asoma el siguiente */
+#bn.bn{background:none;box-shadow:none;overflow:visible;border-radius:0}
+#bn .bn-track{gap:12px;padding:0 16px;margin:0 -16px;scroll-padding:0 16px}
+#bn .bn-s{flex:0 0 86%;border-radius:24px;overflow:hidden;scroll-snap-align:start}
+#bn .bn-dots{position:static;margin-top:10px;justify-content:center}
+#bn .bn-dots button::before{background:var(--line);box-shadow:none}
+#bn .bn-dots button[aria-current="true"]::before{background:var(--lime)}
+#bn .bn-nav{top:calc(50% - 17px)}
+@media (min-width:761px){#bn .bn-track{padding:0;margin:0;scroll-padding:0}#bn .bn-s{flex-basis:90%;border-radius:32px}}
+
+/* 5) Explorar: series como pestañas subrayadas y vista de lista */
+#filters{gap:20px;padding:0 2px}
+.chip{background:none!important;box-shadow:none!important;border-radius:0;padding:0 2px;min-height:44px;color:var(--muted);font-weight:700}
+.chip[aria-pressed="true"]{color:var(--ink)!important}
+.chip .n{opacity:.55;font-size:.8em}
+.chip-ind{top:auto!important;bottom:0;height:3px!important;border-radius:3px 3px 0 0;background:var(--lime)!important}
+.tools .bar{border-bottom:1px solid var(--line);margin-top:4px}
+.vista-btn{flex:none;width:44px;min-height:44px;border:0;border-radius:999px;display:grid;place-items:center;cursor:pointer;background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.vista-btn svg{width:20px;height:20px}
+.vista-btn .v-grid,.vista-btn[aria-pressed="true"] .v-lista{display:none}
+.vista-btn[aria-pressed="true"] .v-grid{display:block}
+.grid.lista{grid-template-columns:1fr!important;gap:8px}
+.grid.lista .carta{display:grid;grid-template-columns:84px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:12px;padding:8px;border-radius:16px}
+.grid.lista .carta-top{grid-column:2;grid-row:1;padding:2px 0 0;min-height:0}
+.grid.lista .photo{grid-column:1;grid-row:1/3;margin:0;width:84px;height:84px;aspect-ratio:1;border-radius:12px}
+.grid.lista .body{grid-column:2;grid-row:2;padding:4px 0 0!important;gap:2px}
+.grid.lista .serie,.grid.lista .desc,.grid.lista .specs,.grid.lista .vsw,.grid.lista .dots,.grid.lista .zoom,.grid.lista .stk,.grid.lista .deseo,.grid.lista .name small{display:none!important}
+.grid.lista .tengo-b{left:4px;bottom:4px;padding:3px;font-size:0}
+.grid.lista .tengo-b svg{width:12px;height:12px}
+.grid.lista .name{font-size:1rem}
+.grid.lista .foot{padding-top:2px;margin-top:auto}
+.grid.lista .foot .btn-add{width:38px;height:38px;min-height:38px}
+.grid.lista .carta:hover{transform:none}
+
+/* 4) Álbum de colección */
+.album .pag-t{margin-bottom:6px}
+.alb-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:12px 0 4px}
+.alb-cuenta{display:flex;align-items:baseline;gap:8px}
+.alb-cuenta b{font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:1;color:var(--lime)}
+.alb-cuenta span{color:var(--muted);font-weight:700}
+.alb-top .mia-barra{flex:1 1 100%;margin:0}
+.alb-top .btn{min-height:40px}
+.alb-top .btn svg{width:18px;height:18px}
+.alb-filtro{display:inline-flex;gap:4px;padding:4px;margin:18px 0 6px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.alb-filtro button{min-height:36px;padding:0 14px;border:0;border-radius:999px;background:none;color:var(--muted);font:700 .86rem var(--body);cursor:pointer}
+.alb-filtro button[aria-pressed="true"]{background:var(--lime);color:#2B1B4D}
+.alb-serie{margin-top:22px}
+.alb-h{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:10px}
+.alb-h h3{margin:0;font-size:1.15rem}
+.alb-h h3 em{display:block;font-style:normal;font:800 .62rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:5px}
+.alb-h span{font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (min-width:600px){.slots{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media (min-width:900px){.slots{grid-template-columns:repeat(8,minmax(0,1fr))}}
+.slot{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--surface);border:1.5px dashed var(--line);display:block;transition:transform .2s var(--out)}
+.slot:active{transform:scale(.94)}
+.slot img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) brightness(.55);opacity:.45}
+.slot-n{position:absolute;left:6px;bottom:5px;font:800 .66rem/1 var(--body);letter-spacing:.06em;color:#F4F0FF;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.slot.si{border:2px solid var(--lime)}
+.slot.si img{filter:none;opacity:1}
+.slot.si .slot-n{color:#2B1B4D;text-shadow:none;background:var(--lime);padding:3px 5px;border-radius:6px;left:4px;bottom:4px}
+.slot-ok{position:absolute;right:4px;top:4px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:#2B1B4D}
+.slot-ok svg{width:13px;height:13px}
+.hint-alb{margin:24px 0 0;color:var(--muted);text-align:center;font-size:.92rem}
+
+/* 6) Ficha a pantalla completa en el celular: entra de lado, como una app */
+.pd-close .ic-back{display:none}
+@media (max-width:759px){
+  .pd{height:100%;max-height:100%;margin:0;border-radius:0;transform:translateX(100%);box-shadow:none;transition:transform .38s var(--out)}
+  .pd.is-open{transform:none}
+  .pd-grip{display:none}
+  .pd-close{left:12px;right:auto;top:calc(10px + env(safe-area-inset-top,0px))}
+  .pd-close .ic-back{display:block}
+  .pd-close .ic-x{display:none}
+  .pd-gallery{padding-top:env(safe-area-inset-top,0px);background:var(--photo)}
+}
+
 
 
 
@@ -687,7 +817,7 @@ footer{border-top-color:var(--line)}
 }
 
 /* ─────────── Navegación: Inicio y Catálogo son dos vistas con su propio enlace ─────────── */
-html:not([data-v="home"]) [data-view="home"],html:not([data-v="cat"]) [data-view="cat"],html:not([data-v="proceso"]) [data-view="proceso"],html:not([data-v="faq"]) [data-view="faq"]{display:none!important}
+html:not([data-v="home"]) [data-view="home"],html:not([data-v="cat"]) [data-view="cat"],html:not([data-v="proceso"]) [data-view="proceso"],html:not([data-v="faq"]) [data-view="faq"],html:not([data-v="album"]) [data-view="album"]{display:none!important}
 main{padding-block:20px 32px}
 .back{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--muted);font-weight:600;font-size:.92rem;text-decoration:none}
 .back:hover{color:var(--ink)}
@@ -802,13 +932,14 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
 </head>
 <body>
 
-<script>(function(){var d=document.documentElement,x=location.hash;d.dataset.v=x==="#/proceso"?"proceso":x==="#/preguntas"?"faq":/^#\/[a-z0-9-]+(\/.+)?$/.test(x)||x==="#catalogo"||(/^#[a-z0-9-]+$/i.test(x)&&x!=="#inicio"&&x!=="#como")?"cat":"home";})();document.documentElement.classList.add("js","intro");setTimeout(function(){document.documentElement.classList.remove("intro")},3200);</script>
+<script>(function(){var d=document.documentElement,x=location.hash;d.dataset.v=x==="#/album"?"album":x==="#/proceso"?"proceso":x==="#/preguntas"?"faq":/^#\/[a-z0-9-]+(\/.+)?$/.test(x)||x==="#catalogo"||(/^#[a-z0-9-]+$/i.test(x)&&x!=="#inicio"&&x!=="#como")?"cat":"home";})();document.documentElement.classList.add("js","intro");setTimeout(function(){document.documentElement.classList.remove("intro")},3200);</script>
 
 <header class="top">
   <nav class="top-in wrap" aria-label="Principal">
     <a class="top-logo" href="#/" aria-label="Pixlet Toys, inicio"><svg class="sym" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#2B1B4D"/><circle cx="50" cy="35" r="15" fill="#F4F0FF"/><circle cx="44.5" cy="35.5" r="2.6" fill="#2B1B4D"/><circle cx="55.5" cy="35.5" r="2.6" fill="#2B1B4D"/><rect x="37.0" y="55.5" width="26" height="6" rx="3" fill="#C6F432"/><rect x="33.0" y="64.0" width="34" height="6" rx="3" fill="#F4F0FF"/><rect x="31.0" y="72.5" width="38" height="6" rx="3" fill="#F4F0FF"/><rect x="31.0" y="81.0" width="38" height="6" rx="3" fill="#F4F0FF"/><rect x="34.0" y="89.5" width="32" height="6" rx="3" fill="#F4F0FF"/></svg><span class="wm"><span class="wm-p">pixlet</span><span class="wm-t">TOYS</span></span></a>
     <div class="top-links">
-      <a href="#/todos">Catálogo</a>
+      <a class="tl-nav" href="#/todos">Explorar</a>
+      <a class="tl-nav" href="#/album">Álbum</a>
       <a class="js-wa" data-msg="¡Hola Pixlet Toys! 👋 Quiero información sobre sus piezas." href="#">Contacto</a>
       <a class="ig" href="https://instagram.com/pixlet.toys" target="_blank" rel="noopener" aria-label="Instagram @pixlet.toys"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
     </div>
@@ -843,6 +974,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
       <input type="search" id="qHome" placeholder="¿Qué buscas? Ajolote, llavero, flor…" autocomplete="off" enterkeyhint="search">
     </label>
     <h2 class="h-title">Las series</h2>
+    <p class="h-sub">Toca una serie o desliza los estantes.</p>
     <div class="tiles" id="tiles"><p class="cargando"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg>Imprimiendo el catálogo…</p></div>
     <div id="strips"></div>
   </div>
@@ -862,6 +994,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           <input type="search" id="q" placeholder="Busca por nombre, color o tipo…" autocomplete="off" enterkeyhint="search">
         </label>
+        <button type="button" class="vista-btn" id="vistaBtn" aria-pressed="false" aria-label="Ver como lista"><svg class="v-lista" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4.5" width="4" height="4" rx="1"/><rect x="4" y="15.5" width="4" height="4" rx="1"/><path d="M11 6.5h9M11 17.5h9"/><rect x="4" y="10" width="4" height="4" rx="1"/><path d="M11 12h9"/></svg><svg class="v-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></button>
         <label class="sort"><span class="sr-only">Ordenar por</span>
           <select id="sort"><option value="rec">Destacados</option><option value="menor">$ Menor</option><option value="mayor">$ Mayor</option><option value="nuevos">Nuevos</option></select>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -909,6 +1042,21 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   </div>
 </section>
 
+<main class="pagina album" id="album" data-view="album" aria-labelledby="albT">
+  <div class="wrap">
+    <p class="kicker-sec">Álbum</p>
+    <h2 class="pag-t" id="albT">Tu colección</h2>
+    <div class="alb-top" id="albTop"></div>
+    <div class="alb-filtro" role="group" aria-label="Mostrar">
+      <button type="button" data-af="todas" aria-pressed="true">Todas</button>
+      <button type="button" data-af="tengo" aria-pressed="false">Las tengo</button>
+      <button type="button" data-af="faltan" aria-pressed="false">Me faltan</button>
+    </div>
+    <div id="albSeries"></div>
+    <p class="hint-alb">Marca tus piezas con <b>✓ La tengo</b> en cada ficha. Se guarda solo en este teléfono.</p>
+  </div>
+</main>
+
 <main class="pagina" id="proceso" data-view="proceso" aria-labelledby="procT">
   <div class="wrap">
     <a class="back" href="#/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Inicio</a>
@@ -941,6 +1089,12 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   </div>
 </footer>
 
+<nav class="tabs-px" id="tabsPx" aria-label="Secciones">
+  <a href="#/" data-t="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg><span>Inicio</span></a>
+  <a href="#/todos" data-t="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><circle cx="17" cy="17" r="3.2"/><path d="m19.4 19.4 1.8 1.8"/></svg><span>Explorar</span></a>
+  <a href="#/album" data-t="album"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M13 4h5.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H13z"/><path d="M6.5 8h2M6.5 11h2M15.5 8h2M15.5 11h2"/></svg><span>Álbum</span></a>
+  <button type="button" id="tabBotin" data-t="botin" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12h-11z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span>Botín</span><b id="tabN" hidden>0</b></button>
+</nav>
 <button type="button" class="cart-fab" id="cartFab" hidden aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12h-11z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M12 11.5v5M9.5 14h5"/></svg><span>Mi botín</span><small id="cartSum"></small><b id="cartN">0</b></button>
 <button type="button" class="to-top" id="toTop" hidden>↑ Arriba</button>
 
@@ -968,7 +1122,7 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
 <dialog class="pd" id="pd" aria-labelledby="pdName">
   <div class="pd-top">
     <div class="pd-grip" id="pdGrip" aria-hidden="true"></div>
-    <button class="pd-close" id="pdClose" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="pd-close" id="pdClose" type="button" aria-label="Cerrar"><svg class="ic-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <div class="pd-body">
     <div class="pd-media">
@@ -1332,15 +1486,34 @@ function pintarMarcas(){
   grid.querySelectorAll("[data-deseo]").forEach(b => { const on = deseos.has(b.dataset.deseo); b.setAttribute("aria-pressed", on); b.setAttribute("aria-label", (on ? "Quitar " : "Agregar ") + byId[b.dataset.deseo].name + (on ? " de tu lista de deseos" : " a tu lista de deseos")); });
   grid.querySelectorAll(".card").forEach(el => { el.querySelector(".tengo-b").hidden = !tengo.has(el.dataset.id); });
   if (current) pintarMarcasFicha(current);
-  pintarProgreso();
+  pintarProgreso(); if (vista === "album") pintarAlbum();
   filters.querySelectorAll('.chip[data-id="deseos"] .n, .chip[data-id="coleccion"] .n').forEach(n => { n.textContent = n.closest(".chip").dataset.id === "deseos" ? deseos.size : tengo.size; });
 }
+let albFiltro = "todas";
+function pintarAlbum(){
+  if (!document.getElementById("albSeries")) return;
+  const t = PRODUCTS.length, n = tengo.size, pct = t ? Math.round(n / t * 100) : 0;
+  const lista = [...tengo].map(k => `${numero(byId[k])} ${byId[k].name}`).join("\n");
+  document.getElementById("albTop").innerHTML = `<div class="alb-cuenta"><b>${n}</b><span>de ${t} piezas · ${pct} %</span></div>
+    <div class="mia-barra" role="img" aria-label="${pct} % de la colección"><span style="width:${pct}%"></span></div>
+    ${n ? `<a class="btn btn-soft" target="_blank" rel="noopener" href="${h("https://wa.me/?text=" + encodeURIComponent(`Mi álbum de Pixlet Toys: ${n} de ${t} piezas.\n${lista}`))}">${WA_ICON}Presumir mi álbum</a>` : ""}`;
+  document.getElementById("albSeries").innerHTML = SERIES.map(({ c, ps, n: sn }) => {
+    const vis = ps.filter(p => albFiltro === "todas" || (albFiltro === "tengo") === tengo.has(p.id)); if (!vis.length) return "";
+    const tiene = ps.filter(p => tengo.has(p.id)).length;
+    return `<section class="alb-serie"><div class="alb-h"><h3><em>Serie ${String(sn).padStart(2, "0")}</em>${h(c.label)}</h3><span>${tiene}/${ps.length}</span></div>
+      <div class="slots">${vis.map(p => `<a class="slot${tengo.has(p.id) ? " si" : ""}" href="#${p.id}" data-id="${p.id}" aria-label="${numero(p)} ${h(p.name)}${tengo.has(p.id) ? ", la tienes" : ", te falta"}">
+        <img src="${h(miniSrc(portada(p)))}" alt="" width="1000" height="1000" loading="lazy"><span class="slot-n">${numero(p)}</span>${tengo.has(p.id) ? `<span class="slot-ok">${CHECK}</span>` : ""}</a>`).join("")}</div></section>`;
+  }).join("") || `<div class="no-res">${SIMBOLO}${albFiltro === "tengo" ? "Todavía no marcas piezas." : "¡No te falta ninguna! Colección completa."}</div>`;
+}
+document.querySelector(".alb-filtro").addEventListener("click", e => { const b = e.target.closest("[data-af]"); if (!b) return; albFiltro = b.dataset.af;
+  document.querySelectorAll(".alb-filtro button").forEach(x => x.setAttribute("aria-pressed", x === b)); pintarAlbum(); });
+document.getElementById("albSeries").addEventListener("click", e => { const a = e.target.closest(".slot"); if (a && byId[a.dataset.id]) openFromLink(e, byId[a.dataset.id], a); });
 function pintarProgreso(){
   const el = document.getElementById("mia"), n = tengo.size, t = PRODUCTS.length, pct = t ? Math.round(n / t * 100) : 0;
   el.innerHTML = `<div class="mia-t"><p class="kicker-sec">Tu colección</p><h2>${n ? `Tienes ${n} de ${t} piezas` : "¿Ya tienes piezas Pixlet?"}</h2>
     <p>${n ? (n === t ? "Colección completa. Respeto." : `Te faltan ${t - n}. Una capa a la vez.`) : "Abre una pieza que ya tengas y toca “✓ La tengo”. Aquí verás tu avance."}</p></div>
     <div class="mia-barra" role="img" aria-label="${pct} % de la colección"><span style="width:${pct}%"></span></div>
-    <div class="mia-acts"><a class="btn btn-soft" href="#/coleccion">✓ Mi colección <b>${n}</b></a><a class="btn btn-soft" href="#/deseos">♥ Deseos <b>${deseos.size}</b></a></div>`;
+    <div class="mia-acts"><a class="btn btn-soft" href="#/album">Abrir mi álbum <b>${n}</b></a><a class="btn btn-soft" href="#/deseos">♥ Deseos <b>${deseos.size}</b></a></div>`;
 }
 function pintarAccionesLista(id){
   const el = document.getElementById("listaAcc");
@@ -1353,6 +1526,14 @@ function pintarAccionesLista(id){
 grid.addEventListener("click", e => { const b = e.target.closest("[data-deseo]"); if (!b) return; e.preventDefault(); e.stopPropagation();
   const id = b.dataset.deseo; alternar(deseos, "pt-deseos", id); aviso(deseos.has(id) ? `${byId[id].name} está en tus deseos ♥` : `${byId[id].name} salió de tus deseos`); }, true);
 addEventListener("storage", e => { if (e.key === "pt-deseos" || e.key === "pt-coleccion") location.reload(); });
+
+/* ---------- vista cuadrícula o lista (se recuerda en este teléfono) ---------- */
+(function vistaLista(){
+  const btn = document.getElementById("vistaBtn"), poner = on => { grid.classList.toggle("lista", on); btn.setAttribute("aria-pressed", on); btn.setAttribute("aria-label", on ? "Ver como cuadrícula" : "Ver como lista"); };
+  let on = false; try { on = localStorage.getItem("pt-vista") === "lista"; } catch(e) {}
+  poner(on);
+  btn.addEventListener("click", () => { on = !on; poner(on); try { localStorage.setItem("pt-vista", on ? "lista" : "cuadricula"); } catch(e) {} });
+})();
 
 /* ---------- ordenar ---------- */
 document.getElementById("sort").addEventListener("change", e => {
@@ -1432,6 +1613,8 @@ function pintarPedido(){
   const cf = document.getElementById("cartFab"); cf.hidden = !n; cf.setAttribute("aria-label", `Mi botín, ${n} pieza${n !== 1 ? "s" : ""}`);
   fab.classList.toggle("is-hidden", n > 0);
   root.classList.toggle("has-cart", n > 0);
+  const tn = document.getElementById("tabN"); tn.hidden = !n; tn.textContent = n;
+  document.getElementById("tabBotin").setAttribute("aria-label", `Mi botín, ${n} pieza${n !== 1 ? "s" : ""}`);
   grid.querySelectorAll("[data-add]").forEach(b => pintarAgregar(b, b.dataset.add));
   if (dlg.open && current) pintarAgregar(document.getElementById("pdAdd"), claveActual(), true);
   const ids = Object.keys(pedido);
@@ -1482,7 +1665,7 @@ grid.addEventListener("click", e => { const b = e.target.closest("[data-add]"); 
   if (byId[b.dataset.add].variantes.length) { openProduct(b.dataset.add, {push:true, trigger:b}); return; }
   cambiar(b.dataset.add, 1);
   aviso(`${byId[b.dataset.add].name} va a tu botín · ${piezas()} en total`);
-  if (canAnimate()) document.getElementById("cartFab").animate([{transform:"scale(1)"},{transform:"scale(1.12)"},{transform:"scale(1)"}], {duration:320}); });
+  if (canAnimate()) ["cartFab", "tabBotin"].forEach(id => document.getElementById(id).animate([{transform:"scale(1)"},{transform:"scale(1.12)"},{transform:"scale(1)"}], {duration:320})); });
 document.getElementById("pdAdd").addEventListener("click", e => { const id = e.currentTarget.dataset.add; cambiar(id, 1); aviso(`${partir(id).nombre} va a tu botín · ${piezas()} en total`); });
 // Pedir por DM: se copia el pedido y se abre el chat de Instagram
 function copiar(t){
@@ -1497,6 +1680,7 @@ document.getElementById("cartIg").addEventListener("click", () => {
   window.open("https://ig.me/m/pixlet.toys", "_blank", "noopener");
 });
 const cart = document.getElementById("cart");
+document.getElementById("tabBotin").addEventListener("click", () => document.getElementById("cartFab").click());
 document.getElementById("cartFab").addEventListener("click", () => { pintarPedido(); if (typeof cart.showModal === "function") { cart.showModal(); root.classList.add("modal-open"); } });
 document.getElementById("cartX").addEventListener("click", () => cart.close());
 cart.addEventListener("close", () => root.classList.remove("modal-open"));
@@ -1686,6 +1870,7 @@ function ponerVista(v, catId){
   const cambia = vista !== v;
   if (cambia && vista) posVista[vista] = scrollY;
   vista = v; root.dataset.v = v;
+  document.querySelectorAll("#tabsPx [data-t]").forEach(a => { const on = a.dataset.t === v; a.classList.toggle("on", on); if (a.tagName === "A") on ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"); });
   if (v === "cat") { const otra = cambia || catId !== catActual; setCat(catId, false); if (otra) subir(0); }
   else if (cambia) subir(v === "home" ? posVista.home || 0 : 0);
   revisarArriba();
@@ -1698,6 +1883,7 @@ function route(){
   if (id) { if (!vista) ponerVista("cat", byId[id].cat); if (!dlg.open || current !== id || closing) openProduct(id); return; }
   if (dlg.open) { pushed = false; closeProduct(); }
   const m = /^#\/([a-z0-9-]*)$/.exec(hs), mb = /^#\/buscar\/(.{1,60})$/.exec(hs);
+  if (hs === "#/album") { pintarAlbum(); ponerVista("album"); document.title = "Álbum · Pixlet Toys"; return; }
   if (hs === "#/proceso") { ponerVista("proceso"); document.title = "Proceso · Pixlet Toys"; return; }
   if (hs === "#/preguntas") { ponerVista("faq"); document.title = "Preguntas · Pixlet Toys"; return; }
   document.title = TITULO;
@@ -1717,18 +1903,29 @@ addEventListener("hashchange", route);
 /* ---------- inicio: categorías, ofertas y lo nuevo ---------- */
 const portada = p => (p.variantes.length ? p.variantes[0].imgs : p.imgs)[0];
 let serieN = 0;
-document.getElementById("tiles").innerHTML = CATS.filter(c => !VIRTUALES.has(c.id)).map(c => {
-  const ps = PRODUCTS.filter(p => p.cat === c.id); if (!ps.length) return "";
-  serieN++;
-  return `<a class="tile" href="#/${c.id}"><img src="${h(miniSrc(portada(ps[0])))}" alt="" width="1000" height="1000" loading="lazy"><span><em>Serie ${String(serieN).padStart(2, "0")}</em>${h(c.label)}<small>${ps.length} pieza${ps.length !== 1 ? "s" : ""}</small></span></a>`;
-}).join("") + `<a class="tile tile-all" href="#/todos"><span>Toda la colección<small>${PRODUCTS.length} piezas</small></span></a>`;
+const SERIES = CATS.filter(c => !VIRTUALES.has(c.id)).map(c => ({ c, ps: PRODUCTS.filter(p => p.cat === c.id) })).filter(x => x.ps.length).map(x => ({ ...x, n: ++serieN }));
+const dos = n => String(n).padStart(2, "0");
+document.getElementById("tiles").innerHTML = SERIES.map(({ c, ps, n }) =>
+  `<a class="spill" href="#/${c.id}"><img src="${h(miniSrc(portada(ps[0])))}" alt="" width="1000" height="1000"><span><em>Serie ${dos(n)}</em>${h(c.label)}</span><b>${ps.length}</b></a>`).join("") +
+  `<a class="spill spill-all" href="#/todos"><span><em>${PRODUCTS.length} piezas</em>Toda la colección</span></a>`;
+// Cajita de coleccionable para los estantes; la foto se carga cuando el estante se acerca a la pantalla
 function mini(p){
-  return `<a class="mini" href="#${p.id}" data-id="${p.id}"><span class="mini-ph"><img src="${h(miniSrc(portada(p)))}" alt="" width="1000" height="1000" decoding="async">${etiquetas(p)}</span><b>${h(p.name)}</b><span class="price ${p.price ? "" : "ask"}">${priceHTML(p)}</span></a>`;
+  return `<a class="mini caja" href="#${p.id}" data-id="${p.id}"><span class="caja-top"><span class="num">${numero(p)}</span>${rarezaHTML(p)}</span>
+    <span class="mini-ph"><img data-src="${h(miniSrc(portada(p)))}" alt="" width="1000" height="1000" decoding="async">${etiquetas(p)}</span>
+    <b>${h(p.name)}</b><span class="price ${p.price ? "" : "ask"}">${priceHTML(p)}</span></a>`;
 }
-const tira = (t, ps, ver) => ps.length ? `<section class="strip"><div class="strip-h"><h2 class="h-title">${t}</h2>${ver ? `<a href="${ver}">Ver todo</a>` : ""}</div><div class="strip-row">${ps.map(mini).join("")}</div></section>` : "";
+const tira = (t, ps, ver, extra) => ps.length ? `<section class="strip"><div class="strip-h"><h2 class="h-title">${t}</h2>${ver ? `<a href="${ver}">Ver ${extra ? `las ${extra}` : "todo"} →</a>` : ""}</div><div class="strip-row">${ps.map(mini).join("")}${ver && extra > ps.length ? `<a class="mini caja caja-mas" href="${ver}"><span>+${extra - ps.length}</span>Ver la serie completa</a>` : ""}</div></section>` : "";
 const strips = document.getElementById("strips");
-strips.innerHTML = tira("Precio de coleccionista", PRODUCTS.filter(p => descuento(p)), "#/ofertas") + tira("Recién salidos de la impresora", PRODUCTS.slice(-8).reverse(), "") + tira("Elige tu versión", PRODUCTS.filter(p => p.variantes.length), "");
-strips.addEventListener("click", e => { const a = e.target.closest(".mini"); if (a && byId[a.dataset.id]) openFromLink(e, byId[a.dataset.id], a); });
+strips.innerHTML = tira("Recién salidos de la impresora", PRODUCTS.slice(-8).reverse(), "") +
+  tira("Precio de coleccionista", PRODUCTS.filter(p => descuento(p)), "#/ofertas") +
+  SERIES.map(({ c, ps, n }) => tira(`<em class="sn">Serie ${dos(n)}</em>${h(c.label)}`, ps.slice(0, 10), `#/${c.id}`, ps.length)).join("");
+strips.addEventListener("click", e => { const a = e.target.closest(".mini[data-id]"); if (a && byId[a.dataset.id]) openFromLink(e, byId[a.dataset.id], a); });
+(function cargarEstantes(){
+  const filas = [...document.querySelectorAll(".strip-row")], cargar = f => f.querySelectorAll("img[data-src]").forEach(im => { im.src = im.dataset.src; im.removeAttribute("data-src"); });
+  if (!("IntersectionObserver" in window)) return filas.forEach(cargar);
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { cargar(e.target); io.unobserve(e.target); } }), { rootMargin: "400px 0px" });
+  filas.forEach(f => io.observe(f));
+})();
 const qHome = document.getElementById("qHome");
 qHome.addEventListener("input", () => {
   qInput.value = qHome.value; qHome.value = "";
@@ -1755,11 +1952,12 @@ document.getElementById("footCats").innerHTML = CATS.filter(c => !VIRTUALES.has(
   document.getElementById("bnPrev").hidden = document.getElementById("bnNext").hidden = n < 2;
   if (n < 2) return;
   let idx = 0, t = 0, pausa = false;
-  const ir = (i, suave = true) => { idx = (i + n) % n; try { track.scrollTo({ left: idx * track.clientWidth, behavior: suave && !calm() ? "smooth" : "instant" }); } catch(e) { track.scrollLeft = idx * track.clientWidth; } marcar(); };
+  const paso = () => n > 1 ? track.children[1].offsetLeft - track.children[0].offsetLeft : track.clientWidth;
+  const ir = (i, suave = true) => { idx = (i + n) % n; const left = idx * paso(); try { track.scrollTo({ left, behavior: suave && !calm() ? "smooth" : "instant" }); } catch(e) { track.scrollLeft = left; } marcar(); };
   const marcar = () => [...dots.children].forEach((d, j) => d.setAttribute("aria-current", j === idx));
   const programar = () => { clearTimeout(t); if (!calm() && !pausa) t = setTimeout(() => { if (document.visibilityState === "visible" && root.dataset.v === "home" && !document.querySelector("dialog[open]")) ir(idx + 1); programar(); }, 6000); };
   let sR = 0;
-  track.addEventListener("scroll", () => { cancelAnimationFrame(sR); sR = requestAnimationFrame(() => { const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); if (i !== idx && i >= 0 && i < n) { idx = i; marcar(); } }); }, {passive:true});
+  track.addEventListener("scroll", () => { cancelAnimationFrame(sR); sR = requestAnimationFrame(() => { const i = Math.round(track.scrollLeft / Math.max(1, paso())); if (i !== idx && i >= 0 && i < n) { idx = i; marcar(); } }); }, {passive:true});
   // Si el cliente toca o pasa el ratón, el carrusel se detiene un rato
   const detener = () => { pausa = true; clearTimeout(t); clearTimeout(detener.t); detener.t = setTimeout(() => { pausa = false; programar(); }, 12000); };
   ["pointerdown", "focusin", "wheel"].forEach(ev => track.addEventListener(ev, detener, {passive:true}));
