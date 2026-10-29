@@ -532,12 +532,11 @@ footer{border-top-color:var(--line)}
 @keyframes parpadeo{0%,92%,100%{transform:none}95%{transform:scaleY(.1)}}
 .fig-p rect{transform-box:fill-box;transform-origin:center}
 .ipx-t{min-width:0}
-.ipx-wm{margin:0;display:flex;flex-direction:column;align-items:flex-start;line-height:.85}
-.ipx-wm .p{font-family:var(--display);font-size:clamp(2.6rem,9vw,4.4rem);letter-spacing:-.01em}
-.ipx-wm .t{font:800 clamp(.7rem,1.8vw,.95rem)/1 var(--body);letter-spacing:.9em;color:var(--lime);margin:6px 0 0 4px}
-.ipx-tag{margin:10px 0 0;color:var(--muted);font-size:1rem;line-height:1.35}
+.ipx-k{margin:0 0 6px;font:600 .72rem/1.2 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
+.ipx-h{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(1.55rem,6.4vw,3rem);line-height:1.02;letter-spacing:-.005em;text-wrap:balance}
+.ipx-h span{color:var(--muted)}
 .ipx-btn{margin-top:12px;background:var(--lime);color:#2B1B4D;min-height:42px;font-weight:800}
-@media (max-width:520px){.ipx{gap:14px}.ipx-fig{width:84px;height:84px}.ipx-btn{display:none}.ipx-tag{font-size:.92rem}}
+@media (max-width:520px){.ipx{gap:14px}.ipx-fig{width:84px;height:84px}.ipx-btn{display:none}.ipx-k{font-size:.62rem;letter-spacing:.16em}}
 @media (min-width:760px){.ipx{gap:28px;margin:10px 0 24px}.ipx-fig{width:150px;height:150px}}
 @media (prefers-reduced-motion:reduce){.fig-p *{animation:none!important}}
 
@@ -821,8 +820,8 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
     <div class="ipx">
       <div class="ipx-fig"><svg class="fig-p" viewBox="0 0 100 100" aria-hidden="true"><g class="fp-cuerpo"><rect style="--k:4" x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:3" x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:2" x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:1" x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:0" class="fp-lima" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/></g><g class="fp-cabeza"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><g class="fp-ojos"><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/></g></g></svg></div>
       <div class="ipx-t">
-        <p class="ipx-wm" aria-hidden="true"><span class="p">pixlet</span><span class="t">TOYS</span></p>
-        <p class="ipx-tag">Coleccionables geek impresos en 3D, capa por capa.</p>
+        <p class="ipx-k">Impreso en 3D · capa por capa</p>
+        <p class="ipx-h">Pequeñas piezas, <span>mucha personalidad.</span></p>
         <a class="btn ipx-btn" href="#/todos">Ver la colección</a>
       </div>
     </div>
