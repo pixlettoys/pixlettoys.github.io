@@ -486,10 +486,6 @@ footer{border-top-color:var(--line)}
   background:linear-gradient(var(--lime),var(--lime)) 4px 0/26px 5px no-repeat,
     linear-gradient(var(--ink),var(--ink)) 1px 7.5px/32px 5px no-repeat,
     linear-gradient(var(--ink),var(--ink)) 3px 15px/28px 5px no-repeat;opacity:.95}
-.bn-foto::before{right:-6%;top:auto;bottom:-14%;width:58%;aspect-ratio:auto;height:120%;border-radius:0;opacity:.14;
-  background:repeating-linear-gradient(180deg,var(--fg-b) 0 14px,transparent 14px 26px);
-  -webkit-mask:radial-gradient(closest-side,#000 70%,transparent);mask:radial-gradient(closest-side,#000 70%,transparent)}
-.bn{background:var(--surface)}
 
 /* La figurita: estados vacíos y de carga */
 .fig{display:block;width:64px;height:64px;margin:0 auto 10px}
@@ -521,8 +517,6 @@ footer{border-top-color:var(--line)}
 /* ─────────── Pixlet: piezas de colección ─────────── */
 /* Portada que se imprime: la figurita se arma capa por capa al entrar */
 .hero{padding-top:18px}
-.ipx{display:flex;align-items:center;gap:18px;margin:6px 0 18px}
-.ipx-fig{flex:none;width:96px;height:96px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
 .fig-p{width:72%;height:72%;overflow:visible}
 .fig-p rect{animation:capaSube .45s var(--out) calc(.15s + var(--k) * .22s) backwards}
 .fig-p .fp-cabeza{animation:cabezaCae .6s cubic-bezier(.3,1.6,.5,1) 1.35s backwards}
@@ -532,28 +526,9 @@ footer{border-top-color:var(--line)}
 @keyframes cabezaCae{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}
 @keyframes parpadeo{0%,92%,100%{transform:none}95%{transform:scaleY(.1)}}
 .fig-p rect{transform-box:fill-box;transform-origin:center}
-.ipx-t{min-width:0}
-.ipx-k{margin:0 0 6px;font:600 .72rem/1.2 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
-.ipx-h{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(1.55rem,6.4vw,3rem);line-height:1.02;letter-spacing:-.005em;text-wrap:balance}
-.ipx-h span{color:var(--muted)}
 .ipx-btn{margin-top:12px;background:var(--lime);color:#2B1B4D;min-height:42px;font-weight:800}
-@media (max-width:520px){.ipx{gap:14px}.ipx-fig{width:84px;height:84px}.ipx-btn{display:none}.ipx-k{font-size:.62rem;letter-spacing:.16em}}
-@media (min-width:760px){.ipx{gap:28px;margin:10px 0 24px}.ipx-fig{width:150px;height:150px}}
 @media (prefers-reduced-motion:reduce){.fig-p *{animation:none!important}}
 
-/* Próximo lanzamiento */
-.lz{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;align-items:center;margin:16px 0 4px;padding:14px;border-radius:24px;
-  background:var(--surface);border:1px dashed var(--lime)}
-.lz-ph{position:relative;aspect-ratio:1;border-radius:16px;overflow:hidden;background:var(--photo)}
-.lz-ph img{width:100%;height:100%;object-fit:cover;display:block}
-.lz-oculta img{filter:blur(14px) saturate(.3) brightness(.75);transform:scale(1.15)}
-.lz-ph span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:3rem;color:#F4F0FF;text-shadow:0 4px 18px rgba(0,0,0,.4)}
-.lz-t h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,4vw,2rem);line-height:1.05}
-.lz-t p{margin:6px 0 0;color:var(--muted)}
-.lz-t .kicker-sec{margin:0 0 4px;color:var(--lime)}
-.lz-cuando{font-weight:800;color:var(--ink)!important}
-.lz .btn{margin-top:10px;min-height:40px}
-@media (min-width:760px){.lz{grid-template-columns:160px minmax(0,1fr);padding:18px 22px}}
 
 /* Tarjetas tipo coleccionable */
 .carta{border-radius:18px;border:1.5px solid var(--line);padding:0 0 2px}
@@ -701,15 +676,6 @@ footer{border-top-color:var(--line)}
 .caja-mas{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;color:var(--muted);font-weight:700;padding:16px;border-style:dashed}
 .caja-mas span{font-family:var(--display);font-size:2rem;color:var(--lime)}
 
-/* 3) Banners tipo baraja: se asoma el siguiente */
-#bn.bn{background:none;box-shadow:none;overflow:visible;border-radius:0}
-#bn .bn-track{gap:12px;padding:0 16px;margin:0 -16px;scroll-padding:0 16px}
-#bn .bn-s{flex:0 0 86%;border-radius:24px;overflow:hidden;scroll-snap-align:start}
-#bn .bn-dots{position:static;margin-top:10px;justify-content:center}
-#bn .bn-dots button::before{background:var(--line);box-shadow:none}
-#bn .bn-dots button[aria-current="true"]::before{background:var(--lime)}
-#bn .bn-nav{top:calc(50% - 17px)}
-@media (min-width:761px){#bn .bn-track{padding:0;margin:0;scroll-padding:0}#bn .bn-s{flex-basis:90%;border-radius:32px}}
 
 /* 5) Explorar: series como pestañas subrayadas y vista de lista */
 #filters{gap:20px;padding:0 2px}
@@ -781,40 +747,6 @@ footer{border-top-color:var(--line)}
 
 
 
-/* Portada: carrusel de banners */
-.hero{background:none;padding-block:16px 0;text-align:left}
-.bn{position:relative;border-radius:26px;overflow:hidden;background:var(--photo);box-shadow:0 2px 14px rgba(43,27,77,.06)}
-.bn-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;outline:none}
-.bn-track::-webkit-scrollbar{display:none}
-.bn-s{position:relative;flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;aspect-ratio:16/9;display:block;overflow:hidden;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.bn-img img{display:block;width:100%;height:100%;object-fit:cover}
-.bn-foto{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:12px;padding:18px 18px 30px 22px;background:var(--bg-b);color:var(--fg-b)}
-.bn-foto::before{content:"";position:absolute;right:-12%;top:-30%;width:70%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.16);pointer-events:none}
-.bn-t{position:relative;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.bn-t h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(1.35rem,5.6vw,2.9rem);line-height:1.02;letter-spacing:-.005em;text-wrap:balance}
-.bn-t p{margin:0;font-size:clamp(.85rem,2.6vw,1.15rem);line-height:1.3;opacity:.88;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.bn-btn{margin-top:6px;display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 16px;border-radius:999px;background:var(--fg-b);color:var(--bg-b);font-weight:800;font-size:.9rem;white-space:nowrap}
-.bn-ph{position:relative;justify-self:center;width:min(100%,46vh);aspect-ratio:1;border-radius:22px;overflow:hidden;transform:rotate(3deg);
-  box-shadow:0 0 0 5px rgba(255,255,255,.9),0 14px 28px -12px rgba(0,0,0,.35);background:#fff}
-.bn-ph img{display:block;width:100%;height:100%;object-fit:cover}
-.bn-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;pointer-events:none}
-.bn-dots button{width:24px;height:24px;border:0;background:none;padding:0;cursor:pointer;pointer-events:auto;position:relative}
-.bn-dots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:999px;background:rgba(255,255,255,.6);box-shadow:0 0 0 1px rgba(0,0,0,.18);transition:width .3s var(--spring),margin .3s var(--spring)}
-.bn-dots button[aria-current="true"]::before{width:20px;margin-left:-10px;background:#fff}
-.bn-nav{position:absolute;top:50%;z-index:2;width:44px;height:44px;margin-top:-22px;border:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;
-  background:var(--glass);color:var(--glass-ink);box-shadow:0 6px 16px -8px var(--shadow);opacity:0;transition:opacity .2s}
-.bn-nav svg{width:20px;height:20px}
-.bn-nav.prev{left:12px} .bn-nav.next{right:12px}
-.bn:hover .bn-nav,.bn-nav:focus-visible{opacity:1}
-@media (hover:none){.bn-nav{display:none}}
-@media (min-width:760px){
-  .hero{padding-top:24px}
-  .bn{border-radius:32px}
-  .bn-s{aspect-ratio:21/9}
-  .bn-foto{padding:34px 48px 40px 56px;gap:32px}
-  .bn-t{gap:12px}
-  .bn-btn{min-height:46px;padding:0 22px;font-size:1rem}
-}
 
 /* ─────────── Navegación: Inicio y Catálogo son dos vistas con su propio enlace ─────────── */
 html:not([data-v="home"]) [data-view="home"],html:not([data-v="cat"]) [data-view="cat"],html:not([data-v="proceso"]) [data-view="proceso"],html:not([data-v="faq"]) [data-view="faq"],html:not([data-v="album"]) [data-view="album"]{display:none!important}
@@ -846,7 +778,6 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
 
 /* Inicio */
 .home{padding-block:28px 8px}
-.home-search{margin:0 0 26px}
 .h-title{font-weight:800;font-size:clamp(1.35rem,3.4vw,1.8rem);letter-spacing:-.02em;margin:0 0 14px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
 .tile{position:relative;display:block;border-radius:20px;overflow:hidden;background:var(--surface);color:var(--ink);text-decoration:none;
@@ -924,9 +855,141 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
   .hero-img{margin-top:22px}
   .hero-img img{aspect-ratio:21/9;object-position:center 55%}
   .home{padding-top:22px}
-  .home-search{margin-bottom:20px}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps li{padding:14px 16px}
+}
+/* ─────────── Pixlet: búsqueda en el header ─────────── */
+.top-in{position:relative}
+.ico{display:inline-grid;place-items:center;width:40px;height:44px;padding:0;border:0;background:none;border-radius:12px;color:var(--ink-2);cursor:pointer}
+.ico svg{width:21px;height:21px}
+.ico:hover{color:var(--ink)}
+.q-open{order:-1;margin-right:-10px}
+.q-open .q-k{display:none}
+.q-bar{position:absolute;top:0;bottom:0;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:8px;
+  opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s,transform .22s var(--out),visibility 0s .22s}
+.top.q-on .q-bar{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .22s var(--out)}
+.top.q-on .top-logo,.top.q-on .top-links{visibility:hidden}
+.q-field{flex:1;min-width:0;display:flex;align-items:center;gap:10px;height:44px;padding:0 14px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 2px #4B3880;color:var(--muted)}
+.q-field:focus-within{box-shadow:inset 0 0 0 2px var(--ink-2)}
+.q-field svg{width:19px;height:19px;flex:none}
+.q-field input{flex:1;min-width:0;border:0;background:none;outline:none;font:500 1rem var(--body);color:var(--ink)}
+.q-field input::placeholder{color:var(--muted)}
+.q-field input::-webkit-search-cancel-button{display:none}
+.q-x{min-height:44px;padding:0 6px;border:0;background:none;color:var(--ink-2);font:700 .9rem var(--body);cursor:pointer}
+.q-panel{position:fixed;left:0;right:0;top:calc(53px + env(safe-area-inset-top,0px));bottom:0;z-index:29;background:rgba(20,11,40,.62);opacity:0;visibility:hidden;transition:opacity .2s,visibility 0s .2s}
+.q-panel.on{opacity:1;visibility:visible;transition:opacity .2s}
+.q-sug{background:var(--bg);border-bottom:1px solid var(--hair);padding:14px 0 18px}
+.q-sug p{margin:0 0 10px;font:700 .72rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.q-chips{display:flex;flex-wrap:wrap;gap:8px}
+.q-chips a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:700;font-size:.92rem}
+.q-chips a:hover{background:#4B3880}
+
+/* ─────────── Pixlet: el próximo drop como protagonista ─────────── */
+.hero{background:none;padding-block:12px 0;text-align:left}
+.drop{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 128px;grid-template-areas:"txt viz" "cta cta";gap:14px;padding:18px;border-radius:28px;
+  background:var(--surface);box-shadow:inset 0 0 0 1px var(--hair);overflow:hidden;isolation:isolate}
+.drop::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(180deg,rgba(244,240,255,.028) 0 6px,transparent 6px 12px);pointer-events:none}
+.d-txt{grid-area:txt;min-width:0;display:flex;flex-direction:column}
+.d-k{margin:0;font:700 .68rem/1.2 var(--body);letter-spacing:.12em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;color:var(--muted)}
+.d-k b{color:var(--ink);font-weight:800}
+.d-k.ya{color:var(--lime)}
+.d-name{margin:4px 0 0;font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:1;letter-spacing:-.01em;overflow-wrap:anywhere}
+.d-brand{margin:6px 0 0;font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1.02;text-wrap:balance}
+.d-brand span{color:var(--muted)}
+.d-txt>.d-p{margin:8px 0 0;color:var(--muted);font-size:.92rem;line-height:1.35}
+.cd{display:flex;align-items:flex-start;gap:4px;margin:12px 0 0;font-variant-numeric:tabular-nums}
+.cd div{display:flex;flex-direction:column;align-items:center;min-width:44px}
+.cd strong{font:800 2rem/1 var(--body);letter-spacing:-.02em}
+.cd small{margin-top:3px;font:600 .7rem/1 var(--body);color:var(--muted);letter-spacing:.04em}
+.cd i{font:normal 800 1.6rem/1 var(--body);color:var(--line);padding-top:2px}
+.viz{grid-area:viz;position:relative;align-self:stretch;min-height:150px;border-radius:20px;overflow:hidden;background:#1d1238}
+.viz img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(9px) saturate(.95);transform:scale(1.2)}
+.viz::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(43,27,77,.16) 0 2px,transparent 2px 7px);pointer-events:none}
+.viz.viz-ya img{filter:none;transform:none}
+.viz.viz-ya::after{display:none}
+.viz-cover{position:absolute;left:0;right:0;top:0;height:calc((1 - var(--p,0)) * 100%);z-index:1;background:repeating-linear-gradient(180deg,#2B1B4D 0 9px,#261845 9px 12px);transition:height 1.2s var(--out)}
+.viz-cover::after{content:"";position:absolute;left:8px;right:8px;bottom:-3px;height:6px;border-radius:6px;background:var(--lime);box-shadow:0 0 0 2px #2B1B4D,0 0 18px rgba(198,244,50,.55)}
+.viz-cover::before{content:"";position:absolute;bottom:-5px;left:8px;width:18px;height:10px;border-radius:5px;background:#F4F0FF;box-shadow:0 0 0 2px #2B1B4D;z-index:1;animation:boquilla 2.6s ease-in-out infinite alternate}
+@keyframes boquilla{to{left:calc(100% - 26px)}}
+.viz-q{position:absolute;left:0;right:0;top:12%;z-index:2;text-align:center;font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--ink);opacity:.9}
+.viz-chip{position:absolute;left:8px;bottom:8px;z-index:2;padding:4px 9px;border-radius:999px;background:rgba(43,27,77,.88);color:var(--ink);font:800 .7rem/1.2 var(--body);font-variant-numeric:tabular-nums}
+.viz-fig{display:grid;place-items:center;background:var(--bg)}
+.viz-fig::after{display:none}
+.viz-fig .fig-p{width:80%;height:80%}
+.d-cta{grid-area:cta;display:flex;align-items:center;gap:12px}
+.drop .btn-main{flex:1;gap:8px;min-height:48px;background:var(--ink);color:#2B1B4D;font-weight:800}
+.drop .btn-main svg{width:20px;height:20px;flex:none}
+.drop .btn-main:active{transform:scale(.98)}
+.d-note{display:none;margin:0;font-size:.85rem;color:var(--muted)}
+
+/* ─────────── Pixlet: novedades en formato historia ─────────── */
+.st{margin-top:16px}
+.st-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;padding:0 16px;margin:0 -16px;scroll-padding:0 16px}
+.st-track::-webkit-scrollbar{display:none}
+.st-c{position:relative;flex:0 0 80%;scroll-snap-align:start;display:grid;grid-template-columns:minmax(0,1fr) 84px;align-items:center;gap:10px;min-height:120px;padding:14px 12px 14px 16px;
+  border-radius:22px;background:var(--bg-b);color:var(--fg-b);text-decoration:none;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:transform .25s var(--out)}
+.st-c:only-child{flex-basis:100%}
+.st-c::before{content:"";position:absolute;right:-10%;bottom:-20%;width:55%;height:130%;opacity:.12;background:repeating-linear-gradient(180deg,var(--fg-b) 0 10px,transparent 10px 19px);
+  -webkit-mask:radial-gradient(closest-side,#000 65%,transparent);mask:radial-gradient(closest-side,#000 65%,transparent);pointer-events:none}
+a.st-c:active{transform:scale(.98)}
+.st-t{position:relative;min-width:0}
+.st-t h3{margin:0;font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1;letter-spacing:-.015em;text-wrap:balance}
+.st-t p{margin:6px 0 0;font-size:.86rem;line-height:1.25;opacity:.9;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.st-t span{display:inline-flex;margin-top:6px;font-weight:800;font-size:.86rem}
+.st-ph{position:relative;width:84px;aspect-ratio:1;border-radius:16px;overflow:hidden;transform:rotate(3deg);box-shadow:0 6px 16px rgba(14,8,28,.28);background:var(--photo)}
+.st-ph img{display:block;width:100%;height:100%;object-fit:cover}
+.st-img{display:block;padding:0;background:var(--photo)}
+.st-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.st-img::before{display:none}
+.st-seg{display:flex;justify-content:center;gap:6px;margin-top:4px}
+.st-seg:empty{display:none}
+.st-seg button{position:relative;width:34px;height:28px;padding:0;border:0;background:none;cursor:pointer}
+.st-seg button::before,.st-seg button::after{content:"";position:absolute;left:0;right:0;top:12px;height:4px;border-radius:4px;background:var(--line)}
+.st-seg button::after{right:auto;width:0;background:var(--ink)}
+.st-seg button.done::after{width:100%}
+.st-seg button[aria-current="true"]::after{animation:llena var(--dur,6s) linear forwards}
+.st-seg.parado button[aria-current="true"]::after{animation:none;width:100%}
+@keyframes llena{to{width:100%}}
+
+@media (max-width:760px){
+  .hero{padding-top:12px}
+  .home{padding-top:22px}
+}
+@media (min-width:761px){
+  .q-open{order:0;width:auto;margin:0;padding:0 14px 0 12px;gap:8px;display:inline-flex;align-items:center;min-height:38px;height:38px;background:var(--surface);border-radius:999px;font:600 .82rem var(--body);color:var(--muted)}
+  .q-open .q-k{display:inline}
+  .q-open kbd.q-k{padding:1px 7px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line);font:600 .75rem var(--body)}
+  .q-bar{left:auto;width:min(520px,60%)}
+  .top.q-on .top-logo{visibility:visible}
+  .hero{padding-top:28px}
+  .drop{grid-template-columns:minmax(0,1fr) 400px;grid-template-areas:"txt viz" "cta viz";gap:8px 40px;padding:36px 36px 36px 44px;border-radius:36px;align-items:start}
+  .d-k{font-size:.78rem}
+  .d-name{font-size:4.4rem;margin-top:10px}
+  .d-brand{font-size:3.2rem;margin-top:14px}
+  .d-txt>.d-p{font-size:1.05rem;max-width:40ch}
+  .cd{margin-top:22px;gap:10px}
+  .cd div{min-width:72px}
+  .cd strong{font-size:3.4rem}
+  .cd small{font-size:.82rem}
+  .cd i{font-size:2.6rem}
+  .viz{min-height:300px;border-radius:26px}
+  .viz-q{font-size:4rem}
+  .viz-chip{font-size:.8rem;left:14px;bottom:14px;padding:6px 12px}
+  .d-cta{align-self:end;margin-top:20px}
+  .drop .btn-main{flex:0 0 auto;padding:0 28px;min-height:52px}
+  .d-note{display:block}
+  .st{margin-top:20px}
+  .st-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;overflow:visible;padding:0;margin:0}
+  .st-c{min-height:150px;grid-template-columns:minmax(0,1fr) 104px;padding:18px 16px 18px 22px;border-radius:26px}
+  a.st-c:hover{transform:translateY(-3px)}
+  .st-ph{width:104px}
+  .st-t h3{font-size:1.6rem}
+  .st-seg{display:none}
+  .home{padding-top:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .drop *,.drop *::before,.drop *::after,.st *,.st *::before,.st *::after,.q-bar,.q-panel{animation:none!important;transition:none!important}
+  .st-seg button[aria-current="true"]::after{width:100%}
 }
 </style>
 </head>
@@ -934,45 +997,39 @@ html.has-cart .to-top{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 70
 
 <script>(function(){var d=document.documentElement,x=location.hash;d.dataset.v=x==="#/album"?"album":x==="#/proceso"?"proceso":x==="#/preguntas"?"faq":/^#\/[a-z0-9-]+(\/.+)?$/.test(x)||x==="#catalogo"||(/^#[a-z0-9-]+$/i.test(x)&&x!=="#inicio"&&x!=="#como")?"cat":"home";})();document.documentElement.classList.add("js","intro");setTimeout(function(){document.documentElement.classList.remove("intro")},3200);</script>
 
-<header class="top">
+<header class="top" id="top">
   <nav class="top-in wrap" aria-label="Principal">
     <a class="top-logo" href="#/" aria-label="Pixlet Toys, inicio"><svg class="sym" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#2B1B4D"/><circle cx="50" cy="35" r="15" fill="#F4F0FF"/><circle cx="44.5" cy="35.5" r="2.6" fill="#2B1B4D"/><circle cx="55.5" cy="35.5" r="2.6" fill="#2B1B4D"/><rect x="37.0" y="55.5" width="26" height="6" rx="3" fill="#C6F432"/><rect x="33.0" y="64.0" width="34" height="6" rx="3" fill="#F4F0FF"/><rect x="31.0" y="72.5" width="38" height="6" rx="3" fill="#F4F0FF"/><rect x="31.0" y="81.0" width="38" height="6" rx="3" fill="#F4F0FF"/><rect x="34.0" y="89.5" width="32" height="6" rx="3" fill="#F4F0FF"/></svg><span class="wm"><span class="wm-p">pixlet</span><span class="wm-t">TOYS</span></span></a>
     <div class="top-links">
       <a class="tl-nav" href="#/todos">Explorar</a>
       <a class="tl-nav" href="#/album">Álbum</a>
+      <button class="ico q-open" id="qOpen" type="button" aria-label="Buscar" aria-expanded="false" aria-controls="qBar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="q-k" aria-hidden="true">Buscar</span><kbd class="q-k" aria-hidden="true">/</kbd></button>
       <a class="js-wa" data-msg="¡Hola Pixlet Toys! 👋 Quiero información sobre sus piezas." href="#">Contacto</a>
       <a class="ig" href="https://instagram.com/pixlet.toys" target="_blank" rel="noopener" aria-label="Instagram @pixlet.toys"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
     </div>
+    <form class="q-bar" id="qBar" role="search">
+      <label class="q-field"><span class="sr-only">Buscar producto</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="qHome" placeholder="Ajolote, llavero, monstruito…" autocomplete="off" enterkeyhint="search"></label>
+      <button class="q-x" type="button" id="qClose">Cerrar</button>
+    </form>
   </nav>
 </header>
+<div class="q-panel" id="qPanel" aria-hidden="true"><div class="q-sug"><div class="wrap"><p>Explora por serie</p><div class="q-chips" id="qChips"></div></div></div></div>
 
 <section class="hero" id="inicio" data-view="home" aria-label="Novedades">
   <h1 class="sr-only">Pixlet Toys · Coleccionables geek impresos en 3D, capa por capa</h1>
   <div class="wrap">
-    <div class="ipx">
-      <div class="ipx-fig"><svg class="fig-p" viewBox="0 0 100 100" aria-hidden="true"><g class="fp-cuerpo"><rect style="--k:4" x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:3" x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:2" x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:1" x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:0" class="fp-lima" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/></g><g class="fp-cabeza"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><g class="fp-ojos"><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/></g></g></svg></div>
-      <div class="ipx-t">
-        <p class="ipx-k">Impreso en 3D · capa por capa</p>
-        <p class="ipx-h">Pequeñas piezas, <span>mucha personalidad.</span></p>
-        <a class="btn ipx-btn" href="#/todos">Ver la colección</a>
-      </div>
+    <section class="drop" id="drop" aria-labelledby="dropName"></section>
+    <div class="st" id="st" aria-roledescription="carrusel" aria-label="Novedades">
+      <div class="st-track" id="stTrack"></div>
+      <div class="st-seg" id="stSeg"></div>
     </div>
-    <section class="lz" id="lz" hidden aria-label="Próximo lanzamiento"></section>
-    <div class="bn" id="bn" aria-roledescription="carrusel">
-      <div class="bn-track" id="bnTrack" tabindex="-1"></div>
-      <button class="bn-nav prev" id="bnPrev" type="button" aria-label="Banner anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="bn-nav next" id="bnNext" type="button" aria-label="Banner siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="bn-dots" id="bnDots"></div>
-    </div>
+    <template id="figPx"><svg class="fig-p" viewBox="0 0 100 100" aria-hidden="true"><g class="fp-cuerpo"><rect style="--k:4" x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:3" x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:2" x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:1" x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect style="--k:0" class="fp-lima" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/></g><g class="fp-cabeza"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><g class="fp-ojos"><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/></g></g></svg></template>
   </div>
 </section>
 
 <section class="home" data-view="home" aria-label="Explora el catálogo">
   <div class="wrap">
-    <label class="search home-search"><span class="sr-only">Buscar producto</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input type="search" id="qHome" placeholder="¿Qué buscas? Ajolote, llavero, flor…" autocomplete="off" enterkeyhint="search">
-    </label>
     <h2 class="h-title">Las series</h2>
     <p class="h-sub">Toca una serie o desliza los estantes.</p>
     <div class="tiles" id="tiles"><p class="cargando"><svg class="fig" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="17" fill="#F4F0FF"/><circle cx="44" cy="28.5" r="3" fill="#2B1B4D"/><circle cx="56" cy="28.5" r="3" fill="#2B1B4D"/><rect class="capa-l" x="35" y="51" width="30" height="7" rx="3.5" fill="#C6F432"/><rect x="31" y="61" width="38" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="71" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="28" y="81" width="44" height="7" rx="3.5" fill="#F4F0FF"/><rect x="32" y="91" width="36" height="7" rx="3.5" fill="#F4F0FF"/></svg>Imprimiendo el catálogo…</p></div>
@@ -1926,48 +1983,124 @@ strips.addEventListener("click", e => { const a = e.target.closest(".mini[data-i
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { cargar(e.target); io.unobserve(e.target); } }), { rootMargin: "400px 0px" });
   filas.forEach(f => io.observe(f));
 })();
-const qHome = document.getElementById("qHome");
-qHome.addEventListener("input", () => {
-  qInput.value = qHome.value; qHome.value = "";
-  try { history.pushState(null, "", "#/todos"); } catch(e) {}
-  ponerVista("cat", "all"); qInput.focus();
-});
 document.getElementById("footCats").innerHTML = CATS.filter(c => !VIRTUALES.has(c.id)).map(c => `<a href="#/${c.id}">${h(c.label)}</a>`).join("") + `<a href="#/proceso">Proceso</a><a href="#/preguntas">Preguntas</a>`;
 
-/* ---------- portada: carrusel de banners ---------- */
+/* ---------- portada: el próximo drop (o la frase de marca) ---------- */
+(function lanzamiento(){
+  const L = PAGINA.lanzamiento || {}, el = document.getElementById("drop");
+  const FIG = document.querySelector("#figPx").innerHTML;
+  const marca = () => {
+    el.innerHTML = `<div class="d-txt"><p class="d-k">Impreso en 3D</p>
+      <h2 class="d-brand" id="dropName">Pequeñas piezas, <span>mucha personalidad.</span></h2></div>
+      <div class="viz viz-fig" aria-hidden="true">${FIG}</div>
+      <div class="d-cta"><a class="btn btn-main" href="#/todos">Ver la colección</a><p class="d-note">${PRODUCTS.length} piezas, cero clones.</p></div>`;
+  };
+  if (!L.activo || !L.nombre) return marca();
+  const meta = L.fecha ? new Date(L.fecha + "T00:00:00") : null, DIA = 864e5;
+  const prod = L.producto && byId[L.producto];
+  const foto = L.img || (prod ? portada(prod) : "");
+  if (meta && Date.now() >= meta) {
+    if (!prod) return marca();                                  // ya pasó y no hay pieza a la cual llevar
+    el.innerHTML = `<div class="d-txt"><p class="d-k ya">Ya llegó</p>
+        <h2 class="d-name" id="dropName">${h(L.nombre)}</h2>${L.texto ? `<p class="d-p">${h(L.texto)}</p>` : ""}</div>
+      <div class="viz viz-ya" aria-hidden="true">${foto ? `<img src="${h(miniSrc(foto))}" alt="" width="1000" height="1000" fetchpriority="high">` : ""}</div>
+      <div class="d-cta"><a class="btn btn-main" href="#${prod.id}">Verla</a><p class="d-note">${h(prod.name)} ya está en el catálogo.</p></div>`;
+    return;
+  }
+  const fecha = meta ? meta.toLocaleDateString("es-MX", { day: "numeric", month: "short" }).replace(".", "") : "muy pronto";
+  const fechaLarga = meta ? meta.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }) : "";
+  el.innerHTML = `<div class="d-txt">
+      <p class="d-k">Próximo drop · <b>${h(fecha)}</b></p>
+      <h2 class="d-name" id="dropName">${h(L.nombre)}</h2>${L.texto ? `<p class="d-p">${h(L.texto)}</p>` : ""}
+      ${meta ? `<div class="cd" aria-hidden="true">
+        <div><strong data-u="d">--</strong><small>días</small></div><i>·</i>
+        <div><strong data-u="h">--</strong><small>horas</small></div><i>·</i>
+        <div><strong data-u="m">--</strong><small>min</small></div>
+      </div><p class="sr-only">Sale el ${h(fechaLarga)}.</p>` : ""}
+    </div>
+    <div class="viz" aria-hidden="true">
+      ${foto ? `<img src="${h(miniSrc(foto))}" alt="" width="1000" height="1000" fetchpriority="high">` : ""}
+      <div class="viz-cover" id="vizCover"></div>
+      <span class="viz-q">?</span>
+      <span class="viz-chip" id="vizChip" ${meta ? "" : "hidden"}></span>
+    </div>
+    <div class="d-cta">
+      <a class="btn btn-main" target="_blank" rel="noopener" href="${h(waLink(`¡Hola Pixlet Toys! 👋 Avísenme cuando salga ${L.nombre}.`))}">${WA_ICON}Avísame cuando salga</a>
+      <p class="d-note">Te escribimos por WhatsApp ese día. Una vez, nada más.</p>
+    </div>`;
+  const cover = document.getElementById("vizCover");
+  if (!meta) return cover.style.setProperty("--p", ".35");
+  // La pieza se "imprime" de abajo hacia arriba durante las dos semanas previas
+  const desde = L.desde ? new Date(L.desde + "T00:00:00") : new Date(meta - 14 * DIA);
+  const u = k => el.querySelector(`[data-u="${k}"]`), chip = document.getElementById("vizChip"), dos2 = n => String(n).padStart(2, "0");
+  const tick = () => {
+    const ms = meta - Date.now();
+    if (ms <= 0) return lanzamiento();
+    const m = Math.ceil(ms / 6e4);
+    u("d").textContent = dos2(Math.floor(m / 1440)); u("h").textContent = dos2(Math.floor(m / 60) % 24); u("m").textContent = dos2(m % 60);
+    const p = Math.min(1, Math.max(.04, (Date.now() - desde) / (meta - desde)));
+    cover.style.setProperty("--p", p.toFixed(3));
+    chip.textContent = `Capa ${Math.min(5, Math.floor(p * 5) + 1)} de 5`;
+    setTimeout(tick, 60000 - (Date.now() % 60000) + 50);   // cada minuto: sin segundos, sin prisa falsa
+  };
+  tick();
+})();
+
+/* ---------- portada: novedades en formato historia ---------- */
 (function carrusel(){
   const lista = BANNERS.length ? BANNERS : [{ tipo:"foto", img:"banda", titulo:"Coleccionables geek", texto:"Impresos en 3D, capa por capa. Elige el tuyo y pídelo por WhatsApp.", boton:"Ver catálogo", enlace:"#/todos", color:"#4B3880" }];
   const tinta = hex => { const n = parseInt(hex.slice(1), 16), c = [n >> 16, n >> 8 & 255, n & 255].map(v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; });
     return .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > .36 ? "#2B1B4D" : "#ffffff"; };
   const destino = b => b.enlace === "wa" ? { href: waLink("¡Hola Pixlet Toys! 👋 " + (b.titulo ? `Vi su anuncio "${b.titulo}" y quiero información.` : "Quiero información.")), ext: true } : b.enlace ? { href: b.enlace } : null;
-  const track = document.getElementById("bnTrack"), dots = document.getElementById("bnDots"), n = lista.length;
+  const track = document.getElementById("stTrack"), seg = document.getElementById("stSeg"), n = lista.length, DUR = 6000;
   track.innerHTML = lista.map((b, i) => {
     const d = destino(b), tag = d ? "a" : "div", attrs = d ? ` href="${h(d.href)}"${d.ext ? ' target="_blank" rel="noopener"' : ""}` : "";
     const lbl = ` role="group" aria-roledescription="banner" aria-label="${i + 1} de ${n}${b.titulo ? ": " + h(b.titulo) : ""}"`;
     return b.tipo === "imagen"
-      ? `<${tag} class="bn-s bn-img"${attrs}${lbl}><img src="${h(imgSrc(b.img))}" alt="${h(b.titulo || b.texto || "Banner")}" width="1600" height="900"${i ? "" : ' fetchpriority="high"'} decoding="async"></${tag}>`
-      : `<${tag} class="bn-s bn-foto"${attrs}${lbl} style="--bg-b:${b.color};--fg-b:${tinta(b.color)}"><div class="bn-t">${b.titulo ? `<h2>${h(b.titulo)}</h2>` : ""}${b.texto ? `<p>${h(b.texto)}</p>` : ""}${b.boton && d ? `<span class="bn-btn">${h(b.boton)} →</span>` : ""}</div><div class="bn-ph"><img src="${h(imgSrc(b.img))}" alt="" width="1000" height="1000"${i ? "" : ' fetchpriority="high"'} decoding="async"></div></${tag}>`;
+      ? `<${tag} class="st-c st-img"${attrs}${lbl}><img src="${h(imgSrc(b.img))}" alt="${h(b.titulo || b.texto || "Banner")}" width="1600" height="900" decoding="async"></${tag}>`
+      : `<${tag} class="st-c"${attrs}${lbl} style="--bg-b:${b.color};--fg-b:${tinta(b.color)}"><div class="st-t">${b.titulo ? `<h3>${h(b.titulo)}</h3>` : ""}${b.texto ? `<p>${h(b.texto)}</p>` : ""}${b.boton && d ? `<span>${h(b.boton)} →</span>` : ""}</div>
+        <div class="st-ph"><img src="${h(miniSrc(b.img))}" alt="" width="1000" height="1000" decoding="async"></div></${tag}>`;
   }).join("");
-  dots.innerHTML = n > 1 ? lista.map((b, i) => `<button type="button" aria-label="Ver banner ${i + 1}" aria-current="${i === 0}"></button>`).join("") : "";
-  document.getElementById("bnPrev").hidden = document.getElementById("bnNext").hidden = n < 2;
   if (n < 2) return;
-  let idx = 0, t = 0, pausa = false;
-  const paso = () => n > 1 ? track.children[1].offsetLeft - track.children[0].offsetLeft : track.clientWidth;
-  const ir = (i, suave = true) => { idx = (i + n) % n; const left = idx * paso(); try { track.scrollTo({ left, behavior: suave && !calm() ? "smooth" : "instant" }); } catch(e) { track.scrollLeft = left; } marcar(); };
-  const marcar = () => [...dots.children].forEach((d, j) => d.setAttribute("aria-current", j === idx));
-  const programar = () => { clearTimeout(t); if (!calm() && !pausa) t = setTimeout(() => { if (document.visibilityState === "visible" && root.dataset.v === "home" && !document.querySelector("dialog[open]")) ir(idx + 1); programar(); }, 6000); };
+  seg.innerHTML = lista.map((b, i) => `<button type="button" aria-label="Ver ${h(b.titulo || "banner " + (i + 1))}" aria-current="${i === 0}" style="--dur:${DUR}ms"></button>`).join("");
+  let idx = 0, t = 0, parado = calm();
+  const paso = () => track.children[1].offsetLeft - track.children[0].offsetLeft;
+  const marcar = () => [...seg.children].forEach((d, j) => { d.setAttribute("aria-current", j === idx); d.classList.toggle("done", j < idx); });
+  const ir = (i, suave = true) => { idx = (i + n) % n; const left = idx * paso(); try { track.scrollTo({ left, behavior: suave && !calm() ? "smooth" : "instant" }); } catch(e) { track.scrollLeft = left; } marcar(); programar(); };
+  // Avanza sola solo en Inicio, con la pestaña visible y sin ficha abierta; en escritorio se ven todas juntas
+  const programar = () => { clearTimeout(t); seg.classList.toggle("parado", parado); if (!parado && getComputedStyle(seg).display !== "none")
+    t = setTimeout(() => { if (document.visibilityState === "visible" && root.dataset.v === "home" && !document.querySelector("dialog[open]")) ir(idx + 1); else programar(); }, DUR); };
   let sR = 0;
   track.addEventListener("scroll", () => { cancelAnimationFrame(sR); sR = requestAnimationFrame(() => { const i = Math.round(track.scrollLeft / Math.max(1, paso())); if (i !== idx && i >= 0 && i < n) { idx = i; marcar(); } }); }, {passive:true});
-  // Si el cliente toca o pasa el ratón, el carrusel se detiene un rato
-  const detener = () => { pausa = true; clearTimeout(t); clearTimeout(detener.t); detener.t = setTimeout(() => { pausa = false; programar(); }, 12000); };
+  const detener = () => { parado = true; clearTimeout(t); seg.classList.add("parado"); };   // en cuanto el cliente toca, él manda
   ["pointerdown", "focusin", "wheel"].forEach(ev => track.addEventListener(ev, detener, {passive:true}));
-  const bn = document.getElementById("bn");
-  bn.addEventListener("mouseenter", () => { pausa = true; clearTimeout(t); }); bn.addEventListener("mouseleave", () => { pausa = false; programar(); });
-  dots.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { detener(); ir([...dots.children].indexOf(b)); } });
-  document.getElementById("bnPrev").addEventListener("click", () => { detener(); ir(idx - 1); });
-  document.getElementById("bnNext").addEventListener("click", () => { detener(); ir(idx + 1); });
-  addEventListener("resize", () => ir(idx, false));
+  seg.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { detener(); ir([...seg.children].indexOf(b)); } });
+  addEventListener("resize", () => { track.scrollLeft = idx * paso(); programar(); });
   programar();
+})();
+
+/* ---------- búsqueda en el header ---------- */
+(function buscar(){
+  const top = document.getElementById("top"), open = document.getElementById("qOpen"), input = document.getElementById("qHome"), panel = document.getElementById("qPanel");
+  document.getElementById("qChips").innerHTML = SERIES.map(({ c }) => `<a href="#/${c.id}">${h(c.label)}</a>`).join("") + (PRODUCTS.some(p => descuento(p)) ? '<a href="#/ofertas">Ofertas</a>' : "");
+  const abierta = () => top.classList.contains("q-on");
+  const set = (on, foco = true) => { top.classList.toggle("q-on", on); panel.classList.toggle("on", on); panel.setAttribute("aria-hidden", !on); open.setAttribute("aria-expanded", on);
+    if (on) input.focus(); else { input.value = ""; input.blur(); if (foco) open.focus({ preventScroll: true }); } };
+  open.addEventListener("click", () => set(true));
+  document.getElementById("qClose").addEventListener("click", () => set(false));
+  panel.addEventListener("click", e => { if (e.target === panel) set(false); });
+  addEventListener("keydown", e => {
+    if (e.key === "Escape" && abierta()) { e.preventDefault(); set(false); }
+    else if (e.key === "/" && !abierta() && !e.metaKey && !e.ctrlKey && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && !document.querySelector("dialog[open]")) { e.preventDefault(); set(true); }
+  });
+  document.getElementById("qBar").addEventListener("submit", e => {
+    e.preventDefault();
+    const q = input.value.trim().slice(0, 60);
+    if (!q) return;
+    set(false, false);
+    location.hash = "#/buscar/" + encodeURIComponent(q);
+  });
+  addEventListener("hashchange", () => { if (abierta()) set(false, false); });
 })();
 
 /* ---------- páginas: Proceso, Preguntas y Próximo lanzamiento ---------- */
@@ -1976,22 +2109,6 @@ document.getElementById("pasos").innerHTML = PAGINA.proceso.map((x, i) => `<li c
     <div class="paso-t"><span class="paso-k">Capa ${String(i + 1).padStart(2, "0")}</span><h3>${h(x.titulo)}</h3><p>${h(x.texto)}</p></div>
   </li>`).join("");
 document.getElementById("faqList").innerHTML = PAGINA.faq.map(x => `<details class="faq-it"><summary>${h(x.p)}</summary><p>${h(x.r)}</p></details>`).join("") || '<p class="pag-sub">Pronto publicaremos las preguntas más comunes.</p>';
-(function lanzamiento(){
-  const L = PAGINA.lanzamiento, el = document.getElementById("lz");
-  if (!L.activo || !L.nombre) return;
-  const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
-  const dias = L.fecha ? Math.round((new Date(L.fecha + "T00:00:00") - hoy) / 864e5) : null;
-  const prod = L.producto && byId[L.producto];
-  if (dias !== null && dias < 0 && !prod) return;            // ya pasó y no hay pieza a la cual llevar
-  const ya = dias !== null && dias <= 0 && prod;
-  const cuando = dias === null ? "Muy pronto" : dias > 1 ? `Llega en ${dias} días` : dias === 1 ? "Llega mañana" : "Llega hoy";
-  const foto = L.img || (prod ? portada(prod) : "");
-  el.innerHTML = `<div class="lz-ph${ya ? "" : " lz-oculta"}">${foto ? `<img src="${h(miniSrc(foto))}" alt="" width="1000" height="1000">` : ""}<span aria-hidden="true">${ya ? "" : "?"}</span></div>
-    <div class="lz-t"><p class="kicker-sec">${ya ? "Ya llegó" : "Próximo lanzamiento"}</p><h2>${h(L.nombre)}</h2>${L.texto ? `<p>${h(L.texto)}</p>` : ""}
-      <p class="lz-cuando">${ya ? "Disponible ahora" : cuando}${L.fecha && !ya ? ` · ${new Date(L.fecha + "T00:00:00").toLocaleDateString("es-MX", { day: "numeric", month: "long" })}` : ""}</p>
-      ${ya ? `<a class="btn ipx-btn" href="#${prod.id}">Verla</a>` : prod ? "" : `<a class="btn btn-soft" target="_blank" rel="noopener" href="${h(waLink(`¡Hola Pixlet Toys! 👋 Avísenme cuando salga ${L.nombre}.`))}">Avísame</a>`}</div>`;
-  el.hidden = false;
-})();
 pintarMarcas();
 
 /* ---------- botón "Arriba" ---------- */
