@@ -78,6 +78,7 @@ h1{font-size:clamp(1.6rem,5vw,2.1rem);font-weight:800;letter-spacing:-.02em;line
 label.f,.f{display:block;font-weight:700;font-size:.9rem;margin:16px 0 6px}
 .f:first-child{margin-top:0}
 .f small{font-weight:500;color:var(--muted)}
+.f>.in{margin-top:6px;font-weight:400}
 .in{width:100%;min-width:0;min-height:46px;padding:10px 14px;border:0;border-radius:12px;background:var(--fill);font-size:16px}
 .in[aria-invalid="true"]{box-shadow:inset 0 0 0 2px var(--danger)}
 textarea.in{min-height:110px;resize:vertical}
@@ -360,17 +361,10 @@ body.en-editor{padding-bottom:calc(84px + var(--safe-b))}
     <h1>Página</h1>
     <p class="lead">Lo que se ve fuera de los productos: el próximo lanzamiento, la página de Proceso y las Preguntas frecuentes.</p>
     <section class="sec" aria-labelledby="h-lz">
-      <h3 class="sec-h" id="h-lz">Próximo lanzamiento</h3>
-      <label class="check" style="margin:0"><input type="checkbox" id="lz-on"> Mostrarlo en el inicio</label>
-      <label class="f" for="lz-n">Nombre</label><input class="in" id="lz-n" maxlength="40" placeholder="Ej: Pieza misteriosa">
-      <label class="f" for="lz-t">Texto</label><input class="in" id="lz-t" maxlength="90" placeholder="Ej: Algo con cuernos viene en camino.">
-      <label class="f" for="lz-f">Fecha de salida</label><input class="in" id="lz-f" type="date">
-      <span class="f">Foto <small>(sale borrosa con un “?” hasta el día de salida)</small></span>
-      <div class="up-row"><label class="btn btn-soft up-btn">Subir foto<input type="file" accept="image/*" id="lz-up"></label>
-        <select class="in" id="lz-ph" style="flex:1;min-width:160px" aria-label="Usar foto de un producto"></select></div>
-      <div id="lz-prev" style="margin-top:10px"></div>
-      <label class="f" for="lz-p">Cuando salga, llevar a la pieza <small>(opcional)</small></label><select class="in" id="lz-p"></select>
-      <p class="hint">Si eliges la pieza, el día de salida el aviso cambia a “Ya llegó” con un botón para verla. Si no, se oculta solo al pasar la fecha.</p>
+      <h3 class="sec-h" id="h-lz">Próximos lanzamientos <small>se apilan como tarjetas en el inicio</small></h3>
+      <p class="hint" style="margin:0 0 10px">Al frente sale el más cercano; los demás quedan como pestañas detrás (máximo 4 a la vez). Al llegar la fecha, si eligiste la pieza, cambia a “Ya llegó” durante 7 días; si no, se quita solo.</p>
+      <div id="lzs"></div>
+      <button class="btn btn-soft" type="button" id="lz-add" style="width:100%;margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar lanzamiento</button>
     </section>
     <section class="sec" aria-labelledby="h-proc">
       <h3 class="sec-h" id="h-proc">Proceso <small>pasos de “Así nace una pieza”</small></h3>
@@ -572,7 +566,7 @@ let sucio = false;
 const clon = o => JSON.parse(JSON.stringify(o));
 const J = o => JSON.stringify(o);
 const porId = (lista, id) => lista.find(p => p.id === id);
-const fotosDe = d => [...d.productos.flatMap(p => p.imgs), ...(d.banners || []).map(b => b.img), ...((d.pagina || {}).proceso || []).map(x => x.img), ((d.pagina || {}).lanzamiento || {}).img].filter(Boolean);
+const fotosDe = d => [...d.productos.flatMap(p => p.imgs), ...(d.banners || []).map(b => b.img), ...((d.pagina || {}).proceso || []).map(x => x.img), ((d.pagina || {}).lanzamiento || {}).img, ...((d.pagina || {}).lanzamientos || []).map(x => x.img)].filter(Boolean);
 const usadas = () => new Set(fotosDe(datos));
 const usadasNuevas = () => [...nuevas.keys()].filter(n => usadas().has(n));
 const fotoUrl = n => nuevas.has(n) ? nuevas.get(n).url : `img/m/${encodeURIComponent(n)}.jpg`;
@@ -676,7 +670,7 @@ function combinar(viejo, mio, remoto) {
 /* ---------- cargar ---------- */
 async function leerRemoto() {
   const f = await gh(repo(`/contents/productos.json?ref=${BRANCH}`));
-  const d = JSON.parse(b64ToText(f.content)); d.categorias = d.categorias || []; d.productos = d.productos || [];
+  const d = JSON.parse(b64ToText(f.content)); d.categorias = d.categorias || []; d.productos = d.productos || []; normPag(d.pagina);
   try { imgsRepo = new Set((await gh(repo(`/contents/img?ref=${BRANCH}`))).filter(x => x.type === "file" && /\.jpg$/i.test(x.name)).map(x => x.name.replace(/\.jpg$/i, ""))); } catch (e) { imgsRepo = new Set(); }
   try { minisRepo = new Set((await gh(repo(`/contents/img/m?ref=${BRANCH}`))).filter(x => x.type === "file" && /\.jpg$/i.test(x.name)).map(x => x.name.replace(/\.jpg$/i, ""))); } catch (e) { minisRepo = new Set(); }
   return { d, sha: f.sha };
@@ -692,7 +686,7 @@ async function cargar() {
       const b = "indexedDB" in window ? await idb("get") : null;
       if (b && b.datos) {
         (b.fotos || []).forEach(([n, blob]) => nuevas.set(n, { blob, url: URL.createObjectURL(blob) }));
-        datos = b.baseSha === sha ? b.datos : combinar(b.base, b.datos, base);
+        datos = b.baseSha === sha ? b.datos : combinar(b.base, b.datos, base); normPag(datos.pagina);
         edRecuperado = b.ed || null;
         setTimeout(() => toast(b.baseSha === sha ? "Recuperamos tus cambios sin publicar." : "Recuperamos tus cambios y los combinamos con lo publicado."), 300);
       }
@@ -1155,21 +1149,38 @@ $("bns").addEventListener("click", e => {
   if (e.target.closest("[data-bdel]")) { if (!confirm("¿Eliminar este banner?")) return; l.splice(i, 1); bnAbierto = -1; limpiarNuevas(); pintarBanners(); marcar(); }
 });
 
-/* ---------- página: lanzamiento, proceso y preguntas ---------- */
+/* ---------- página: lanzamientos, proceso y preguntas ---------- */
+const LZ0 = { activo: true, oculto: false, nombre: "", texto: "", fecha: "", img: "", producto: "" };
+// Antes había un solo "lanzamiento"; ahora es una lista "lanzamientos"
+function normPag(g) {
+  if (!g || typeof g !== "object") return g;
+  if (!Array.isArray(g.lanzamientos)) { const L = g.lanzamiento; g.lanzamientos = L && (L.nombre || L.activo) ? [Object.assign({}, LZ0, L)] : []; }
+  delete g.lanzamiento;
+  return g;
+}
 function pag() {
   if (!datos.pagina) datos.pagina = {};
-  const g = datos.pagina;
+  const g = normPag(datos.pagina);
   g.proceso = g.proceso || []; g.faq = g.faq || [];
-  g.lanzamiento = Object.assign({ activo: false, nombre: "", texto: "", fecha: "", img: "", producto: "" }, g.lanzamiento || {});
   return g;
 }
 const vistaFoto = n => n ? `<img src="${esc(fotoUrl(n))}" alt="" style="width:110px;height:110px;object-fit:cover;border-radius:14px;display:block">` : "";
 function pintarPagina() {
-  const g = datos.pagina ? pag() : { proceso: [], faq: [], lanzamiento: { activo: false, nombre: "", texto: "", fecha: "", img: "", producto: "" } }, L = g.lanzamiento;
-  $("lz-on").checked = !!L.activo; $("lz-n").value = L.nombre; $("lz-t").value = L.texto; $("lz-f").value = L.fecha;
+  const g = datos.pagina ? pag() : { proceso: [], faq: [], lanzamientos: [] };
   const opsFoto = '<option value="">o usa la foto de un producto…</option>' + datos.productos.map(p => `<option value="${esc(p.imgs[0])}">${esc(p.name)}</option>`).join("");
-  $("lz-ph").innerHTML = opsFoto; $("lz-prev").innerHTML = vistaFoto(L.img);
-  $("lz-p").innerHTML = '<option value="">— Ninguna todavía —</option>' + datos.productos.map(p => `<option value="${esc(p.id)}"${p.id === L.producto ? " selected" : ""}>${esc(p.name)}</option>`).join("");
+  $("lzs").innerHTML = g.lanzamientos.map((L, i) => `<div class="var" data-li="${i}" style="margin-bottom:10px">
+      <div class="var-h"><span>${esc(L.oculto ? "Pieza misteriosa" : L.nombre || "Lanzamiento " + (i + 1))}${L.fecha ? ` · ${esc(new Date(L.fecha + "T00:00:00").toLocaleDateString("es-MX", { day: "numeric", month: "short" }))}` : ""}</span>
+        <button class="btn btn-danger" type="button" data-ldel style="padding:0">Eliminar</button></div>
+      <label class="check" style="margin:4px 0 0"><input type="checkbox" data-lk="activo"${L.activo ? " checked" : ""}> Mostrarlo en el inicio</label>
+      <label class="check" style="margin:6px 0 0"><input type="checkbox" data-lk="oculto"${L.oculto ? " checked" : ""}> Ocultar el nombre (sale como “???” hasta que llegue)</label>
+      <label class="f">Nombre <small>${L.oculto ? "(no se muestra; es para que tú lo identifiques)" : ""}</small><input class="in" data-lk="nombre" maxlength="40" value="${esc(L.nombre)}" placeholder="Ej: Psyduck"></label>
+      <label class="f">Texto <small>(opcional, una pista)</small><input class="in" data-lk="texto" maxlength="90" value="${esc(L.texto)}" placeholder="Ej: Algo con cuernos viene en camino."></label>
+      <label class="f">Fecha de salida<input class="in" data-lk="fecha" type="date" value="${esc(L.fecha)}"></label>
+      <span class="f">Foto <small>(sale borrosa con un “?” hasta el día de salida)</small></span>
+      <div class="up-row">${vistaFoto(L.img)}<label class="btn btn-soft up-btn">${L.img ? "Cambiar foto" : "Subir foto"}<input type="file" accept="image/*" data-lup></label>
+        <select class="in" data-lph style="flex:1;min-width:160px" aria-label="Usar foto de un producto">${opsFoto}</select></div>
+      <label class="f">Cuando salga, llevar a la pieza <small>(opcional)</small><select class="in" data-lk="producto"><option value="">— Ninguna todavía —</option>${datos.productos.map(p => `<option value="${esc(p.id)}"${p.id === L.producto ? " selected" : ""}>${esc(p.name)}</option>`).join("")}</select></label>
+    </div>`).join("") || '<p class="hint">Sin lanzamientos: el inicio muestra la frase de la marca.</p>';
   $("proc").innerHTML = g.proceso.map((x, i) => `<div class="var" data-pi="${i}" style="margin-bottom:10px">
       <div class="var-h"><span>Paso ${i + 1}</span><span style="display:flex;gap:4px">
         <button class="icon-btn" type="button" data-pm="-1" aria-label="Subir paso ${i + 1}" ${i ? "" : "disabled"}>${ICO.up}</button>
@@ -1188,16 +1199,24 @@ function pintarPagina() {
       <button class="btn btn-danger" type="button" data-fdel style="padding:0;margin-top:6px">Eliminar</button>
     </div>`).join("");
 }
-[["lz-on", "activo", e => e.checked], ["lz-n", "nombre", e => e.value], ["lz-t", "texto", e => e.value], ["lz-f", "fecha", e => e.value], ["lz-p", "producto", e => e.value]]
-  .forEach(([id, k, v]) => $(id).addEventListener(id === "lz-on" || id === "lz-p" || id === "lz-f" ? "change" : "input", e => { pag().lanzamiento[k] = v(e.target); marcar(); }));
-$("lz-ph").addEventListener("change", e => { if (!e.target.value) return; pag().lanzamiento.img = e.target.value; limpiarNuevas(); $("lz-prev").innerHTML = vistaFoto(e.target.value); marcar(); });
+const lzDe = el => pag().lanzamientos[Number(el.closest("[data-li]").dataset.li)];
+$("lzs").addEventListener("input", e => { const el = e.target.closest("[data-lk]"); if (!el || el.type === "checkbox" || el.tagName === "SELECT" || el.type === "date") return; lzDe(el)[el.dataset.lk] = el.value; marcar(); });
+$("lzs").addEventListener("change", async e => {
+  const el = e.target, L = el.closest("[data-li]") && lzDe(el); if (!L) return;
+  if (el.dataset.lk) { L[el.dataset.lk] = el.type === "checkbox" ? el.checked : el.value; marcar(); if (el.dataset.lk !== "nombre" && el.dataset.lk !== "texto") pintarPagina(); return; }
+  if (el.matches("[data-lph]")) { if (!el.value) return; L.img = el.value; }
+  else if (el.matches("[data-lup]")) { const f = el.files[0]; if (!f) return; const n = await subirFoto(f); if (!n) return; L.img = n; guardarBorrador(); }
+  else return;
+  limpiarNuevas(); pintarPagina(); marcar();
+});
+$("lzs").addEventListener("click", e => { if (!e.target.closest("[data-ldel]")) return; if (!confirm("¿Eliminar este lanzamiento?")) return; pag().lanzamientos.splice(Number(e.target.closest("[data-li]").dataset.li), 1); limpiarNuevas(); pintarPagina(); marcar(); });
+$("lz-add").addEventListener("click", () => { pag().lanzamientos.push({ ...LZ0 }); pintarPagina(); marcar(); const n = $("lzs").querySelector(".var:last-child [data-lk=nombre]"); if (n) n.focus(); });
 async function subirFoto(file) {
   ocupado("Preparando foto…");
   try { const blob = await cuadrada(file), n = nombreLibre("pagina"); nuevas.set(n, { blob, url: URL.createObjectURL(blob) }); return n; }
   catch (err) { toast("No se pudo leer la foto. Prueba con JPG o PNG."); return ""; }
   finally { ocupado(""); }
 }
-$("lz-up").addEventListener("change", async e => { const f = e.target.files[0]; if (!f) return; const n = await subirFoto(f); if (!n) return; pag().lanzamiento.img = n; limpiarNuevas(); $("lz-prev").innerHTML = vistaFoto(n); marcar(); guardarBorrador(); });
 $("proc").addEventListener("input", e => { const el = e.target.closest("[data-pk]"); if (!el) return; pag().proceso[Number(el.closest("[data-pi]").dataset.pi)][el.dataset.pk] = el.value; marcar(); });
 $("faqs").addEventListener("input", e => { const el = e.target.closest("[data-fk]"); if (!el) return; pag().faq[Number(el.closest("[data-fi]").dataset.fi)][el.dataset.fk] = el.value; marcar(); });
 $("proc").addEventListener("change", async e => { const el = e.target.closest("[data-pup]"); if (!el || !el.files[0]) return; const n = await subirFoto(el.files[0]); if (!n) return; pag().proceso[Number(el.dataset.pup)].img = n; limpiarNuevas(); pintarPagina(); marcar(); guardarBorrador(); });
@@ -1277,7 +1296,7 @@ function pintarPublicar() {
         <img src="${esc(fotoUrl(c.p.imgs[0]))}" alt="">
         <div class="chg-t"><span class="k k-${c.tipo}">${K[c.tipo]}</span><b>${esc(c.p.name)}</b>${c.campos ? `<ul>${c.campos.map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}</div>
         <div class="chg-acts">${c.tipo !== "quitado" ? `<a class="btn btn-soft" href="#/producto/${encodeURIComponent(c.p.id)}">Ver</a>` : ""}<button class="btn btn-soft" type="button" data-undo="${i}">Deshacer</button></div>
-      </div>` : `<div class="chg"><div class="chg-t"><span class="k k-otro">Cambio</span><b>${c.tipo === "cats" ? "Categorías" : c.tipo === "pagina" ? "Página: lanzamiento, proceso y preguntas" : c.tipo === "banners" ? "Banners de la portada" : "Orden de los productos"}</b></div><button class="btn btn-soft" type="button" data-undo="${i}">Deshacer</button></div>`).join("")}</div>
+      </div>` : `<div class="chg"><div class="chg-t"><span class="k k-otro">Cambio</span><b>${c.tipo === "cats" ? "Categorías" : c.tipo === "pagina" ? "Página: lanzamientos, proceso y preguntas" : c.tipo === "banners" ? "Banners de la portada" : "Orden de los productos"}</b></div><button class="btn btn-soft" type="button" data-undo="${i}">Deshacer</button></div>`).join("")}</div>
     <div class="pub-sum"><span>${cs.length} cambio${cs.length !== 1 ? "s" : ""}</span>${sub ? `<span>${sub} foto${sub !== 1 ? "s" : ""} por subir</span>` : ""}${borra ? `<span>${borra} foto${borra !== 1 ? "s" : ""} que ya no se usan se borrarán</span>` : ""}</div>
     <button class="btn btn-wa btn-big" type="button" data-pub="publicar">Publicar ahora</button>
     <p class="hint" style="text-align:center">El catálogo se actualiza en 1 o 2 minutos.</p>
@@ -1322,7 +1341,7 @@ async function publicar(intento = 1) {
   const g = datos.pagina || {};
   if ((g.proceso || []).some(x => !x.titulo.trim())) { pubMsg = { tipo: "error", texto: "Un paso del Proceso no tiene título (pestaña Página)." }; return pintarPublicar(); }
   if ((g.faq || []).some(x => !x.p.trim() || !x.r.trim())) { pubMsg = { tipo: "error", texto: "Una pregunta frecuente está incompleta (pestaña Página)." }; return pintarPublicar(); }
-  if (g.lanzamiento && g.lanzamiento.activo && !g.lanzamiento.nombre.trim()) { pubMsg = { tipo: "error", texto: "El próximo lanzamiento está activado pero no tiene nombre (pestaña Página)." }; return pintarPublicar(); }
+  const lzMal = (g.lanzamientos || []).findIndex(L => L.activo && !L.oculto && !L.nombre.trim()); if (lzMal >= 0) { pubMsg = { tipo: "error", texto: `El lanzamiento ${lzMal + 1} está activado pero no tiene nombre (pestaña Página). Ponle uno o marca “Ocultar el nombre”.` }; return pintarPublicar(); }
   const bnSin = (datos.banners || []).findIndex(b => !b.img); if (bnSin >= 0) { pubMsg = { tipo: "error", texto: `El banner ${bnSin + 1} de la portada no tiene imagen.` }; return pintarPublicar(); }
   pubMsg = null; ocupado("Revisando el catálogo…");
   let combinado = false;
