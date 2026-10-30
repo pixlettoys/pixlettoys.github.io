@@ -991,6 +991,35 @@ a.st-c:active{transform:scale(.98)}
   .drop *,.drop *::before,.drop *::after,.st *,.st *::before,.st *::after,.q-bar,.q-panel{animation:none!important;transition:none!important}
   .st-seg button[aria-current="true"]::after{width:100%}
 }
+/* ─────────── Pixlet: historias y series en grande ─────────── */
+.st-c{flex-basis:88%;min-height:190px;grid-template-columns:minmax(0,1fr) 116px;gap:12px;padding:20px 14px 20px 20px;border-radius:26px}
+.st-t h3{font-size:1.6rem;line-height:1.02;text-wrap:balance}
+.st-t p{font-size:1rem;line-height:1.3;margin-top:8px}
+.st-t span{font-size:1rem;margin-top:12px}
+.st-ph{width:116px;border-radius:18px}
+.st-c:not(.st-img){grid-template-rows:auto auto 1fr;align-items:start;row-gap:0}
+.st-t{display:contents}
+.st-t>*{position:relative}
+.st-t h3{grid-column:1/-1;margin-bottom:10px;font-size:1.85rem}
+.st-t p{grid-column:1;margin:0;-webkit-line-clamp:4}
+.st-t span{grid-column:1;align-self:end}
+.st-ph{grid-column:2;grid-row:2/4;align-self:end}
+#tiles{gap:12px;padding:2px 16px 6px;margin:0 -16px;scroll-padding:0 16px}
+.spill{position:relative;display:block;width:clamp(150px,44vw,210px);padding:0;border-radius:22px;overflow:hidden;white-space:normal}
+.spill img{display:block;width:100%;height:auto;aspect-ratio:1;border-radius:0}
+.spill span{padding:10px 14px 14px;font-size:1.12rem;line-height:1.1}
+.spill em{font-size:.66rem;margin-bottom:5px}
+.spill b{position:absolute;top:10px;right:10px;min-width:32px;height:32px;font-size:.86rem;background:rgba(43,27,77,.88);color:var(--ink)}
+.spill-all{display:flex;align-items:flex-end;padding:0}
+.spill-all span{padding:18px;font-family:var(--display);font-weight:400;font-size:1.7rem;line-height:1}
+.spill-all em{font-family:var(--body)}
+@media (min-width:761px){
+  .st-c{min-height:210px;grid-template-columns:minmax(0,1fr) 128px;padding:22px 18px 22px 24px}
+  .st-ph{width:128px}
+  .st-t h3{font-size:1.75rem}
+  #tiles{padding:2px 0 6px;margin:0;scroll-padding:0}
+  .spill{flex:1 1 0;width:auto;min-width:150px}
+}
 </style>
 </head>
 <body>
