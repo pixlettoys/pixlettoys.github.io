@@ -1125,7 +1125,7 @@
     "lanzamientos": [
       {
         "activo": true,
-        "oculto": false,
+        "oculto": true,
         "nombre": "Psyduck",
         "texto": "",
         "fecha": "2026-11-03",
