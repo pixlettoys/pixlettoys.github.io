@@ -840,18 +840,64 @@
       "badge": "Monstruitos",
       "c": "var(--lilac)",
       "imgs": [
-        "lavanda-1",
-        "lavanda-2",
-        "lavanda-3",
-        "lavanda-4",
-        "banda"
+        "lavanda-5",
+        "lavanda-6",
+        "lavanda-7",
+        "lavanda-8",
+        "lavanda-9",
+        "lavanda-10",
+        "lavanda-11",
+        "lavanda-12",
+        "lavanda-13",
+        "lavanda-14",
+        "lavanda-15",
+        "lavanda-16",
+        "lavanda-17"
       ],
       "desc": "Dulce por fuera y rebelde por dentro 💥 Lavanda trae collar de picos, arete y un colmillo coqueto. Perfecta para quien es tierno pero no se deja.",
       "specs": [
         "Impreso en 3D"
       ],
       "price": "$135.00",
-      "num": 36
+      "num": 36,
+      "variantes": [
+        {
+          "id": "ojitos",
+          "nombre": "Ojitos",
+          "nota": "",
+          "imgs": [
+            "lavanda-5",
+            "lavanda-6",
+            "lavanda-7",
+            "lavanda-8",
+            "lavanda-17"
+          ]
+        },
+        {
+          "id": "grunon",
+          "nombre": "Gruñon",
+          "nota": "",
+          "imgs": [
+            "lavanda-9",
+            "lavanda-10",
+            "lavanda-11",
+            "lavanda-12",
+            "lavanda-17"
+          ]
+        },
+        {
+          "id": "feroz",
+          "nombre": "Feroz",
+          "nota": "",
+          "imgs": [
+            "lavanda-13",
+            "lavanda-14",
+            "lavanda-15",
+            "lavanda-16",
+            "lavanda-17"
+          ]
+        }
+      ]
     },
     {
       "id": "spiderman",
@@ -1076,13 +1122,16 @@
         "r": "Escríbelo en las notas de tu pedido y te confirmamos por el chat qué colores tenemos disponibles."
       }
     ],
-    "lanzamiento": {
-      "activo": true,
-      "nombre": "Psyduck",
-      "texto": "",
-      "fecha": "2026-11-03",
-      "img": "pagina-2",
-      "producto": ""
-    }
+    "lanzamientos": [
+      {
+        "activo": true,
+        "oculto": false,
+        "nombre": "Psyduck",
+        "texto": "",
+        "fecha": "2026-11-03",
+        "img": "pagina-2",
+        "producto": ""
+      }
+    ]
   }
 }
