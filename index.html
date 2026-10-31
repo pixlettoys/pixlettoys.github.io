@@ -1029,9 +1029,11 @@ a.st-c:active{transform:scale(.98)}
 .dt-ph{flex:none;width:36px;height:36px;border-radius:50%;overflow:hidden;background:#1d1238;box-shadow:0 0 0 2px var(--tf)}
 .dt-ph img{width:100%;height:100%;object-fit:cover;filter:blur(6px);transform:scale(1.4)}
 .dt-ya .dt-ph img{filter:none;transform:none}
+.dt-t{min-width:0;display:flex;flex-direction:column;gap:3px}
+.dt-t small,.dt-c small{font:800 .66rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
 .dt b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--display);font-weight:400;font-size:1.3rem;line-height:1}
-.dt-c{margin-left:auto;flex:none;font:800 .95rem var(--body);font-variant-numeric:tabular-nums}
-.drop.con-tabs{box-shadow:inset 0 0 0 1px var(--hair),0 -8px 20px rgba(14,8,28,.22)}
+.dt-c{margin-left:auto;flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:3px;font:800 .95rem/1 var(--body);font-variant-numeric:tabular-nums}
+.drop.con-tabs{box-shadow:inset 0 0 0 1px var(--hair),0 -10px 26px rgba(14,8,28,.45)}
 .drop.entra{animation:dropEntra .38s var(--out)}
 @keyframes dropEntra{from{transform:translateY(-26px);opacity:.3}}
 .d-mist{letter-spacing:.08em}
@@ -2041,7 +2043,7 @@ document.getElementById("footCats").innerHTML = CATS.filter(c => !VIRTUALES.has(
 (function lanzamientos(){
   const el = document.getElementById("drop"), tabs = document.getElementById("dropTabs");
   const FIG = document.querySelector("#figPx").innerHTML, DIA = 864e5, dos2 = n => String(n).padStart(2, "0");
-  const COLORES = [["#4B3880", "#F4F0FF"], ["#C6F432", "#2B1B4D"], ["#F4F0FF", "#2B1B4D"]];
+  const COLORES = [["#C6F432", "#2B1B4D"], ["#F4F0FF", "#2B1B4D"], ["#4B3880", "#F4F0FF"]];   // la pestaña pegada al frente es lima: contrasta con la tarjeta morada
   const meta = L => L.fecha ? new Date(L.fecha + "T00:00:00") : null;
   const prodDe = L => L.producto && byId[L.producto];
   // "viene": aún no sale · "llego": ya salió y tiene pieza (se queda 7 días) · "": ya no se muestra
@@ -2072,7 +2074,7 @@ document.getElementById("footCats").innerHTML = CATS.filter(c => !VIRTUALES.has(
     const otras = lista.map((x, i) => i).filter(i => i !== sel).reverse();
     tabs.innerHTML = otras.map((i, k) => { const x = lista[i], f = x.img || (prodDe(x) ? portada(prodDe(x)) : ""), [bg, fg] = COLORES[(otras.length - 1 - k) % COLORES.length];
       return `<button class="dt${estado(x) === "llego" ? " dt-ya" : ""}" type="button" data-i="${i}" style="--tb:${bg};--tf:${fg}" aria-label="Ver lanzamiento: ${h(x.oculto && estado(x) !== "llego" ? "pieza misteriosa" : nombre(x))}, ${h(cuando(x))}">
-        <span class="dt-ph">${f ? `<img src="${h(miniSrc(f))}" alt="" width="1000" height="1000">` : ""}</span><b>${h(nombre(x))}</b><span class="dt-c">${h(cuando(x))}</span></button>`; }).join("");
+        <span class="dt-ph">${f ? `<img src="${h(miniSrc(f))}" alt="" width="1000" height="1000">` : ""}</span><span class="dt-t"><small>${estado(x) === "llego" ? "Ya llegó" : "Después"}</small><b>${h(nombre(x))}</b></span><span class="dt-c">${meta(x) && estado(x) !== "llego" ? `<small>${h(fechaCorta(meta(x)))}</small>` : ""}${h(cuando(x))}</span></button>`; }).join("");
     el.classList.toggle("con-tabs", otras.length > 0);
     if (estado(L) === "llego") {
       el.innerHTML = `<div class="d-txt"><p class="d-k ya">Ya llegó</p>
@@ -2112,6 +2114,7 @@ document.getElementById("footCats").innerHTML = CATS.filter(c => !VIRTUALES.has(
           u("d").textContent = dos2(Math.floor(min / 1440)); u("h").textContent = dos2(Math.floor(min / 60) % 24); u("m").textContent = dos2(min % 60);
           const p = Math.min(1, Math.max(.04, (Date.now() - desde) / (m - desde)));
           cover.style.setProperty("--p", p.toFixed(3));
+          el.querySelector(".viz-q").hidden = p > .7;   // con la pieza casi lista, el "?" ya no cabe sobre la boquilla
           chip.textContent = `Capa ${Math.min(5, Math.floor(p * 5) + 1)} de 5`;
           t = setTimeout(tick, 60000 - (Date.now() % 60000) + 50);   // cada minuto: sin segundos, sin prisa falsa
         };
