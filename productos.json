@@ -1131,6 +1131,15 @@
         "fecha": "2026-11-03",
         "img": "pagina-2",
         "producto": ""
+      },
+      {
+        "activo": true,
+        "oculto": true,
+        "nombre": "Psyduck Goku ",
+        "texto": "",
+        "fecha": "2026-11-09",
+        "img": "pagina-1",
+        "producto": ""
       }
     ]
   }
