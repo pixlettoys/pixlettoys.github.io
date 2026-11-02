@@ -1051,6 +1051,26 @@
       ],
       "price": "$100.00",
       "num": 44
+    },
+    {
+      "id": "psyduck",
+      "name": "Psyduck",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Pokemon",
+      "c": "#f39a3c",
+      "imgs": [
+        "psyduck-1"
+      ],
+      "desc": "",
+      "specs": [
+        "Pokemon"
+      ],
+      "price": "$55.00",
+      "num": 45,
+      "ficha": {
+        "alto": "5"
+      }
     }
   ],
   "banners": [
