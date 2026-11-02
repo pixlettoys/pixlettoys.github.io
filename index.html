@@ -1327,6 +1327,9 @@ fetch("productos.json", {cache: "no-cache"})
       faq: (Array.isArray(pg.faq) ? pg.faq : []).filter(x => x && txt(x.p) && txt(x.r)).map(x => ({ p: txt(x.p), r: txt(x.r) })),
       lanzamientos: lzs.filter(lz => lz && typeof lz === "object").map(lz => ({ activo: lz.activo === true, oculto: lz.oculto === true, nombre: txt(lz.nombre), texto: txt(lz.texto), fecha: fechaOk(lz.fecha), desde: fechaOk(lz.desde), img: okImg(lz.img), producto: okId(lz.producto) ? lz.producto : "" }))
     };
+    // Una pieza ligada a un lanzamiento con fecha futura no se muestra en el catálogo hasta ese día
+    const ocultas = new Set(PAGINA.lanzamientos.filter(L => L.producto && L.fecha && Date.now() < new Date(L.fecha + "T00:00:00")).map(L => L.producto));
+    if (ocultas.size) PRODUCTS = PRODUCTS.filter(p => !ocultas.has(p.id));
     const okEnlace = v => typeof v === "string" && (v === "" || v === "wa" || /^#\/[a-z0-9-]*$/.test(v) || /^#\/buscar\/[A-Za-z0-9%._~-]{1,120}$/.test(v) || /^#[a-z0-9-]{1,60}$/.test(v));
     const okHex = v => typeof v === "string" && /^#[0-9a-fA-F]{6}$/.test(v);
     BANNERS = (Array.isArray(d.banners) ? d.banners : []).filter(b => b && (b.tipo === "foto" || b.tipo === "imagen") && typeof b.img === "string" && /^[a-zA-Z0-9_-]{1,80}$/.test(b.img))
@@ -2109,7 +2112,7 @@ document.getElementById("footCats").innerHTML = CATS.filter(c => !VIRTUALES.has(
         const u = k => el.querySelector(`[data-u="${k}"]`), chip = el.querySelector(".viz-chip");
         const tick = () => {
           const ms = m - Date.now();
-          if (ms <= 0) return iniciar();
+          if (ms <= 0) return L.producto ? location.reload() : iniciar();   // con pieza ligada: recarga para que aparezca en el catálogo
           const min = Math.ceil(ms / 6e4);
           u("d").textContent = dos2(Math.floor(min / 1440)); u("h").textContent = dos2(Math.floor(min / 60) % 24); u("m").textContent = dos2(min % 60);
           const p = Math.min(1, Math.max(.04, (Date.now() - desde) / (m - desde)));

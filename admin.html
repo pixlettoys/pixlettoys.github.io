@@ -136,6 +136,7 @@ select.in{appearance:none;-webkit-appearance:none;background-image:url("data:ima
 .row-t span{display:block;font-size:.84rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row-acts{display:flex;gap:4px;flex:none}
 .row-acts .icon-btn{width:40px;height:40px;background:none;box-shadow:inset 0 0 0 1px var(--line)}
+.row-t b .tag-soon,.tag-soon{background:#2B1B4D;color:#F4F0FF}
 .tag{display:inline-block;margin-left:6px;font-size:.66rem;font-weight:800;letter-spacing:.03em;vertical-align:middle;padding:2px 6px;border-radius:6px}
 .tag-new{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
 .tag-ed{background:var(--warn-bg);color:var(--warn-ink)}
@@ -362,7 +363,7 @@ body.en-editor{padding-bottom:calc(84px + var(--safe-b))}
     <p class="lead">Lo que se ve fuera de los productos: el próximo lanzamiento, la página de Proceso y las Preguntas frecuentes.</p>
     <section class="sec" aria-labelledby="h-lz">
       <h3 class="sec-h" id="h-lz">Próximos lanzamientos <small>se apilan como tarjetas en el inicio</small></h3>
-      <p class="hint" style="margin:0 0 10px">Al frente sale el más cercano; los demás quedan como pestañas detrás (máximo 4 a la vez). Al llegar la fecha, si eligiste la pieza, cambia a “Ya llegó” durante 7 días; si no, se quita solo.</p>
+      <p class="hint" style="margin:0 0 10px">Si ligas una pieza, <b>no se muestra en el catálogo hasta la fecha de salida</b>: créala con calma y aparece sola ese día. Al frente sale el más cercano; los demás quedan como pestañas detrás (máximo 4 a la vez). Al llegar la fecha, si eligiste la pieza, cambia a “Ya llegó” durante 7 días; si no, se quita solo.</p>
       <div id="lzs"></div>
       <button class="btn btn-soft" type="button" id="lz-add" style="width:100%;margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar lanzamiento</button>
     </section>
@@ -739,6 +740,11 @@ document.addEventListener("click", e => {   // enlaces internos con historial pr
 /* ---------- lista de productos ---------- */
 let filtro = "all";
 const enFiltro = (p, f) => f === "all" ? true : f === "ofertas" ? !!p.was : f === "sinprecio" ? !p.price : f === "cambios" ? estadoFila(p) !== "" : p.cat === f;
+// Fecha de salida si la pieza está ligada a un lanzamiento que aún no llega (en el catálogo no se ve hasta ese día)
+function salidaDe(p) {
+  const L = ((datos.pagina || {}).lanzamientos || []).find(x => x.producto === p.id && x.fecha && Date.now() < new Date(x.fecha + "T00:00:00").getTime());
+  return L ? new Date(L.fecha + "T00:00:00").toLocaleDateString("es-MX", { day: "numeric", month: "short" }).replace(".", "") : "";
+}
 function estadoFila(p) { const a = porId(base.productos, p.id); return !a ? "nuevo" : J(a) !== J(p) ? "editado" : ""; }
 const textoBus = p => norm([p.name, p.sub, p.id, p.badge, catLabel(p.cat), ...(p.variantes || []).map(v => v.nombre)].join(" "));
 function pintarLista() {
@@ -754,7 +760,7 @@ function pintarLista() {
     return `<div class="row">
       <a class="row-main" href="#/producto/${encodeURIComponent(p.id)}">
         <img class="thumb" src="${esc(fotoUrl(p.imgs[0]))}" alt="" loading="lazy">
-        <span class="row-t"><b><span class="rnum">#${String(p.num || 0).padStart(3, "0")}</span> ${esc(p.name)}${st === "nuevo" ? '<span class="tag tag-new">NUEVO</span>' : st === "editado" ? '<span class="tag tag-ed">EDITADO</span>' : ""}</b><span>${esc(catLabel(p.cat))} · ${esc(corto(p.price) || "Sin precio")}${p.was ? ` <s>${esc(corto(p.was))}</s>` : ""}${(p.variantes || []).length ? ` · ${p.variantes.length} variantes` : ""}</span></span>
+        <span class="row-t"><b><span class="rnum">#${String(p.num || 0).padStart(3, "0")}</span> ${esc(p.name)}${st === "nuevo" ? '<span class="tag tag-new">NUEVO</span>' : st === "editado" ? '<span class="tag tag-ed">EDITADO</span>' : ""}${salidaDe(p) ? `<span class="tag tag-soon">OCULTO · SALE ${esc(salidaDe(p).toUpperCase())}</span>` : ""}</b><span>${esc(catLabel(p.cat))} · ${esc(corto(p.price) || "Sin precio")}${p.was ? ` <s>${esc(corto(p.was))}</s>` : ""}${(p.variantes || []).length ? ` · ${p.variantes.length} variantes` : ""}</span></span>
       </a>
       ${ordenable ? `<div class="row-acts">
         <button class="icon-btn" type="button" data-a="up" data-i="${i}" aria-label="Subir ${esc(p.name)}" ${k ? "" : "disabled"}>${ICO.up}</button>
