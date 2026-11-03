@@ -1060,7 +1060,10 @@
       "badge": "Pokemon",
       "c": "#f39a3c",
       "imgs": [
-        "psyduck-1"
+        "psyduck-2",
+        "psyduck-3",
+        "psyduck-4",
+        "psyduck-5"
       ],
       "desc": "",
       "specs": [
