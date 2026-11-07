@@ -1167,7 +1167,7 @@
       },
       {
         "activo": true,
-        "oculto": false,
+        "oculto": true,
         "nombre": "Psyduck Vegeta",
         "texto": "",
         "fecha": "2026-11-09",
