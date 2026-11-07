@@ -1065,7 +1065,7 @@
         "psyduck-4",
         "psyduck-5"
       ],
-      "desc": "",
+      "desc": "¡El pato con el dolor de cabeza más famoso! 😵‍💫 Amarillito, con piquito y patitas color crema, sus tres pelitos negros y esa mirada de \"no puedo más\" que todos entendemos. Perfecto para tu escritorio 💛",
       "specs": [
         "Pokemon"
       ],
@@ -1077,6 +1077,16 @@
     }
   ],
   "banners": [
+    {
+      "id": "banner-4",
+      "tipo": "foto",
+      "img": "psyduck-2",
+      "titulo": "Psyduck ",
+      "texto": "¡El pato con el dolor de cabeza más famoso! 😵‍💫",
+      "boton": "Ver más",
+      "enlace": "#psyduck",
+      "color": "#F4F0FF"
+    },
     {
       "id": "halloween",
       "tipo": "foto",
@@ -1149,19 +1159,19 @@
       {
         "activo": true,
         "oculto": true,
-        "nombre": "Psyduck",
-        "texto": "",
-        "fecha": "2026-11-03",
-        "img": "pagina-2",
-        "producto": "psyduck"
-      },
-      {
-        "activo": true,
-        "oculto": true,
         "nombre": "Psyduck Goku ",
         "texto": "",
         "fecha": "2026-11-09",
         "img": "pagina-1",
+        "producto": ""
+      },
+      {
+        "activo": true,
+        "oculto": false,
+        "nombre": "Psyduck Vegeta",
+        "texto": "",
+        "fecha": "2026-11-09",
+        "img": "pagina-3",
         "producto": ""
       }
     ]
