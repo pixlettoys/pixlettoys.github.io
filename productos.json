@@ -1120,6 +1120,23 @@
       ],
       "price": "$80.00",
       "num": 47
+    },
+    {
+      "id": "froakie",
+      "name": "Froakie",
+      "sub": "",
+      "cat": "pokemon",
+      "badge": "Pokemon",
+      "c": "var(--lilac)",
+      "imgs": [
+        "froakie-1"
+      ],
+      "desc": "",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$80.00",
+      "num": 48
     }
   ],
   "banners": [
@@ -1219,6 +1236,15 @@
         "fecha": "2026-11-09",
         "img": "pagina-3",
         "producto": "psyduck-vegeta"
+      },
+      {
+        "activo": true,
+        "oculto": true,
+        "nombre": "Froakie",
+        "texto": "",
+        "fecha": "2026-11-09",
+        "img": "froakie-1",
+        "producto": "froakie"
       }
     ]
   }
