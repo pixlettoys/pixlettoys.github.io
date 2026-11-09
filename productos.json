@@ -1074,6 +1074,40 @@
       "ficha": {
         "alto": "5"
       }
+    },
+    {
+      "id": "psyduck-goku",
+      "name": "Psyduck Goku",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Pokemon",
+      "c": "#f39a3c",
+      "imgs": [
+        "psyduck-goku-1"
+      ],
+      "desc": "",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$80.00",
+      "num": 46
+    },
+    {
+      "id": "psyduck-vegeta",
+      "name": "Psyduck Vegeta",
+      "sub": "",
+      "cat": "figuras",
+      "badge": "Pokemon",
+      "c": "#f39a3c",
+      "imgs": [
+        "psyduck-vegeta-1"
+      ],
+      "desc": "",
+      "specs": [
+        "Impreso en 3D"
+      ],
+      "price": "$80.00",
+      "num": 47
     }
   ],
   "banners": [
@@ -1163,7 +1197,7 @@
         "texto": "",
         "fecha": "2026-11-09",
         "img": "pagina-1",
-        "producto": ""
+        "producto": "psyduck-goku"
       },
       {
         "activo": true,
@@ -1172,7 +1206,7 @@
         "texto": "",
         "fecha": "2026-11-09",
         "img": "pagina-3",
-        "producto": ""
+        "producto": "psyduck-vegeta"
       }
     ]
   }
