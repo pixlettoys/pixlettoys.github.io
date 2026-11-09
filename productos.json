@@ -1095,7 +1095,10 @@
       "badge": "DragonBall",
       "c": "#f39a3c",
       "imgs": [
-        "psyduck-goku-1"
+        "psyduck-goku-2",
+        "psyduck-goku-3",
+        "psyduck-goku-4",
+        "psyduck-goku-5"
       ],
       "desc": "",
       "specs": [
@@ -1112,7 +1115,10 @@
       "badge": "DragónBall",
       "c": "#f39a3c",
       "imgs": [
-        "psyduck-vegeta-1"
+        "psyduck-vegeta-2",
+        "psyduck-vegeta-3",
+        "psyduck-vegeta-4",
+        "psyduck-vegeta-5"
       ],
       "desc": "",
       "specs": [
@@ -1129,7 +1135,10 @@
       "badge": "Pokemon",
       "c": "var(--lilac)",
       "imgs": [
-        "froakie-1"
+        "froakie-2",
+        "froakie-3",
+        "froakie-4",
+        "froakie-5"
       ],
       "desc": "",
       "specs": [
