@@ -230,9 +230,9 @@
       "id": "cajita-cupcake",
       "name": "Cajita Cupcake",
       "sub": "",
-      "cat": "figuras",
-      "badge": "Figuras",
-      "c": "var(--teal)",
+      "cat": "hogar",
+      "badge": "Almacenamiento",
+      "c": "var(--caramel)",
       "imgs": [
         "producto-10",
         "producto-11",
@@ -250,7 +250,7 @@
       "name": "Sapo Glotón Portaplumas",
       "sub": "",
       "cat": "penholders",
-      "badge": "Figuras",
+      "badge": "Lapicero",
       "c": "#4cc36a",
       "imgs": [
         "sapo-gloton-portaplumas-1",
@@ -269,7 +269,7 @@
       "name": "Organizador 3 en 1",
       "sub": "Escritorio Zen",
       "cat": "penholders",
-      "badge": "Figuras",
+      "badge": "Organizador",
       "c": "#cfd6e6",
       "imgs": [
         "organizador-3-en-1-1",
@@ -327,7 +327,7 @@
       "name": "Ondas Atardecer",
       "sub": "",
       "cat": "penholders",
-      "badge": "Figuras",
+      "badge": "Lapicero",
       "c": "var(--red)",
       "imgs": [
         "ondas-atardecer-1"
@@ -441,7 +441,7 @@
       "id": "gengar",
       "name": "Gengar",
       "sub": "Pokemon fantasma",
-      "cat": "figuras",
+      "cat": "pokemon",
       "badge": "Pokemon",
       "c": "var(--lilac)",
       "imgs": [
@@ -476,8 +476,8 @@
       "id": "pokeball-snorlax",
       "name": "Pokeball Snorlax",
       "sub": "😴 Gordito Dormilón",
-      "cat": "figuras",
-      "badge": "Pokémon",
+      "cat": "pokemon",
+      "badge": "Pokéball",
       "c": "var(--lilac)",
       "imgs": [
         "pokeball-snorlax-1",
@@ -695,7 +695,7 @@
       "id": "pokeball-charmander",
       "name": "Pokéball - Charmander",
       "sub": "Charmander dormilon",
-      "cat": "figuras",
+      "cat": "pokemon",
       "badge": "Pokeball",
       "c": "#f39a3c",
       "imgs": [
@@ -1068,7 +1068,7 @@
       "id": "psyduck",
       "name": "Psyduck",
       "sub": "",
-      "cat": "figuras",
+      "cat": "pokemon",
       "badge": "Pokemon",
       "c": "#f39a3c",
       "imgs": [
@@ -1091,8 +1091,8 @@
       "id": "psyduck-goku",
       "name": "Psyduck Goku",
       "sub": "",
-      "cat": "figuras",
-      "badge": "Pokemon",
+      "cat": "pokemon",
+      "badge": "DragonBall",
       "c": "#f39a3c",
       "imgs": [
         "psyduck-goku-1"
@@ -1108,8 +1108,8 @@
       "id": "psyduck-vegeta",
       "name": "Psyduck Vegeta",
       "sub": "",
-      "cat": "figuras",
-      "badge": "Pokemon",
+      "cat": "pokemon",
+      "badge": "DragónBall",
       "c": "#f39a3c",
       "imgs": [
         "psyduck-vegeta-1"
