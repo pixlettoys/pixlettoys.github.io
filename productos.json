@@ -32,9 +32,21 @@
     },
     {
       "id": "penholders",
-      "label": "Portalápices",
-      "title": "Portalápices ",
+      "label": "Oficina",
+      "title": "Oficina",
       "sub": "Orden con estilo para plumas y colores."
+    },
+    {
+      "id": "pokemon",
+      "label": "Pokemon",
+      "title": "Pokemon",
+      "sub": ""
+    },
+    {
+      "id": "hogar",
+      "label": "Hogar",
+      "title": "Hogar",
+      "sub": ""
     }
   ],
   "productos": [
